@@ -48,7 +48,7 @@ class SortableTable extends Component{
     render(){
         return (
             <div>
-
+                
             </div>
         )
     }
