@@ -5,7 +5,7 @@ import "../ClassManagement/ClassOverview.css";
 class ClassOverview extends Component {
   render(){
     return (
-      <div className="class-das container">
+      <div className="class-dashboard">
         <h1>Teacher Dasboard</h1>
         <div className="class-detail">
           <div className="row">
@@ -17,7 +17,7 @@ class ClassOverview extends Component {
             <div className="col-4">
               <h3 className='title'>Location</h3>
               <p>Summer 2018               
-                <i className="fa fa-pencil"></i>  
+                <i class="fas fa-pencil-alt"></i>  
               </p>
               <h3 className='title'>Total number of participants</h3>
               <p>15</p>

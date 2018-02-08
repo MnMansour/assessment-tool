@@ -4,8 +4,7 @@ import Header from '../Header';
 import Login from '../Login';
 import LoginAdmin from '../LoginAdmin';
 import Footer from '../Footer';
-import StudentTable from '../ClassManagement/StudentTable'
-import ClassOverview from '../ClassManagement/ClassOverview';
+import ClassManagement from '../ClassManagement/index';
 
 const MainLayout = ({ match }) => {
 	return (
@@ -15,10 +14,7 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/home`} render={() => <h1>home</h1>} />
 				<Route path={`${match.url}/login-admin`} component={LoginAdmin} />
 				<Route path={`${match.url}/login`} component={Login} />
-
-				<Route path={`${match.url}/StudentTable`} component={StudentTable} />
-				<Route path={`${match.url}/ClassOverview`} component={ClassOverview} />
-				
+				<Route path={`${match.url}/class-management`} component={ClassManagement} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
 			<Footer />

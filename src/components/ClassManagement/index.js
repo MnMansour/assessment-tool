@@ -1,9 +1,16 @@
 import React from 'react'
-import StudentTable from 'StudentTable'
+import StudentTable from './StudentTable'
+import ClassOverview from './ClassOverview'
 
 const ClassManagement = () => {
   return (
-    <StudentTable />
+    <div className="container">
+      <ClassOverview />
+      <StudentTable />
+
+    </div>
+
+    
   )
 }
 
