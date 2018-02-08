@@ -128,7 +128,7 @@ class SortableTable extends Component{
                         <th className="classes__th">Mange</th>
                     </tr>
                 </thead>
-                {this.state.classes.map((item)=>{
+                {classes.map((item)=>{
                     return(
                         <tr>
                         <td>{item.id}</td>
