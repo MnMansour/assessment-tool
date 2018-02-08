@@ -1,0 +1,98 @@
+.login-container{
+    width:30%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+button{
+    height: 60px;
+    width: 100%;
+    outline: none;
+}
+.github{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 5px;
+}
+h1{
+    color: #fe8e3f;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.login-title{
+    margin-bottom: 50px;
+}
+
+.admin{
+    color: #fe8e3f;
+    font-size: 0.9rem;
+    font-weight: normal;
+    position: initial;
+    font-family: roboto;
+    float: left;
+    cursor: pointer;
+}
+.signin{
+    color: #fe8e3f;
+    font-size: 0.9rem;
+    font-weight: normal;
+    position: initial;
+    font-family: roboto;
+    float: right;
+    cursor: pointer;
+}
+.button-integrify{
+    background: #fe8e3f;
+    color: white;
+    font-family: roboto;
+    font-size: larger;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.button-integrify { 
+    color: #ffffff; 
+    background-color: #FE8E3F; 
+    border-color: #FE8E3F; 
+  } 
+   
+  .button-integrify:hover, 
+  .button-integrify:focus, 
+  .button-integrify:active, 
+  .button-integrify.active, 
+  .open .dropdown-toggle.button-integrify { 
+    color: #ffffff; 
+    background-color: #FE8E3f; 
+    border-color: #FE8E3F; 
+  } 
+   
+  .button-integrify:active, 
+  .button-integrify.active, 
+  .open .dropdown-toggle.button-integrify { 
+    background-image: none; 
+  } 
+   
+  .button-integrify.disabled, 
+  .button-integrify[disabled], 
+  fieldset[disabled] .button-integrify, 
+  .button-integrify.disabled:hover, 
+  .button-integrify[disabled]:hover, 
+  fieldset[disabled] .button-integrify:hover, 
+  .button-integrify.disabled:focus, 
+  .button-integrify[disabled]:focus, 
+  fieldset[disabled] .button-integrify:focus, 
+  .button-integrify.disabled:active, 
+  .button-integrify[disabled]:active, 
+  fieldset[disabled] .button-integrify:active, 
+  .button-integrify.disabled.active, 
+  .button-integrify[disabled].active, 
+  fieldset[disabled] .button-integrify.active { 
+    background-color: #FE8E3F; 
+    border-color: #FE8E3F; 
+  } 
+   
+  .button-integrify .badge { 
+    color: #FE8E3F; 
+    background-color: #ffffff; 
+  }

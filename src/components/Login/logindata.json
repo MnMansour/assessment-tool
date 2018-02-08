@@ -1,0 +1,12 @@
+[
+    {"username":"niloo","password":12345678,"email":"niloofar.motamed@gmail.com", "name":"Niloofar Motamed"},
+    {"username":"mohamed","password":12345678 ,"email":"mohamednmansour.90@gmail.com" , "name":"Mohamed Mansoor"},
+    {"username":"nizar","password":12345678,"email":"nizar.rahme@digia.com" , "name":"Nizar Rahme"},
+    {"username":"olujuwon","password":12345678 ,"email":"ayoalabi0@gmail.com" , "name":"Olujuwon Alabi"},
+    {"username":"sannu","password":12345678,"email":"smahat.official@gmail.com" , "name":"Sandhya Mahat" },
+    {"username":"niloom","password":66,"email":"niloofar.motamed@gmail.com", "name":"Niloofar Motamed"},
+    {"username":"Kippers - Smoked","password":95 ,"email":66 , "name":"Niloofar Motamed"},
+    {"username":"Beans - Kidney, Red Dry","password":15 ,"email":66 , "name":"Niloofar Motamed"},
+    {"username":"Chips Potato Reg 43g","password":58 ,"email":66 , "name":"Niloofar Motamed"},
+    {"username":"Soup - Cream Of Broccoli, Dry","password":1,"email":66 , "name":"Niloofar Motamed" }
+]
