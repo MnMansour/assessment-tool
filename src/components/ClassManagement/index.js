@@ -1,7 +1,10 @@
 import React from 'react'
+import StudentTable from 'StudentTable'
 
 const ClassManagement = () => {
-  return <div>Class Management</div>
+  return (
+    <StudentTable />
+  )
 }
 
 export default ClassManagement;
