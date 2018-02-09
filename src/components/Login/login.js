@@ -12,7 +12,7 @@ const validate = (obj)=>{
   }
 }
 
-class Login extends Component {
+class LoginForm extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -42,10 +42,10 @@ class Login extends Component {
         <span className="password">
         <img src={tick} alt="tick" className={errors.password ? 'valid' : 'tick'}/>
         </span>
-        <input type="button" value="Login"/>
+        <input type="submit" value="Login"/>
       </div>
     );
   }
 }
 
-export default Login;
+export default LoginForm;
