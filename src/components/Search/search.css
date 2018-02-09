@@ -1,0 +1,19 @@
+.container{
+  margin-left: 20px;
+}
+
+.search-input{
+  height: 30px;
+  width: 300px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  border: 1px solid #E1E8ED;
+  padding-left: 30px;
+}
+
+.fa-search{
+  font-size: 10px;
+  position: absolute;
+  padding: 10px;
+}
