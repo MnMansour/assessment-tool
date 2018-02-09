@@ -5,11 +5,13 @@ import Header from '../Header';
 import Login from '../Login';
 import LoginAdmin from '../LoginAdmin';
 import Footer from '../Footer';
+import Breadcrumb from '../Breadcrumb'
 
 const MainLayout = ({ match }) => {
 	return (
 		<Fragment>
 			<Header />
+			<Breadcrumb />
 			<Switch>
 				<Route path={`${match.url}/home`} render={() => <h1>home</h1>} />
 				<Route path={`${match.url}/login-admin`} component={LoginAdmin} />
