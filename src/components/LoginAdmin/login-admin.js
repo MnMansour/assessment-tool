@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
-import tick from './tick.png';
+import tick from '../Login/tick.png';
 import isAlphanumeric from 'validator/lib/isAlphanumeric';
 import isEmail from 'validator/lib/isEmail';
 import {connect} from 'react-redux';
@@ -14,7 +14,7 @@ const validate = (obj)=>{
   }
 }
 
-class LoginAdmin extends Component {
+class LoginAdminForm extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -26,8 +26,8 @@ class LoginAdmin extends Component {
   handleLogin = (e)=>{
         e.preventDefault();
         let user = [{username:this.state.username, password:this.state.password}]
-        console.log(user);
         this.props.login(user)
+        window.location.href =`/app/loginprocess`
   }
   render() {
     const errors = validate(this.state)
@@ -59,10 +59,15 @@ class LoginAdmin extends Component {
   }
 }
 
+const mapStateToProps = (state)=>{
+  return {
+    hello: state.data
+  }
+}
   const mapDispatchToProps = (dispatch)=>{
     return { 
       login: (user)=>dispatch(logIn(user)),
     }
   }
 
-export default connect(null, mapDispatchToProps)(LoginAdmin);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginAdminForm);
