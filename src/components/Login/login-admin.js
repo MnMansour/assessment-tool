@@ -65,4 +65,4 @@ class LoginAdmin extends Component {
     }
   }
 
-export default connect(mapDispatchToProps)(LoginAdmin);
+export default connect(null, mapDispatchToProps)(LoginAdmin);
