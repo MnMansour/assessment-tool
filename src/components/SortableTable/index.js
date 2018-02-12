@@ -8,7 +8,7 @@ class SortableTable extends Component{
         let sortedClasses = []
         isReversed ?  sortedClasses = classes.sort((a,b)=>a[sortBy]>b[sortBy])
         : sortedClasses = classes.sort((a,b)=>a[sortBy]<b[sortBy])
-
+        console.log(sortedClasses,'wow')
        this.props.sortClasses(sortedClasses)
     }
     handleSortNum = (classes,sortBy,isReversed)=>{
@@ -16,10 +16,10 @@ class SortableTable extends Component{
         isReversed ?  sortedClasses = [...classes].sort((a,b)=>b[sortBy]-a[sortBy])
         : sortedClasses = [...classes].sort((a,b)=>a[sortBy]-b[sortBy])
 
-       this.setState({classes:sortedClasses})
+        this.props.sortClasses(sortedClasses)
     }
     render(){
-        const classes=Object.values(this.props.classes)
+        const classes=this.props.classes
         console.log(classes)
         return (
             <table className="classes">
@@ -40,11 +40,11 @@ class SortableTable extends Component{
                         <th className="classes__th"> Graduation Date    
                             <span className="classes__span">
                                 <div 
-                                    onClick={()=>this.handleSortAlpha(classes,"location",true)} 
+                                    onClick={()=>this.handleSortNum(classes,"graduationDate",true)} 
                                     className="arrow-up">
                                 </div>
                                 <div 
-                                    onClick={()=>this.handleSortAlpha(classes,"location",false)}
+                                    onClick={()=>this.handleSortAlpha(classes,"graduationDate",false)}
                                     className="arrow-down">
                                 </div>
                             </span>
@@ -64,11 +64,11 @@ class SortableTable extends Component{
                         <th className="classes__th">Participants
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"participants",true)} 
+                                onClick={()=>this.handleSortNum(classes,"participantCount",true)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"participants",false)}
+                                onClick={()=>this.handleSortNum(classes,"participantCount",false)}
                                 className="arrow-down">
                             </div>
                         </span>
@@ -88,11 +88,11 @@ class SortableTable extends Component{
                         <th className="classes__th">Head Teacher
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"headTeacher",true)} 
+                                onClick={()=>this.handleSortAlpha(classes,"headTeacher",true)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"headTeacher",false)}
+                                onClick={()=>this.handleSortAlpha(classes,"headTeacher",false)}
                                 className="arrow-down">
                             </div>
                         </span>
@@ -140,7 +140,7 @@ class SortableTable extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        classes: state.userClass
+        classes: state.userClass.classInfo
     }
 }
 const mapDispatchToProps = dispatch => {
