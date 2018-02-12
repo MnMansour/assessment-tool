@@ -4,11 +4,15 @@ import Header from '../Header';
 import Login from '../Login';
 import LoginAdmin from '../LoginAdmin';
 import Footer from '../Footer';
+import SortableTable from '../SortableTable'
 
 const MainLayout = ({ match }) => {
+	
 	return (
+		
 		<Fragment>
 			<Header />
+			<SortableTable/>
 			<Switch>
 				<Route path={`${match.url}/home`} render={() => <h1>home</h1>} />
 				<Route path={`${match.url}/login-admin`} component={LoginAdmin} />
