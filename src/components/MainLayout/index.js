@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
 import Header from '../Header';
 import Login from '../Login';
 import LoginAdmin from '../LoginAdmin';
