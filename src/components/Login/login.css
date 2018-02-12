@@ -2,6 +2,7 @@
         width:25%;
         margin: auto;
         float: none;
+        margin-top: 150px;
 }
 .form{
     display:block;
@@ -9,24 +10,24 @@
     margin: auto;
     margin-bottom: 10px;
     line-height: 35px;
-    color:#fe8e3f;
+    color:#fdb515;
     font-size: 0.9rem;
     border: none;
     outline: none;
-    border: 1px solid #fe8e3f;
+    border: 1px solid #fdb515;
     border-radius: 5px;
     padding-right: 36px;
     text-indent: 10px;
 }
 ::-webkit-input-placeholder{
-    color: #fe8f3fab;
+    color: #fdb515;
     font-size: 0.9rem;
     text-indent: 10px;
 }
 input[type="submit"]{
     width:100%;
     line-height: 35px;
-    background-color: #fe8e3f;
+    background-color: #fdb515;
     color: white;
     border: none;
     outline: none;
@@ -59,7 +60,29 @@ input[type="submit"]{
     visibility: initial;
 }
 .title{
-    color: #fe8e3f;
+    color: #fdb515;
     font-size: 1.5rem;
     font-weight: 500;
 }
+/*Responsive design starts here with 2 breakpoints*/
+@media screen and (max-width:1250px) {
+    .login{
+        margin-top: 150px;
+        width:34.5%;
+    }
+    }
+@media screen and (max-width:760px) {
+    .login{
+        margin-top: 150px;
+        width:50%;
+    }
+    }
+    @media screen and (max-width:414px) {
+        .login {
+            width: 80%;
+            margin-top: 150px;
+        }
+        .login-title {
+            margin-bottom: 25px;
+        }
+    }

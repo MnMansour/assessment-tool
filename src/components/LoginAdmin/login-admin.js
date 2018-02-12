@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import './login.css';
+import './login-admin.css';
 import tick from '../Login/tick.png';
 import isAlphanumeric from 'validator/lib/isAlphanumeric';
-import isEmail from 'validator/lib/isEmail';
+//import isEmail from 'validator/lib/isEmail';
 import {connect} from 'react-redux';
 import {logIn} from '../../redux/actions';
 
 
 const validate = (obj)=>{
   return {
-    username: isEmail(obj.username),
+    username:isAlphanumeric(obj.username),
     password:isAlphanumeric(obj.password)
   }
 }

@@ -10,8 +10,10 @@ class LandingPage extends Component {
         <div className="login-title"><h1> Login </h1></div>
             <button type="button" className="button-integrify" onClick={()=>window.location.href = "/app/login"}>
               <img src={github} alt="github" className='github'></img> Sign up / Login With Github</button>
-        <Link to="/app/login-admin"><p className="admin">Admin</p></Link>
-        <Link to="/app/login"><p className="signin">Already registered? Login</p></Link>
+            <div className="adminlinks">
+                <Link to="/app/login-admin"><p className="admin">Admin</p></Link>
+                <Link to="/app/login"><p className="signin">Already registered? Login</p></Link>
+            </div>
       </div>
     );
   }
