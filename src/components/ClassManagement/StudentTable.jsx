@@ -2,11 +2,13 @@ import React from 'react'
 import './StudentTable.css'
 import { connect } from 'react-redux'
 
-const StudentTable = (props) => {  
-  const ListItems = Object.values(props.user.users).map((item,index)=>{    
-    return(
-      <li key={index}><i className={`${index % 2 == 0 ? 'fas' : 'far'} fa-user-circle`}></i> {`${item.firstName} ${item.lastName}`}</li>
-    )
+const StudentTable = (props) => {
+  const ListItems = Object.values(props.user.users).map((item,index)=>{
+    if (props.match.params.id === item.id) {
+      return(
+        <li key={index}><i className={`${index % 2 == 0 ? 'fas' : 'far'} fa-user-circle`}></i> {`${item.firstName} ${item.lastName}`}</li>
+      )
+    }
 });
   return (
     <div className="stu-table">

@@ -14,7 +14,7 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/home`} render={() => <h1>home</h1>} />
 				<Route path={`${match.url}/login-admin`} component={LoginAdmin} />
 				<Route path={`${match.url}/login`} component={Login} />
-				<Route path={`${match.url}/class-management`} component={ClassManagement} />
+				<Route path={`${match.url}/class-management/:id`} component={ClassManagement} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
 			<Footer />
