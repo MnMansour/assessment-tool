@@ -2,18 +2,11 @@ import React from 'react'
 import './StudentTable.css'
 import { connect } from 'react-redux'
 
-const StudentTable = (props) => {
-  console.log(ListItems);
-  const ListItems = Object.keys(props.user).map(function(key, index) {
-    console.log(`${props.user[key].firstName} ${props.user[key].lastName}`);
-
+const StudentTable = (props) => {  
+  const ListItems = Object.values(props.user.users).map((item,index)=>{    
     return(
-      <li><i className={`${index%2==0? 'fas' : 'far'} fa-user-circle`}></i> {`${props.user[key].firstName} ${props.user[key].lastName}`}</li>
+      <li key={index}><i className={`${index % 2 == 0 ? 'fas' : 'far'} fa-user-circle`}></i> {`${item.firstName} ${item.lastName}`}</li>
     )
-
-
-
-
 });
   return (
     <div className="stu-table">
@@ -28,7 +21,6 @@ const StudentTable = (props) => {
     </form>
 			<ul className="list-table">
         {ListItems}
-
 			</ul>
 		</div>
   )
@@ -38,7 +30,6 @@ const mapStateToProps =(state)=>{
   return {
     user: state.user
   }
-
 }
 
 export default connect(mapStateToProps)(StudentTable);
