@@ -27,7 +27,6 @@ const StudentTable = (props) => {
     </form>
 			<ul className="list-table">
         {ListItems.map((item, i) => <Item id={i} fullName={item}/>)}
-        
 			</ul>
 		</div>
   )
