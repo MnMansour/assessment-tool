@@ -5,13 +5,15 @@
   align-items: center;
 }
 .header img{
-  height: 120px;
+  height: 65px;
+  padding-left: 24px;
 }
 .log {
   color: white;
   margin-right: 12px;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   text-transform: capitalize;
+  padding-right: 24px;
 }
 
 .hamburger {
@@ -23,8 +25,8 @@
   position: relative;
 }
 
-.hamburger img{
-}
+
+
 .hamburger ul{
   color: white;
   list-style: none;
@@ -58,5 +60,6 @@
   ul {
     top: 50px;
   }
+  .hamburger img {height: 36px;}
 
 }
