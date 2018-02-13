@@ -9,15 +9,16 @@ const userArray=users;
 const user = (state ={} , { type, payload }) => {
 	switch (type) {
 		case LOG_IN:
-		let loginUser = Object.assign({}, ...payload)
-		let users = Object.values(userArray);
-		let userExist=users.filter((user)=>(user.username && user.password) === (loginUser.username&&loginUser.password))
-		let userExisted = Object.assign({}, ...userExist)
-		let equalityTest= isEqual(userExisted, loginUser)
+			let loginUser = Object.assign({}, ...payload) //get the user details from the login form
+			let users = Object.values(userArray); //get the values from the array of object of users
+			//next line checks if loginuser exists in users array
+			let userExist=users.filter((user)=>(user.username && user.password) === (loginUser.username&&loginUser.password))
+			let userExisted = Object.assign({}, ...userExist)
+			let equalityTest= isEqual(userExisted, loginUser) // test to determine what to return
 			return equalityTest? userExisted : equalityTest
 		case LOG_OUT:
-		console.log(state)
-		state = null
+			console.log(state)
+			state = null
 			return state
 		default:
 			return state;

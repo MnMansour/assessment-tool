@@ -35,23 +35,23 @@ class LoginForm extends Component {
       <div className="login">
         <p className='title'>Sign-In</p>
         <form onSubmit={(e)=>{this.handleLogin(e)}}>
-                <input type="text" 
-                placeholder="Username" 
-                className="form"
-                onChange={e=>this.setState({username:e.target.value})}
-                value={this.state.username}/>
-                <span className="username">
-                <img src={tick} alt="tick" className={errors.username ? 'valid' : 'tick'}/>
-                </span>
-                <input type="password" 
-                placeholder="Password" 
-                className="form"
-                onChange={e=>this.setState({password:e.target.value})}
-                value={this.state.password}/>
-                <span className="password">
-                <img src={tick} alt="tick" className={errors.password ? 'valid' : 'tick'}/>
-                </span>
-                <input type="submit" value="Login"/>
+            <input type="text" 
+            placeholder="Username" 
+            className="form"
+            onChange={e=>this.setState({username:e.target.value})}
+            value={this.state.username}/>
+            <span className="username">
+            <img src={tick} alt="tick" className={errors.username ? 'valid' : 'tick'}/>
+            </span>
+            <input type="password" 
+            placeholder="Password" 
+            className="form"
+            onChange={e=>this.setState({password:e.target.value})}
+            value={this.state.password}/>
+            <span className="password">
+            <img src={tick} alt="tick" className={errors.password ? 'valid' : 'tick'}/>
+            </span>
+            <input type="submit" value="Login"/>
         </form>
       </div>
     );
