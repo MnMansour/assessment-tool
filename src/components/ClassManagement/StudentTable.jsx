@@ -12,8 +12,6 @@ const StudentTable = (props) => {
     }
 });
 
-  console.log('ListItems',ListItems);
-
   return (
     <div className="stu-table">
       <h3 className="title">Student</h3>
@@ -26,7 +24,7 @@ const StudentTable = (props) => {
       </div>
     </form>
 			<ul className="list-table">
-        {ListItems.map((item, i) => <Item id={i} fullName={item}/>)}
+        {ListItems.map((item, i) => item && <Item id={i} fullName={item}/>)}
 			</ul>
 		</div>
   )
