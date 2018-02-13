@@ -4,8 +4,8 @@ export function percentage( numerator, denominator ){
 }
 
 export function filterList( List, searchKey ) {
-  keyword = searchKey.toLowerCase();  
-  filterd_list = List.filter(function (item) {
+  let keyword = searchKey.toLowerCase();  
+  let filterd_list = List.filter(function (item) {
     item = item.toLowerCase();
     return item.indexOf(keyword) > -1
   })  
