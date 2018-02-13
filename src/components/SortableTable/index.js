@@ -4,23 +4,47 @@ import {connect} from "react-redux"
 import {sortClasses} from '../../redux/actions'
 class SortableTable extends Component{
     
-    handleSortAlpha = (classes,sortBy,isReversed)=>{
-        let sortedClasses = []
-        isReversed ?  sortedClasses = classes.sort((a,b)=>a[sortBy]>b[sortBy])
-        : sortedClasses = classes.sort((a,b)=>a[sortBy]<b[sortBy])
-        console.log(sortedClasses,'wow')
-       this.props.sortClasses(sortedClasses)
+ 
+    handleSortGeneral = (classes, sortBy, isReversed, sorter)=>{
+        let sortedClasses = [...classes]
+        sortedClasses.sort((a, b) => isReversed
+            ?  sorter(a[sortBy], b[sortBy])
+            :  - sorter(a[sortBy], b[sortBy])
+        )
+        return sortedClasses
     }
-    handleSortNum = (classes,sortBy,isReversed)=>{
-        let sortedClasses = []
-        isReversed ?  sortedClasses = [...classes].sort((a,b)=>b[sortBy]-a[sortBy])
-        : sortedClasses = [...classes].sort((a,b)=>a[sortBy]-b[sortBy])
+   
+    dateSorter =  (a,b)=> (new Date(a).getTime() - new Date(b).getTime())
+    numberSorter = (a,b)=> a - b
+    alphaNumSorter = (a,b)=> {
+        if(a > b) {
+            return 1;
+        }
+        if(a < b) {
+            return -1;
+        }
+        return 0;
+    }
+    
+    handleDate = (classes, sortBy,isReversed) => this.handleSortGeneral(classes, sortBy,isReversed, this.dateSorter)
+    handleNumber = (classes,sortBy,isReversed) => this.handleSortGeneral(classes,sortBy,isReversed,this.numberSorter)
+    handleAlpha = (classes,sortBy,isReversed) => this.handleSortGeneral(classes,sortBy,isReversed,this.alphaNumSorter)
 
-        this.props.sortClasses(sortedClasses)
+    handleSortDate = (sortBy,isReversed) => {
+        const sorted = this.handleDate(this.props.classes, sortBy,isReversed)
+        this.props.sortClasses(sorted)
     }
+    handleSortNum = (sortBy,isReversed) => {
+        const sorted = this.handleNumber(this.props.classes, sortBy,isReversed)
+        this.props.sortClasses(sorted)
+    }
+    handleSortAlpha = (sortBy,isReversed) => {
+        const sorted = this.handleAlpha(this.props.classes, sortBy,isReversed)
+        this.props.sortClasses(sorted)
+    }
+
     render(){
         const classes=this.props.classes
-        console.log(classes)
         return (
             <table className="classes">
                 <thead>
@@ -28,11 +52,11 @@ class SortableTable extends Component{
                         <th className="classes__th">Id
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"id",true)} 
+                                onClick={()=>this.handleSortNum("id",true)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"id",false)}
+                                onClick={()=>this.handleSortNum("id",false)}
                                 className="arrow-down">
                             </div>
                         </span>
@@ -40,11 +64,11 @@ class SortableTable extends Component{
                         <th className="classes__th"> Graduation Date    
                             <span className="classes__span">
                                 <div 
-                                    onClick={()=>this.handleSortNum(classes,"graduationDate",true)} 
+                                    onClick={()=>this.handleSortDate("graduationDate",true)} 
                                     className="arrow-up">
                                 </div>
                                 <div 
-                                    onClick={()=>this.handleSortAlpha(classes,"graduationDate",false)}
+                                    onClick={()=>this.handleSortDate("graduationDate",false)}
                                     className="arrow-down">
                                 </div>
                             </span>
@@ -52,11 +76,11 @@ class SortableTable extends Component{
                         <th className="classes__th"> Name
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortAlpha(classes,"name",true)} 
+                                onClick={()=>this.handleSortAlpha("name",true)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortAlpha(classes,"name",false)}
+                                onClick={()=>this.handleSortAlpha("name",false)}
                                 className="arrow-down">
                             </div>
                         </span>
@@ -64,11 +88,11 @@ class SortableTable extends Component{
                         <th className="classes__th">Participants
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"participantCount",true)} 
+                                onClick={()=>this.handleSortNum("participantCount",true)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"participantCount",false)}
+                                onClick={()=>this.handleSortNum("participantCount",false)}
                                 className="arrow-down">
                             </div>
                         </span>
@@ -76,11 +100,11 @@ class SortableTable extends Component{
                         <th className="classes__th">Current Sprint
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"currentSprint",true)} 
+                                onClick={()=>this.handleSortNum("currentSprint",true)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"currentSprint",false)}
+                                onClick={()=>this.handleSortNum("currentSprint",false)}
                                 className="arrow-down">
                             </div>
                         </span>
@@ -88,11 +112,11 @@ class SortableTable extends Component{
                         <th className="classes__th">Head Teacher
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortAlpha(classes,"headTeacher",true)} 
+                                onClick={()=>this.handleSortAlpha("headTeacher",true)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortAlpha(classes,"headTeacher",false)}
+                                onClick={()=>this.handleSortAlpha("headTeacher",false)}
                                 className="arrow-down">
                             </div>
                         </span>
@@ -100,11 +124,11 @@ class SortableTable extends Component{
                         <th className="classes__th">Planned Sprints
                         <span className="classes__span">
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"plannedSprints",true)} 
+                                onClick={()=>this.handleSortNum("plannedSprints",true, this.dateSorter)} 
                                 className="arrow-up">
                             </div>
                             <div 
-                                onClick={()=>this.handleSortNum(classes,"plannedSprints",false)}
+                                onClick={()=>this.handleSortNum("plannedSprints",false, this.dateSorter)}
                                 className="arrow-down">
                             </div>
                         </span>
