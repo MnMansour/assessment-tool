@@ -3,3 +3,5 @@ export const LOG_OUT = 'LOG_OUT';
 
 export const logIn = user => ({ type: LOG_IN, payload: user });
 export const logOut = user => ({ type: LOG_OUT });
+
+export const CLASS_EDIT = 'CLASS_EDIT';

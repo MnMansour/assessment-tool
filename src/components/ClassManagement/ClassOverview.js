@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import FontAwesome from 'react-fontawesome';
 import "../ClassManagement/ClassOverview.css";
 import { percentage } from "../../util/util.js";
+import ClassName from './ClassName'
 
-const ClassOverview = (props) => {
-  const arrClasses = Object.values(props.user.classes);
+const ClassOverview =(props)=>{
     return (
       <div className="class-dashboard">
         <h1>Teacher Dasboard</h1>
-        {arrClasses.map((element, i) =>
+        {props.classes.map((element, i) =>
         {
           const currentSprint = element.currentSprint;
           const plannedSprints = element.plannedSprints;
@@ -23,9 +22,7 @@ const ClassOverview = (props) => {
                   </div>
                   <div className="col-4">
                     <h3 className='title'>Location</h3>
-                    <p>{element.name}
-                  <i className="fas fa-pencil-alt"></i>
-                    </p>
+                    <ClassName isEdit={element.isEdit} name={element.name} i={i} />
                     <h3 className='title'>Total number of participants</h3>
                     <p>{element.participantCount}</p>
                   </div>
@@ -52,9 +49,11 @@ const ClassOverview = (props) => {
     )
   }
 
+
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    classes: state.classes
   }
 }
 

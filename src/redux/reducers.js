@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { LOG_IN, LOG_OUT } from './actions';
-   
+import * as actionsType from './actions';
+
 //Integrify-Finland/jsonserver/blob/master/db.json
 const initialState = {
       "classes": {
@@ -81,4 +82,23 @@ const user = (state = initialState, { type, payload }) => {
 	}
 };
 
-export default combineReducers({ user });
+const classInitialState = Object.values(initialState.classes).map(item=>{
+  return {...item, isEdit: false}
+});
+
+const classes = ((state= classInitialState, action)=>{
+  switch (action.type) {
+    case actionsType.CLASS_EDIT:
+    return state.map((item, index)=>{
+      if (index === action.indexToChange) {
+        return {...item, isEdit:  !item.isEdit, name: action.name}
+      }
+      return {...item}
+    })
+
+    default:
+      return state
+  }
+})
+
+export default combineReducers({ user, classes });
