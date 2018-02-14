@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import './login.css';
 import {connect} from 'react-redux';
 import {logOut} from '../../redux/actions';
+import {UserSelector} from '../../redux/selectors';
 
 class LoginProcess extends Component {
 
     success = ()=>{
         console.log('Sucess!!!')
-        window.location.href = `/app/user/${this.props.hello.username }`
+        window.location.href = `/app/user/${this.props.user.username }`
     }
     
     fail = ()=>{
@@ -19,16 +20,17 @@ class LoginProcess extends Component {
     }
 
     render() {
+      
       return (
         <div>
-            {this.props.hello.username ? this.success() : this.fail()}
+            {this.props.user.username ? this.success() : this.fail()}
         </div>
       )
   }
 }
 const mapStateToProps = (state)=>{
   return {
-    hello: state.data
+    user: UserSelector(state)
   }
 }
 const mapDispatchToProps = (dispatch)=>{

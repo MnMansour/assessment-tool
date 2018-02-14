@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './login.css';
-import tick from './tick.png';
+import tick from '../../assets/tick.png';
 import isAlphanumeric from 'validator/lib/isAlphanumeric';
-//import isEmail from 'validator/lib/isEmail';
 import {connect} from 'react-redux';
 import {logIn} from '../../redux/actions';
 
@@ -58,15 +57,10 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = (state)=>{
-  return {
-    hello: state.data
-  }
-}
   const mapDispatchToProps = (dispatch)=>{
     return { 
       login: (user)=>dispatch(logIn(user)),
     }
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);

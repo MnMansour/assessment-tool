@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './login-admin.css';
-import tick from '../Login/tick.png';
+import tick from '../../assets/tick.png';
 import isAlphanumeric from 'validator/lib/isAlphanumeric';
-//import isEmail from 'validator/lib/isEmail';
 import {connect} from 'react-redux';
 import {logIn} from '../../redux/actions';
 
@@ -59,15 +58,10 @@ class LoginAdminForm extends Component {
   }
 }
 
-const mapStateToProps = (state)=>{
-  return {
-    hello: state.data
-  }
-}
   const mapDispatchToProps = (dispatch)=>{
     return { 
       login: (user)=>dispatch(logIn(user)),
     }
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginAdminForm);
+export default connect(null, mapDispatchToProps)(LoginAdminForm);
