@@ -4,7 +4,7 @@ import Header from '../Header';
 import Login from '../Login';
 import LoginAdmin from '../LoginAdmin';
 import Footer from '../Footer';
-import SortableTable from '../SortableTable'
+import TeacherDashboard from '../TeacherDashboard'
 
 const MainLayout = ({ match }) => {
 	
@@ -18,8 +18,8 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/login`} component={Login} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
+			<TeacherDashboard/>
 			<Footer />
-			<SortableTable/>
 		</Fragment>
 	);
 };
