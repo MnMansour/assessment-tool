@@ -12,3 +12,5 @@ class TeacherDashboard extends React.Component{
     )
   }
 }
+
+export default TeacherDashboard;
