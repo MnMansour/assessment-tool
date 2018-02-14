@@ -4,13 +4,9 @@ import { connect } from 'react-redux'
 import Item from './Item'
 
 const StudentTable = (props) => {
-  const ListItems = Object.values(props.user.users).map((item,index)=>{
-    if (props.match.params.id === item.id) {
-      return(
-         [`${item.firstName} ${item.lastName}`]
-      )
-    }
-});
+  const ListItems = Object.values(props.user.users).filter(item=> props.match.params.id === item.id)
+    .map(item => [`${item.firstName} ${item.lastName}`]);
+  console.log("sdfsdf", ListItems);
 
   return (
     <div className="stu-table">
@@ -24,7 +20,7 @@ const StudentTable = (props) => {
       </div>
     </form>
 			<ul className="list-table">
-        {ListItems.map((item, i) => item && <Item id={i} fullName={item}/>)}
+        {ListItems.map((item, i) => <Item id={i} fullName={item}/>)}
 			</ul>
 		</div>
   )

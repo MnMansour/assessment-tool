@@ -3,11 +3,11 @@ export function percentage( numerator, denominator ){
   return percent
 }
 
-export function filterList( List, searchKey ) {
+export function filterList( list, searchKey ) {
   let keyword = searchKey.toLowerCase();
-  let filterd_list = List.filter(function (item) {
-    item = item.toLowerCase();
-    return item.indexOf(keyword) > -1
+  let filterd_list = list.filter(function (item) {
+    item = item.toLowerCase();    
+    return item.includes(keyword)
   })
   return filterd_list
 }
