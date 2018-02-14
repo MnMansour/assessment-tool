@@ -4,6 +4,7 @@ import Header from '../Header';
 import Login from '../Login';
 import LoginAdmin from '../LoginAdmin';
 import Footer from '../Footer';
+import SortableTable from '../SortableTable'
 
 const MainLayout = ({ match }) => {
 	
@@ -18,6 +19,7 @@ const MainLayout = ({ match }) => {
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
 			<Footer />
+			<SortableTable/>
 		</Fragment>
 	);
 };

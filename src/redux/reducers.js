@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { LOG_IN, LOG_OUT,SORT_CLASSES } from './actions';
+import { LOG_IN, LOG_OUT,SORT_CLASSES,GET_CLASSES } from './actions';
 
 const initialState ={
 	classInfo:Object.values({
@@ -34,10 +34,16 @@ const user = (state = {}, { type, payload }) => {
 	}
 };
 
-const userClass = (state = initialState,{type,classes})=>{
+const userClass = (state = {},{type,payload})=>{
+	switch (type) {
+		case GET_CLASSES:
+			return { ...state, classes:payload.data};
+		default:
+			return state;
+	}
 	switch (type) {
 		case SORT_CLASSES:
-			return { ...state, classInfo:classes};
+			return { ...state};
 		default:
 			return state;
 	}

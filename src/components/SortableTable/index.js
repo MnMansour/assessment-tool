@@ -1,68 +1,61 @@
 import React, { Component } from "react";
 import "./sortableTable.css"
 import {connect} from "react-redux"
-import {sortClasses} from '../../redux/actions'
-class SortableTable extends Component{
-    
- 
-    handleSortGeneral = (classes, sortBy, isReversed, sorter)=>{
-        let sortedClasses = [...classes]
-        sortedClasses.sort((a, b) => isReversed
-            ?  sorter(a[sortBy], b[sortBy])
-            :  - sorter(a[sortBy], b[sortBy])
-        )
-        return sortedClasses
-    }
-   
-    dateSorter =  (a,b)=> (new Date(a).getTime() - new Date(b).getTime())
-    numberSorter = (a,b)=> a - b
-    alphaNumSorter = (a,b)=> {
-        if(a > b) {
-            return 1;
-        }
-        if(a < b) {
-            return -1;
-        }
-        return 0;
-    }
-    
-    handleDate = (classes, sortBy,isReversed) => this.handleSortGeneral(classes, sortBy,isReversed, this.dateSorter)
-    handleNumber = (classes,sortBy,isReversed) => this.handleSortGeneral(classes,sortBy,isReversed,this.numberSorter)
-    handleAlpha = (classes,sortBy,isReversed) => this.handleSortGeneral(classes,sortBy,isReversed,this.alphaNumSorter)
+import {sortClasses, getClasses} from '../../redux/actions'
+import {handleDate,handleNumber,handleAlpha} from '../../utilities/sort'
+import {fetchClassess} from '../../API'
 
+class SortableTable extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            classes : []
+        }
+    }   
+ 
+    componentDidMount() {
+        fetchClassess()
+            .then((res) => {
+                this.setState({classes:res.data})
+            })
+            .catch(err => console.log(err))
+     }   
     handleSortDate = (sortBy,isReversed) => {
-        const sorted = this.handleDate(this.props.classes, sortBy,isReversed)
-        this.props.sortClasses(sorted)
+        const sorted = handleDate(Object.values(this.state.classes), sortBy,isReversed)
+        this.setState({classes:sorted})
     }
     handleSortNum = (sortBy,isReversed) => {
-        const sorted = this.handleNumber(this.props.classes, sortBy,isReversed)
-        this.props.sortClasses(sorted)
+        const sorted = handleNumber(Object.values(this.state.classes), sortBy,isReversed)
+        this.setState({classes:sorted})
     }
     handleSortAlpha = (sortBy,isReversed) => {
-        const sorted = this.handleAlpha(this.props.classes, sortBy,isReversed)
-        this.props.sortClasses(sorted)
+        const sorted = handleAlpha(Object.values(this.state.classes), sortBy,isReversed)
+        this.setState({classes:sorted})
     }
 
     render(){
-        const classes=this.props.classes
+        const classes=Object.values(this.state.classes)
+        console.log('classes', classes)
+        console.log(this.props.classes)
         return (
-            <table className="classes">
-                <thead>
-                    <tr>
-                        <th className="classes__th">Id
-                        <span className="classes__span">
-                            <div 
-                                onClick={()=>this.handleSortNum("id",true)} 
-                                className="arrow-up">
-                            </div>
-                            <div 
-                                onClick={()=>this.handleSortNum("id",false)}
-                                className="arrow-down">
-                            </div>
-                        </span>
-                        </th>
-                        <th className="classes__th"> Graduation Date    
-                            <span className="classes__span">
+            <div className="classes">
+                    <div className = "head">
+                        <div  className="title">
+                            <span className="head__span">Id</span>    
+                            <span className="head__span">
+                                <div 
+                                    onClick={()=>this.handleSortNum("id",true)} 
+                                    className="arrow-up">
+                                </div>
+                                <div 
+                                    onClick={()=>this.handleSortNum("id",false)}
+                                    className="arrow-down">
+                                </div>
+                            </span>
+                       </div>
+                        <div  className="title"> 
+                            <span className="head__span">Graduation Date </span>   
+                            <span className="head__span">
                                 <div 
                                     onClick={()=>this.handleSortDate("graduationDate",true)} 
                                     className="arrow-up">
@@ -72,104 +65,108 @@ class SortableTable extends Component{
                                     className="arrow-down">
                                 </div>
                             </span>
-                        </th>
-                        <th className="classes__th"> Name
-                        <span className="classes__span">
-                            <div 
-                                onClick={()=>this.handleSortAlpha("name",true)} 
-                                className="arrow-up">
-                            </div>
-                            <div 
-                                onClick={()=>this.handleSortAlpha("name",false)}
-                                className="arrow-down">
-                            </div>
-                        </span>
-                        </th>
-                        <th className="classes__th">Participants
-                        <span className="classes__span">
-                            <div 
-                                onClick={()=>this.handleSortNum("participantCount",true)} 
-                                className="arrow-up">
-                            </div>
-                            <div 
-                                onClick={()=>this.handleSortNum("participantCount",false)}
-                                className="arrow-down">
-                            </div>
-                        </span>
-                        </th>
-                        <th className="classes__th">Current Sprint
-                        <span className="classes__span">
-                            <div 
-                                onClick={()=>this.handleSortNum("currentSprint",true)} 
-                                className="arrow-up">
-                            </div>
-                            <div 
-                                onClick={()=>this.handleSortNum("currentSprint",false)}
-                                className="arrow-down">
-                            </div>
-                        </span>
-                        </th>
-                        <th className="classes__th">Head Teacher
-                        <span className="classes__span">
-                            <div 
-                                onClick={()=>this.handleSortAlpha("headTeacher",true)} 
-                                className="arrow-up">
-                            </div>
-                            <div 
-                                onClick={()=>this.handleSortAlpha("headTeacher",false)}
-                                className="arrow-down">
-                            </div>
-                        </span>
-                        </th>
-                        <th className="classes__th">Planned Sprints
-                        <span className="classes__span">
-                            <div 
-                                onClick={()=>this.handleSortNum("plannedSprints",true, this.dateSorter)} 
-                                className="arrow-up">
-                            </div>
-                            <div 
-                                onClick={()=>this.handleSortNum("plannedSprints",false, this.dateSorter)}
-                                className="arrow-down">
-                            </div>
-                        </span>
-                        </th>
-                        <th className="classes__th">
-                            Manage
-                        </th>
-                    </tr>
-                </thead>
+                        </div>
+                        <div className="title"> 
+                            <span className="head__span">Name</span>    
+                            <span className="head__span">
+                                <div 
+                                    onClick={()=>this.handleSortAlpha("name",true)} 
+                                    className="arrow-up">
+                                </div>
+                                <div 
+                                    onClick={()=>this.handleSortAlpha("name",false)}
+                                    className="arrow-down">
+                                </div>
+                            </span>
+                        </div>
+                        <div  className="title">
+                            <span className="head__span">Participants</span>    
+                            <span className="head__span">
+                                <div 
+                                    onClick={()=>this.handleSortNum("participantCount",true)} 
+                                    className="arrow-up">
+                                </div>
+                                <div 
+                                    onClick={()=>this.handleSortNum("participantCount",false)}
+                                    className="arrow-down">
+                                </div>
+                            </span>
+                        </div>
+                        <div  className="title">
+                            <span className="head__span">Current Sprint</span>    
+                            <span className="head__span">
+                                <div 
+                                    onClick={()=>this.handleSortNum("currentSprint",true)} 
+                                    className="arrow-up">
+                                </div>
+                                <div 
+                                    onClick={()=>this.handleSortNum("currentSprint",false)}
+                                    className="arrow-down">
+                                </div>
+                            </span>
+                        </div>
+                        <div  className="title">
+                            <span className="head__span">Head Teacher</span>    
+                            <span className="head__span">
+                                <div 
+                                    onClick={()=>this.handleSortAlpha("headTeacher",true)} 
+                                    className="arrow-up">
+                                </div>
+                                <div 
+                                    onClick={()=>this.handleSortAlpha("headTeacher",false)}
+                                    className="arrow-down">
+                                </div>
+                            </span>
+                        </div>
+                        <div  className="title">
+                            <span className="head__span">Planned Sprints</span>    
+                            <span className="head__span">
+                                <div 
+                                    onClick={()=>this.handleSortNum("plannedSprints",true, this.dateSorter)} 
+                                    className="arrow-up">
+                                </div>
+                                <div 
+                                    onClick={()=>this.handleSortNum("plannedSprints",false, this.dateSorter)}
+                                    className="arrow-down">
+                                </div>
+                            </span>
+                        </div>
+                        <div  className="title">
+                           <span className="head__span">Manage</span>
+                        </div>
+                    </div>
                 {classes.map((item,i)=>{
                     return(
-                        <tbody key={i}>
-                            <tr >
-                                <td>{item.id}</td>
-                                <td>{item.graduationDate}</td>
-                                <td>{item.name}</td>
-                                <td>{item.participantCount}</td>
-                                <td>{item.currentSprint}</td>
-                                <td>{item.headTeacher}</td>
-                                <td>{item.plannedSprints}</td>
-                                <td></td>
-                             </tr>
-                        </tbody>
+                        <div key={i} className="body">
+                                <div className="info">{item.id}</div>
+                                <div className="info">{item.graduationDate}</div>
+                                <div className="info">{item.name}</div>
+                                <div className="info">{item.participantCount}</div>
+                                <div className="info">{item.currentSprint}</div>
+                                <div className="info">{item.headTeacher}</div>
+                                <div className="info">{item.plannedSprints}</div>
+                                <div className="info"></div>
+                             
+                        </div>
                         
                     )
                     
                 })}
             
-          </table>
+          </div>
         )
     }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (classes)=>{
     return {
-        classes: state.userClass.classInfo
+        classes
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-      sortClasses: classes => dispatch((sortClasses(classes)))
+      sortClasses: classes => dispatch((sortClasses(classes))),
+      showClasses: () => dispatch(getClasses())
     };
   };
 export default connect(mapStateToProps,mapDispatchToProps)(SortableTable);
