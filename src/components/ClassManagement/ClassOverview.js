@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import "../ClassManagement/ClassOverview.css";
 import { percentage } from "../../util/util.js";
 import ClassName from './ClassName'
+import axios from 'axios';
+import * as actionsType from '../../redux/actions'
 
-const ClassOverview =(props)=>{
+class ClassOverview extends Component{
+
+  componentWillMount(){
+      axios.get('http://localhost:8888/classes')
+          .then(res=>this.props.getClasses(res.data))
+          .catch(err=>console.log("err: ", err))
+  }
+
+  render(){
     return (
       <div className="class-dashboard">
         <h1>Teacher Dasboard</h1>
-        {props.classes.map((element, i) =>
+        {Object.values(this.props.classes).map((element, i) =>
         {
           const currentSprint = element.currentSprint;
           const plannedSprints = element.plannedSprints;
-          if (props.match.params.id===("000" + (i+1)).slice(-3)) {
+          if (this.props.match.params.id===("000" + (i+1)).slice(-3)) {
             return(
               <div key={i} className="class-detail">
                 <div className="row">
@@ -48,7 +58,7 @@ const ClassOverview =(props)=>{
       </div>
     )
   }
-
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -57,4 +67,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(ClassOverview);
+const mapDispatchToProps = dispatch =>{
+  return {
+    getClasses: (classes)=>dispatch(actionsType.classStore(classes))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClassOverview);
