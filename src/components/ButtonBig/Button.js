@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './button.css';
-import github from './github.png';
+import github from '../../assets/github.png';
 import {Link} from 'react-router-dom';
 
-class LandingPage extends Component {
+class ButtonBig extends Component {
   render() {
     return (
       <div className="login-container">
-        <div className="login-title"><h1> Login </h1></div>
             <button type="button" className="button-integrify" onClick={()=>window.location.href = "/app/login"}>
               <img src={github} alt="github" className='github'></img> Sign up / Login With Github</button>
             <div className="adminlinks">
@@ -19,4 +18,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+export default ButtonBig;
