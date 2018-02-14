@@ -2,21 +2,26 @@
   box-sizing: border-box;
 }
 .classes{
-  width:100%;
-  height: 50vh;
+  padding: 0;
+  margin: 40px;
+  border: 1px solid black;
+  border-right: 0;
+  width:94%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 40px;
+  align-items: center;
+ 
 }
 .head{
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
+  background-color: rgb(226, 225, 225);
 }
 .body{
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -38,21 +43,31 @@
 .title{
   width: 12.5%;
   padding: 3px 0;
-  border: 2px solid black;
+  border-right:1px solid black;
   display: flex; 
+  justify-content: space-between;
   flex-wrap: nowrap; 
 }
 .info{
- width: 12.5%;
+  width: 12.5%;
   padding: 10px;
-  border: 1px solid black;
+  border-right:1px solid black;
   text-align: left;
   }
+
 .head__span{
 padding: 10px;
 align-self: center;
 min-width: 0;
+
 }
+.body:nth-child(odd) {
+  background:  rgb(226, 225, 225);
+}
+.body:nth-child(even) {
+  background:  rgb(246, 245, 245);
+}
+
       
 @media screen and (max-width:720px){
  
