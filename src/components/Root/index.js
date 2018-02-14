@@ -1,14 +1,22 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import throttle from 'lodash/throttle';
+import {getUsers} from '../../util/middleware';
 
-import reducers from '../../redux/reducers';
+import allReducers from '../../redux/reducers';
 import App from '../App';
+import './index.css';
+
+const middleware = applyMiddleware(getUsers)
 
 const store = createStore(
-	reducers,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	allReducers, JSON.parse(localStorage.getItem('state')) || undefined,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware
 );
+store.subscribe(throttle(()=>{
+    localStorage.setItem('state', JSON.stringify(store.getState()))
+}, 5000))
 
 const Root = () => (
 	<Provider store={store}>
