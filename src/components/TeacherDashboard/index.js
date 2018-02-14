@@ -15,8 +15,4 @@ class TeacherDashboard extends React.Component{
   }
 }
 
-<<<<<<< HEAD
 export default TeacherDashboard;
-=======
-export default TeacherDashboard
->>>>>>> feature/sortable-table

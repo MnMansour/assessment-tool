@@ -19,7 +19,6 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/login`} component={Login} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
-			<TeacherDashboard/>
 			<Footer />
 		</Fragment>
 	);
