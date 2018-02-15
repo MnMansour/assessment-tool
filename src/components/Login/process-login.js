@@ -8,7 +8,7 @@ class LoginProcess extends Component {
 
     success = ()=>{
         console.log('Sucess!!!')
-        window.location.href = `/app/user/${this.props.user.username }`
+        window.location.href = `/app/user/${this.props.user[0].id }`
     }
     
     fail = ()=>{
@@ -23,7 +23,7 @@ class LoginProcess extends Component {
       
       return (
         <div>
-            {this.props.user.username ? this.success() : this.fail()}
+            {this.props.user[0].id ? this.success() : this.fail()}
         </div>
       )
   }

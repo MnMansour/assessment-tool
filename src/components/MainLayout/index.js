@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import {fetchUsers} from '../../util/api'
+//import {fetchUsers} from '../../util/api'
 
 import Header from '../Header';
 import Login from '../Login/index';

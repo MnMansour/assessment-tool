@@ -15,7 +15,7 @@ class User extends Component {
     render() {
       return (
         <div>
-            {`You are welcome ${this.props.user.username}...`}
+            {`You are welcome ${this.props.user[0].firstName}...`}
             <form onSubmit={(e)=>{this.handleLogout(e)}}>
                 <input type="submit" value="Logout"/>
         </form>

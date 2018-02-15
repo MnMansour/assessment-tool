@@ -3,7 +3,8 @@ import './login.css';
 import tick from '../../assets/tick.png';
 import isAlphanumeric from 'validator/lib/isAlphanumeric';
 import {connect} from 'react-redux';
-import {logIn} from '../../redux/actions';
+import {logIn, userState} from '../../redux/actions';
+import {fetchUsers} from '../../util/api'
 
 
 const validate = (obj)=>{
@@ -18,17 +19,44 @@ class LoginForm extends Component {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      apiusers:{}
     }
   }
+  componentWillMount(){
+  fetchUsers((data) => this.setState({apiusers:data}))
+  }
+  componentDidMount(){
+    this.props.insertuser(this.state.apiusers)
+    console.log('Login-page', this.state.apiusers.data)
+  }  
+  /*getUsers =()=>{
+    this.props.insertuser(this.state.apiusers)
+    console.log('Login-page', this.state.apiusers.data)
+  }*/
   handleLogin = (e)=>{
     e.preventDefault();
-    let user = [{username:this.state.username, password:this.state.password}]
-    this.props.login(user)
-    window.location.href =`/app/loginprocess`
+   if(this.state.apiusers.status===200){
+      let users = Object.values(this.state.apiusers.data);
+      let id = this.state.username;
+      let pass = this.state.password
+      let check = users.filter((item)=>item.id===id)
+      let checked ={...check}
+        if((pass===Object.values(checked)[0].account) && (id===Object.values(checked)[0].id)){
+          this.props.login(checked)
+          window.location.href =`/app/loginprocess`
+          console.log("Success!",checked )
+        }else{
+          console.log("failed!",checked )
+        }
+   }else if(this.state.apiusers.status===404){
+    console.log("error-section!", this.state.apiusers.status)
+   }else{
+    console.log("error-section-two!", this.state.apiusers.status)
+   }
 }
-  
   render() {
+    //this.getUsers()
     const errors = validate(this.state)
     return (
       <div className="login">
@@ -60,6 +88,7 @@ class LoginForm extends Component {
   const mapDispatchToProps = (dispatch)=>{
     return { 
       login: (user)=>dispatch(logIn(user)),
+      insertuser: (users)=>dispatch(userState(users)),
     }
   }
 
