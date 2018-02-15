@@ -1,12 +1,12 @@
 import React from 'react'
-import StudentTable from './StudentTable'
+import StudentTableContainer from './StudentTableContainer'
 import ClassOverview from './ClassOverview'
 
 const ClassManagement = ({match}) => {
   return (
     <div className="container">
       <ClassOverview match={match} />
-      <StudentTable match={match} />
+      <StudentTableContainer match={match} />
     </div>
   )
 }
