@@ -7,38 +7,27 @@ class FilterList extends Component {
   constructor(props){
     super(props)
     this.state = {
-      searchKey:"",
-      ListItems: this.props.ListItems
+      searchKey:""
     }   
   } 
 
-  handleSearch = e => {
-    e.preventDefault();
-    let result = this.props.ListItems;
-    if (this.state.searchKey !== ""){
-      result = filterList(this.props.ListItems, this.state.searchKey)
-      }    
-    this.setState({
-      ListItems: result
-    })
-    this.setState({ searchKey: ""});
-  }
-
-  render(){   
-    
+  render(){    
+    const result = filterList(this.props.ListItems, this.state.searchKey)
     return (
       <div className="stu-table">
         <h3 className="title">Student</h3>
-        <form onSubmit={this.handleSearch}>
-          <div className="group">
-            <input type="text" onChange={e => this.setState({searchKey: e.target.value})} />
-            <span className="highlight"></span>
-            <span className="bar"></span>
-            <label>Search</label>
-          </div>
-        </form>
+        <div className="group">
+          <input 
+            type="text"
+            value={this.state.searchKey}
+            onChange={e => this.setState({searchKey: e.target.value})} 
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Search</label>
+        </div>
         <ul className="list-table">
-          {this.state.ListItems.map((item, i) => <Item key={i} id={i} fullName={item} />)}
+          {result.map((item, i) => <Item key={i} id={i} fullName={item} />)}
         </ul>
       </div>
     )

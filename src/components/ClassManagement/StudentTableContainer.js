@@ -14,23 +14,20 @@ class StudentTableContainer extends Component {
       .catch(err => console.log(err))   
   }
 
-  render() {      
-
+  render() {
     const ListItems = this.props.classes[this.props.match.params.id]
       ? this.props.classes[this.props.match.params.id].user_ids
-      : []   
+      : []     
     
     const users = Object.keys(this.props.user).length 
       ? ListItems.map((id) => this.props.user[id])
-      : []
-    const StudList = users.map(item => `${item.firstName} ${item.lastName}`)
-
-    console.log('StudList ', StudList);
+      : []    
     
+    const StudList = users.map(item => `${item.firstName} ${item.lastName}`)    
     
     return (
       <div className="stu-table">
-        <FilterList ListItems={StudList}/>
+        <FilterList ListItems={ StudList }/>
       </div>
     )
   }
