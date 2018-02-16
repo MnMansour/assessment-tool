@@ -51,7 +51,7 @@ class SortableTableContainer extends Component {
         classes={this.state.classes} 
         handleSortDate={this.handleSortDate} 
         handleSortNum={this.handleSortNum}  
-        handleSortAlpha={this. handleSortAlpha}/>
+        handleSortAlpha={this.handleSortAlpha}/>
     )
   }
 }
