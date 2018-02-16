@@ -5,7 +5,7 @@ import {  showClasses } from "../../redux/actions";
 import { handleDate, handleNumber, handleAlpha } from "../../utilities/sort";
 import { fetchClassess } from "../../API";
 import {classSelector} from '../../redux/selector'
-import SortableTable from '../SortAbleTable'
+import SortableTable from '../SortableTable'
 
 class SortableTableContainer extends Component {
   constructor(props) {

@@ -124,7 +124,7 @@ function SortableTable(props) {
             <div className="info">{item.currentSprint}</div>
             <div className="info">{item.headTeacher}</div>
             <div className="info">{item.plannedSprints}</div>
-            <div className="info" />
+            <div className="info"></div>
           </div>
         );
       })}
