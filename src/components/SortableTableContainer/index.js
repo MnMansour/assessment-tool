@@ -15,12 +15,15 @@ class SortableTableContainer extends Component {
     };
   }
   componentDidMount() {
+     this.showAllClasses()
+  }
+  showAllClasses = ()=>{
     fetchClassess()
       .then(res => {
       this.props.showClasses(res.data);
       this.setState({classes:this.props.classes})
       })
-	  .catch(err => console.log(err)); 
+	  .catch(err => console.log(err));
   }
   handleSortDate = (sortBy, isReversed) => {
     const sorted = handleDate(this.props.classes,
