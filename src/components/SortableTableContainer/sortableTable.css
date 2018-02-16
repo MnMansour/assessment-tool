@@ -40,7 +40,7 @@
   border-top: 5px solid black;
 }
 .title{
-  width: 12.5%;
+  width: 10%;
   padding: 3px 0;
   border-right:1px solid black;
   display: flex; 
@@ -48,7 +48,7 @@
   flex-wrap: nowrap; 
 }
 .info{
-  width: 12.5%;
+  width: 10%;
   padding: 10px;
   border-right:1px solid black;
   text-align: left;

@@ -1,7 +1,7 @@
 import React from "react";
 import Breadcrumb from "../Breadcrumb";
 import Search from "../Search";
-import SortableTable from "../SortableTable";
+import SortableTableContainer from "../SortableTableContainer";
 
 class TeacherDashboard extends React.Component {
   render() {
@@ -9,7 +9,7 @@ class TeacherDashboard extends React.Component {
       <section>
         <Breadcrumb />
         <Search />
-        <SortableTable />
+        <SortableTableContainer />
       </section>
     );
   }
