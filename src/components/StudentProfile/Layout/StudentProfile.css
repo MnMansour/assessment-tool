@@ -1,0 +1,69 @@
+.container { 
+  margin-right: 20px;
+  margin-left: 20px;
+  font-family: sans-serif;
+}
+
+.avatar{
+  display: flex;
+  flex-flow: row wrap; 
+}
+
+.avatar-image {
+  width:30%;
+  height:30%;
+  flex:1,1,30%;
+}
+
+.avatar-data{
+  margin-left: 20px;
+  min-width: 60%;
+  flex:1,1,60%;
+}
+
+.st-name {
+  width:60%;
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.field {
+  width: 60%;
+  margin: 25px;  
+}
+
+label {
+  width: 40%;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.field-entry {
+  width: 54%;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.peer-detail {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.peer-image {
+  width:70px;
+  height: 70px; 
+}
+
+.peer-data {
+  margin-top: 20px;
+  margin-left: 30px;
+  width: 80%;  
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
