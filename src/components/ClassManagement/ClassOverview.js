@@ -17,7 +17,7 @@ class ClassOverview extends Component{
   render(){
     return (
       <div className="class-dashboard">
-        <h1>Teacher Dasboard</h1>
+        <h1>Teacher Dashboard</h1>
         {Object.values(this.props.classes).map((element, i) =>
         {
           const currentSprint = element.currentSprint;
@@ -31,7 +31,7 @@ class ClassOverview extends Component{
                     <p>{element.location}</p>
                   </div>
                   <div className="col-4">
-                    <h3 className='title'>Location</h3>
+                    <h3 className='title'>Class Name</h3>
                     <ClassName isEdit={element.isEdit} name={element.name} i={i} />
                     <h3 className='title'>Total number of participants</h3>
                     <p>{element.participantCount}</p>
@@ -53,7 +53,6 @@ class ClassOverview extends Component{
               </div>
             )
           }
-
         })}
       </div>
     )

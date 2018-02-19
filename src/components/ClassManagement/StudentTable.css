@@ -1,23 +1,21 @@
-/* base style */
-/* * {
-    box-sizing: border-box;
-} */
-
 .container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
+
 .row::after {
     content: "";
     clear: both;
     display: table;
 }
+
 [class*="col-"] {
     float: left;
     padding: 15px;
 }
+
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -43,28 +41,26 @@ html {
 
 /* End base style */
 
-
-
-
-
 /* Form  */
 /* form starting stylings ------------------------------- */
-.group 			  {
+.group {
   position:relative;
   margin-bottom:45px;
 }
-.stu-table input 				{
+
+.stu-table input {
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;
-  width:300px;
+  width:286px;
   border:none;
   border-bottom:1px solid #757575;
 }
-input:focus 		{ outline:none; }
+
+input:focus { outline:none; }
 
 /* LABEL ======================================= */
-label 				 {
+label {
   color:#999;
   font-size:18px;
   font-weight:normal;
@@ -97,6 +93,7 @@ input:focus ~ label, input:valid ~ label 		{
   -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
 }
+
 .bar:before {
   left:50%;
 }
@@ -141,13 +138,7 @@ input:focus ~ .highlight {
   to 	{ width:0; background:transparent; }
 }
 
-
-
 /* End form */
-
-
-/* end meter bar */
-
 
 /* Table */
 
@@ -164,18 +155,19 @@ ul li {
     -ms-user-select: none;
     user-select: none;
 }
+
 .list-table li:nth-of-type(2n+1) {
   background: #eee;
 }
 
-/* �nd table */
-
+/* End table */
 
 @media (min-width: 768px) {
   .container {
     width: 750px;
   }
 }
+
 @media (min-width: 992px) {
   .container {
     width: 970px;
