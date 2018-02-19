@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './login-admin.css';
+import { withRouter } from 'react-router-dom';
 import tick from '../../assets/tick.png';
+import loading from '../../assets/loading.svg';
 import isAlphanumeric from 'validator/lib/isAlphanumeric';
 import {connect} from 'react-redux';
-import {logIn, userState} from '../../redux/actions';
+import {logIn, userState, resetState} from '../../redux/actions';
+import {UserSelector} from '../../redux/selectors';
 import {fetchUsers} from '../../util/api';
 
 
@@ -20,76 +23,118 @@ class LoginForm extends Component {
     this.state = {
       username: '',
       password: '',
-      apiusers:{}
+      apiusers:{},
+      loader: false
     }
   }
-  componentWillMount(){
-  fetchUsers((data) => this.setState({apiusers:data}))
-  }
-  componentDidMount(){
-    this.props.insertuser(this.state.apiusers)
-    console.log('Login-page', this.state.apiusers.data)
-  }  
-  /*getUsers =()=>{
-    this.props.insertuser(this.state.apiusers)
-    console.log('Login-page', this.state.apiusers.data)
-  }*/
-  handleLogin = (e)=>{
-    e.preventDefault();
-   if(this.state.apiusers.status===200){
-      let users = Object.values(this.state.apiusers.data);
-      let id = this.state.username;
-      let pass = this.state.password
-      let check = users.filter((item)=>item.id===id)
-      let checked ={...check}
-        if((pass===Object.values(checked)[0].account) && (id===Object.values(checked)[0].id)){
-          this.props.login(checked)
-          window.location.href =`/app/loginprocess`
-          console.log("Success!",checked )
-        }else{
-          console.log("failed!",checked )
+
+activateLoader = ()=>{
+  this.setState({loader: !this.state.loader})
+}
+
+deactivateLoader = ()=>{
+  this.setState({loader: false})
+}
+
+resetProps = ()=>{
+  this.props.reset()
+  this.props.history.push("/app/home")
+}
+
+navigate =(nextProps)=>{
+  nextProps.user.id !== "failed" || nextProps.user.id !== undefined ? this.props.history.push(`/app/user/${nextProps.user[0].id}`): this.resetProps()
+}
+
+handleLogin = (e)=>{
+  e.preventDefault();
+  if(this.state.apiusers.status===200){
+    let users = Object.values(this.state.apiusers.data);
+    let user ={id: this.state.username,
+    accoount: this.state.password}
+    let check = users.filter((item)=>item.id===user.id && item.accoount===user.account)
+    let checked ={...check}
+      if(check.length===1){
+        this.props.login(checked)
+        console.log("Success!",checked )
+      }else{
+        let failobject = {
+          "id": "failed",
+          "account": null,
+          "firstName": null,
+          "lastName": null,
+          "phoneNumber": null
         }
-   }else if(this.state.apiusers.status===404){
-    console.log("error-section!", this.state.apiusers.status)
-   }else{
-    console.log("error-section-two!", this.state.apiusers.status)
-   }
+        this.props.login(failobject)
+        console.log("Failed",failobject)
+      }
+  }else if(this.state.apiusers.status===404){
+  console.log("error-section!", this.state.apiusers.status)
+  }else{
+  console.log("error-section-two!", this.state.apiusers.status)
+  }
 }
-  render() {
-    //this.getUsers()
-    const errors = validate(this.state)
-    return (
-      <div className="login">
-        <p className='title'>Sign-In</p>
-        <form onSubmit={(e)=>{this.handleLogin(e)}}>
-            <input type="text" 
-            placeholder="Username" 
-            className="form"
-            onChange={e=>this.setState({username:e.target.value})}
-            value={this.state.username}/>
-            <span className="username">
-            <img src={tick} alt="tick" className={errors.username ? 'valid' : 'tick'}/>
-            </span>
-            <input type="password" 
-            placeholder="Password" 
-            className="form"
-            onChange={e=>this.setState({password:e.target.value})}
-            value={this.state.password}/>
-            <span className="password">
-            <img src={tick} alt="tick" className={errors.password ? 'valid' : 'tick'}/>
-            </span>
-            <input type="submit" value="Login"/>
-        </form>
+  
+componentWillMount(){
+  fetchUsers((data) => this.setState({apiusers:data}))
+}
+
+componentWillReceiveProps(nextProps){
+  if (this.props !== nextProps){
+    console.log(nextProps)
+    this.activateLoader()
+    setInterval(()=>this.deactivateLoader(), 10000)
+    setInterval(()=>this.navigate(nextProps), 10000)
+    
+  }else{
+    console.log('componentWillReceiveProps-error')
+  }
+}
+  
+render() {
+  //this.getUsers()
+  const errors = validate(this.state)
+  return (
+    <div className="login">
+     <div className={this.state.loader?"show-loader":"loading"}>
+        <img src={loading} alt="loading" className="loading-image"/>
       </div>
-    );
+      <p className='title'>Admin Sign-In</p>
+      <form onSubmit={(e)=>{this.handleLogin(e)}}>
+          <input type="text" 
+          placeholder="Username" 
+          className="form"
+          onChange={e=>this.setState({username:e.target.value})}
+          value={this.state.username}/>
+          <span className="username">
+          <img src={tick} alt="tick" className={errors.username ? 'valid' : 'tick'}/>
+          </span>
+          <input type="password" 
+          placeholder="Password" 
+          className="form"
+          onChange={e=>this.setState({password:e.target.value})}
+          value={this.state.password}/>
+          <span className="password">
+          <img src={tick} alt="tick" className={errors.password ? 'valid' : 'tick'}/>
+          </span>
+          <input type="submit" value="Login"/>
+      </form>
+    </div>
+  );
+}
+}
+
+const  mapStateToProps= (state)=>{
+  return { 
+    user: UserSelector(state)
   }
 }
 
-  const mapDispatchToProps = (dispatch)=>{
-    return { 
-      login: (user)=>dispatch(logIn(user)),
-      insertuser: (users)=>dispatch(userState(users)),
-    }
+const mapDispatchToProps = (dispatch)=>{
+  return { 
+    login: (user)=>dispatch(logIn(user)),
+    insertuser: (users)=>dispatch(userState(users)),
+    reset: ()=>dispatch(resetState())
   }
+}
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginForm));
