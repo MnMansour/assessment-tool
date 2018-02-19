@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./sortableTable.css"
+import "./sortableTable.css";
 import {connect} from "react-redux"
 import { showClasses} from '../../redux/actions'
 import {handleDate,handleNumber,handleAlpha} from '../../utilities/sort'
