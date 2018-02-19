@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./sortableTable.css"
 import {connect} from "react-redux"
-import {sortClasses, getClasses} from '../../redux/actions'
+import { showClasses} from '../../redux/actions'
 import {handleDate,handleNumber,handleAlpha} from '../../utilities/sort'
 import {fetchClassess} from '../../API'
 
@@ -165,8 +165,7 @@ const mapStateToProps = (classes)=>{
 }
 const mapDispatchToProps = dispatch => {
     return {
-      sortClasses: classes => dispatch((sortClasses(classes))),
-      showClasses: () => dispatch(getClasses())
+      showClasses: () => dispatch(showClasses())
     };
   };
 export default connect(mapStateToProps,mapDispatchToProps)(SortableTable);
