@@ -1,17 +1,17 @@
-import React from 'react';
-import Breadcrumb from '../Breadcrumb';
-import Search from '../Search';
-import SortableTable from '../SortableTable'
+import React from "react";
+import Breadcrumb from "../Breadcrumb";
+import Search from "../Search";
+import SortableTableContainer from "../SortableTableContainer";
 
-class TeacherDashboard extends React.Component{
-  render(){
-    return(
+class TeacherDashboard extends React.Component {
+  render() {
+    return (
       <section>
         <Breadcrumb />
         <Search />
-        <SortableTable/>
+        <SortableTableContainer />
       </section>
-    )
+    );
   }
 }
 
