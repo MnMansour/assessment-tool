@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import Breadcrumb from "../Breadcrumb";
 import Search from "../Search";
@@ -12,6 +13,22 @@ class TeacherDashboard extends React.Component {
         <SortableTableContainer />
       </section>
     );
+=======
+import React from 'react';
+import Breadcrumb from '../Breadcrumb';
+import Search from '../Search';
+import SortableTable from '../SortableTable'
+
+class TeacherDashboard extends React.Component{
+  render(){
+    return(
+      <section>
+        <Breadcrumb />
+        <Search />
+        <SortableTable/>
+      </section>
+    )
+>>>>>>> origin/feature/search
   }
 }
 
