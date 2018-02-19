@@ -1,5 +1,5 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .container {
@@ -38,7 +38,7 @@
 
 /* meter bar */
 .meter {
-	height: 20px;  /* Can be anything */
+	height: 40px;  /* Can be anything */
 	position: relative;
 	background: #eee;
 	-moz-border-radius: 25px;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import "../ClassManagement/ClassOverview.css";
+import "./ClassOverview.css";
 import { percentage } from "../../util/util.js";
 import ClassName from './ClassName'
 import axios from 'axios';
@@ -18,11 +18,10 @@ class ClassOverview extends Component{
     return (
       <div className="class-dashboard">
         <h1>Teacher Dashboard</h1>
-        {Object.values(this.props.classes).map((element, i) =>
+        {Object.values(this.props.classes).filter((element, i)=> this.props.match.params.id===("000" + (i+1)).slice(-3)).map((element, i) =>
         {
           const currentSprint = element.currentSprint;
           const plannedSprints = element.plannedSprints;
-          if (this.props.match.params.id===("000" + (i+1)).slice(-3)) {
             return(
               <div key={i} className="class-detail">
                 <div className="row">
@@ -52,7 +51,7 @@ class ClassOverview extends Component{
                 </div>
               </div>
             )
-          }
+          
         })}
       </div>
     )

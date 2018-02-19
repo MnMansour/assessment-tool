@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './StudentTable.css'
 import { connect } from 'react-redux'
-import Item from './Item';
 import axios from 'axios';
 import * as actionsType from '../../redux/actions';
 import FilterList from './FilterList';
