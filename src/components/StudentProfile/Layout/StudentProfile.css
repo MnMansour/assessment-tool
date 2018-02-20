@@ -69,27 +69,27 @@ img {
 }
 
 a {
-    color: #0060B6;
-    text-decoration: none;
-    transition: 0.1s ease-out;
+  color: #0060B6;
+  text-decoration: none;
+  transition: 0.1s ease-out;
 }
 
-a:hover
-{
-     color:#00A0C6;
-     text-decoration:none;
-     cursor:pointer;
+a:hover {
+  color:#00A0C6;
+  text-decoration:none;
+  cursor:pointer;
 }
 
 @media only screen and (max-width: 450px) {
   .st-name {
     margin-left: 0;
   }
+
   .field {
     margin: 0;
   }
 
-  .avatar-data{
+  .avatar-data {
     margin-left: 0;
     margin: 2em 0;
   }
@@ -111,11 +111,12 @@ a:hover
     font-size: 1.5em;
     padding: 1em 0;
   }
+
   .field-entry {
     font-weight: normal;
   }
 
-  .avatar-data> :last-child{
+  .avatar-data> :last-child {
     margin-top: 1em;
   }
 
@@ -154,15 +155,14 @@ a:hover
 
   label {
     width: 36%;
-
-
   }
 
   .field-entry {
     width: 68%;
     margin-bottom: 0.5em;
-
   }
+
   .field {
     width: auto;
   }
+}
