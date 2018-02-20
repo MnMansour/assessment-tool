@@ -19,7 +19,6 @@ class Search extends React.Component {
       return singleClass.name.toLowerCase().includes(name.toLowerCase());
     });
     console.log(filterClasses);
-    console.log('niloo')
   }
   render() {
    
