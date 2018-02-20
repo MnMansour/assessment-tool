@@ -23,7 +23,7 @@ button{
     top: 6px;
 }
 h1{
-    color: #fdb515;
+    color: black;
     font-size: 1.5rem;
     font-weight: 500;
 }
@@ -40,8 +40,12 @@ h1{
     float: left;
     cursor: pointer;
 }
+
+.admin:hover {
+    font-size: 20px;
+}
 .signin{
-    color: #fdb515;
+    color: black;
     font-size: 0.9rem;
     font-weight: normal;
     position: initial;
@@ -51,7 +55,7 @@ h1{
 }
 .button-integrify{
     background: #000000;
-    color: white;
+    color: #fdb515;
     font-family: roboto;
     font-size: larger;
     outline: none;
@@ -60,7 +64,7 @@ h1{
     margin-bottom: 10px;
 }
 .button-integrify { 
-    color: #ffffff; 
+    color: white; 
     background-color: #000000; 
     border-color: #000000; 
   } 
@@ -70,7 +74,7 @@ h1{
   .button-integrify:active, 
   .button-integrify.active, 
   .open .dropdown-toggle.button-integrify { 
-    color: #ffffff; 
+    color: #fdb515; 
     background-color: #000000; 
     border-color: #000000; 
   } 

@@ -64,6 +64,14 @@ input[type="submit"]{
     font-size: 1.5rem;
     font-weight: 500;
 }
+
+.login {
+    color: #fdb515;
+}
+
+.login:hover {
+    font-size: 20px;
+}
 /*Responsive design starts here with 2 breakpoints*/
 @media screen and (max-width:1250px) {
     .login{

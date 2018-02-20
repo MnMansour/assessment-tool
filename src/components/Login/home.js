@@ -12,7 +12,7 @@ class LandingPage extends Component {
               <img src={github} alt="github" className='github'></img> Sign up / Login With Github</button>
             <div className="adminlinks">
                 <Link to="/app/login-admin"><p className="admin">Admin</p></Link>
-                <Link to="/app/login"><p className="signin">Already registered? Login</p></Link>
+                <Link to="/app/login"><p className="signin">Already registered? <span className="login">Login</span></p></Link>
             </div>
       </div>
     );
