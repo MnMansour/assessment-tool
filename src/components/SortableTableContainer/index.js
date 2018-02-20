@@ -18,10 +18,12 @@ class SortableTableContainer extends Component {
      this.showAllClasses()
   }
   showAllClasses = ()=>{
+    console.log('this.props.classes', this.props.classes);
+    
     fetchClassess()
       .then(res => {
-      this.props.showClasses(res.data);
-      this.setState({classes:this.props.classes})
+        this.props.showClasses(res.data);
+        this.setState({classes:this.props.classes})
       })
 	  .catch(err => console.log(err));
   }
@@ -49,6 +51,8 @@ class SortableTableContainer extends Component {
   };
 
   render(){
+    console.log("this.props.classes");
+    
     return (
       <SortableTable 
         classes={this.state.classes} 

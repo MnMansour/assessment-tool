@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 function SortableTable(props) {
   const classes = props.classes;
+  console.log(classes)
   return (
     <div className="classes">
       <div className="head">
