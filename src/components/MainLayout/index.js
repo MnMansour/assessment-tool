@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import propTypes from "prop-types"
 import { Switch, Route, Redirect } from "react-router-dom";
 import StudentList from "../StudentList";
 import Header from "../Header";
@@ -20,6 +21,10 @@ const MainLayout = ({ match }) => {
 			<Footer />
 		</Fragment>
 	);
+};
+
+MainLayout.propTypes = {
+	match: propTypes.object,
 };
 
 export default MainLayout;

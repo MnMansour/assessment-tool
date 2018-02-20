@@ -7,9 +7,7 @@ class StudentListContainer extends Component{
 
 	render(){
 		return (
-			<div>
-                
-			</div>
+			<StudentList/>
 		);
 	}
 }
