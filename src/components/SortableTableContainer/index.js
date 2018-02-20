@@ -48,7 +48,7 @@ class SortableTableContainer extends Component {
     this.setState({ classes: sorted });
   };
 
-  render(){
+  render(){    
     return (
       <SortableTable 
         classes={this.state.classes} 
