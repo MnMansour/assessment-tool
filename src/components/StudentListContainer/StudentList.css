@@ -1,0 +1,106 @@
+*{
+    box-sizing: border-box;
+}
+.student-container{
+    width: 100%;
+    display: flex;
+    padding: 20px;
+}
+.student-list{
+    padding: 20px 10px;
+    border-right: 3px solid black;  
+    width:100%;
+    display: flex;
+}
+.student-name{
+    margin:  0;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold
+    
+}
+.student-row{
+    width: 100%;
+    
+}
+.student-page{
+    width: 75%;
+    padding: 0 20px;
+}
+.gradu{
+    margin-top: 0;
+}
+.student-profile{
+    display: flex;
+}
+.student-img{
+    width: 20%;
+    padding: 0;
+    height:200px;
+}
+.student-details{
+    width: 80%;
+    padding: 10px 20px;
+}
+.student-name-details{
+    margin-top: 0;
+}
+.collapse-btn{
+    position: fixed;
+    border:1px solid transparent;
+    border-radius: 50%;
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    align-self: center;
+    display: flex;
+    
+}
+.collapse-container{
+    display: flex;
+}
+.container-red{
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition:  0.6s;
+    border: 3px solid red;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px 40px 10px 0;
+    display: flex;
+}
+.arrow-left {
+    margin-left: 6px;
+    align-self: center;
+    width: 0; 
+    height: 0; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent; 
+    border-right:20px solid white; 
+  }
+  .display{
+      display: none;
+  }
+.container-red-collapse{
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+    height: 100%;
+    border: 2px solid white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right:100px;
+}
+.arrow-right{
+   margin-left: 20px;
+    align-self: center;
+    width: 0; 
+    height: 0; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent; 
+    border-left:20px solid white; 
+}

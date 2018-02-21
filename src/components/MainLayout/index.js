@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import propTypes from "prop-types"
+import propTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
-import StudentList from "../StudentList";
+import StudentListContainer from "../StudentListContainer";
 import Header from "../Header";
 import Login from "../Login";
 import LoginAdmin from "../LoginAdmin";
@@ -17,14 +17,14 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/login`} component={Login} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
-			<StudentList />
+			<StudentListContainer />
 			<Footer />
 		</Fragment>
 	);
 };
 
 MainLayout.propTypes = {
-	match: propTypes.object,
+	match: propTypes.object
 };
 
 export default MainLayout;
