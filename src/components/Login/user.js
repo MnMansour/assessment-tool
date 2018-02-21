@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch)=>{
     }
   }
 
-  User.PropTypes = {
+  User.propTypes = {
     user: PropTypes.object,
     logout:PropTypes.func
   }
