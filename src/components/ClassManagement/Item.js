@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Item = props => {
     return (
@@ -11,6 +12,11 @@ const Item = props => {
             {props.fullName}
         </li>
     );
+};
+
+Item.propTypes = {
+    id: PropTypes.number,
+    fullName: PropTypes.string
 };
 
 export default Item;

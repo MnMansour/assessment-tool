@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actionsType from "../../redux/actions.js";
+import PropTypes from "prop-types";
 
 class ClassName extends React.Component {
     constructor(props) {
@@ -39,6 +40,13 @@ const mapDispatchToProps = dispatch => {
         classEdit: (indexToChange, name) =>
             dispatch({ type: actionsType.CLASS_EDIT, indexToChange, name })
     };
+};
+
+ClassName.propTypes = {
+    classEdit: PropTypes.func,
+    isEdit: PropTypes.bool,
+    i: PropTypes.number,
+    name: PropTypes.string
 };
 
 export default connect(null, mapDispatchToProps)(ClassName);

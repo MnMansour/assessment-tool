@@ -5,6 +5,7 @@ import { percentage } from "../../util/util.js";
 import ClassName from "./ClassName";
 import axios from "axios";
 import * as actionsType from "../../redux/actions";
+import PropTypes from "prop-types";
 
 class ClassOverview extends Component {
     componentWillMount() {
@@ -90,6 +91,11 @@ const mapStateToProps = state => {
     };
 };
 
+ClassOverview.propTypes = {
+    user: PropTypes.object,
+    classes: PropTypes.object,
+    getClasses: PropTypes.func
+};
 const mapDispatchToProps = dispatch => {
     return {
         getClasses: classes => dispatch(actionsType.classStore(classes))

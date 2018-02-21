@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./StudentTable.css";
 import { connect } from "react-redux";
 import axios from "axios";
@@ -39,6 +40,11 @@ const mapStateToProps = state => {
         user: state.user,
         classes: state.classes
     };
+};
+
+StudentTableContainer.propTypes = {
+    classes: PropTypes.object,
+    user: PropTypes.object
 };
 
 const mapDispatchToProps = dispatch => {

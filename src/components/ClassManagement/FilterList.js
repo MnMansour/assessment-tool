@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./StudentTable.css";
 import Item from "./Item";
 import { filterList } from "../../util/util.js";
+import PropTypes from "prop-types";
 
 class FilterList extends Component {
     constructor(props) {
@@ -37,5 +38,9 @@ class FilterList extends Component {
         );
     }
 }
+
+FilterList.propTypes = {
+    ListItems: PropTypes.array
+};
 
 export default FilterList;
