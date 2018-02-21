@@ -45,7 +45,8 @@
         "coursesCompleted": "Codeacademy - Javascript Basics",
         "education": "Bachelor of Science, University of City",
         "teacherReview": "Hard working student, complete assignments on time with quality.",
-        "peerReview": "Good team player, supportive and proactive."    
+        "peerReview": "Good team player, supportive and proactive.",
+        "graduationDate": "04.12.2018"
       }
     ],
     "users": [
@@ -55,7 +56,8 @@
         "firstName": "John",
         "lastName": "Doe",
         "phoneNumber": "+358458904323",
-        "birthDate":"March 26, 1980"
+        "birthDate":"March 26, 1980",
+        "avatar": "https://upload.wikimedia.org/wikipedia/en/5/50/Agentdalecooper.jpg"
       },
       {
         "id": "002",
@@ -63,7 +65,8 @@
         "firstName": "Jacky",
         "lastName": "Brown",
         "phoneNumber": "+358446544323",
-        "birthDate": "June 09, 1981"
+        "birthDate": "June 09, 1981",
+        "avatar": "https://pbs.twimg.com/profile_images/718881904834056192/WnMTb__R.jpg"
       },
       {
         "id": "003",
@@ -71,7 +74,8 @@
         "firstName": "Alex",
         "lastName": "Smith",
         "phoneNumber": "+358446544323",
-        "birthDate": "February 06, 1989"
+        "birthDate": "February 06, 1989",
+        "avatar": "http://vignette4.wikia.nocookie.net/deadliestfiction/images/d/de/Spike_Spiegel_by_aleztron.jpg/revision/latest?cb=20130920231337"
       }
     ]
   }
