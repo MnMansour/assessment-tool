@@ -1,8 +1,8 @@
-import React from 'react'
-import ButtonBig from '../ButtonBig/Button.js';
+import React from "react";
+import ButtonBig from "../ButtonBig/Button.js";
 
 const ButtonGit = () => {
-  return <ButtonBig/>
-}
+	return <ButtonBig/>;
+};
 
 export default ButtonGit;

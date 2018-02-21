@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {logIn, userState, resetState} from '../../redux/actions';
 import {UserSelector} from '../../redux/selectors';
 import {fetchUsers} from '../../util/api';
+import PropTypes from 'prop-types';
 
 
 const validate = (obj)=>{
@@ -135,6 +136,13 @@ const mapDispatchToProps = (dispatch)=>{
     insertuser: (users)=>dispatch(userState(users)),
     reset: ()=>dispatch(resetState())
   }
+}
+
+LoginForm.propTypes ={
+  user: PropTypes.object,
+  login:PropTypes.func,
+  insertuser: PropTypes.func,
+  reset: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginForm));

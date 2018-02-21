@@ -3,6 +3,7 @@ import './login.css';
 import {connect} from 'react-redux';
 import {logOut} from '../../redux/actions';
 import {UserSelector} from '../../redux/selectors';
+import PropTypes from 'prop-types'
 
 class User extends Component {
 
@@ -33,6 +34,11 @@ const mapDispatchToProps = (dispatch)=>{
     return { 
       logout: ()=>dispatch(logOut()),
     }
+  }
+
+  User.PropTypes = {
+    user: PropTypes.object,
+    logout:PropTypes.func
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

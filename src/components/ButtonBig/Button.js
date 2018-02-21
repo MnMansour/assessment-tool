@@ -4,6 +4,7 @@ import github from '../../assets/github.png';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {UserSelector} from '../../redux/selectors';
+import PropTypes from 'prop-types';
 
 class ButtonBig extends Component {
 constructor(props){
@@ -51,5 +52,11 @@ const  mapStateToProps= (state)=>{
     user: UserSelector(state)
   }
 }
+
+
+ButtonBig.propTypes = {
+  user: PropTypes.object
+}
+
 
 export default connect(mapStateToProps, null)(ButtonBig);

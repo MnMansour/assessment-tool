@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
 	BrowserRouter as Router,
 	Route,
 	Switch,
 	Redirect
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import MainLayout from '../MainLayout';
+import MainLayout from "../MainLayout";
 
 class App extends Component {
 	render() {
