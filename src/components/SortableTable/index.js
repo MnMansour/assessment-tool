@@ -1,8 +1,10 @@
 import React from "react";
+import propTypes from 'prop-types';
 
 function SortableTable(props) {
   const classes = props.classes;
   return (
+    <section> 
     <div className="classes">
       <div className="head">
         <div className="title">
@@ -129,6 +131,16 @@ function SortableTable(props) {
         );
       })}
     </div>
+    </section>
   );
 }
 export default SortableTable;
+
+
+SortableTable.propTypes = {
+  classes: propTypes.array,
+  handleSortNum: propTypes.func,
+  handleSortDate: propTypes.func,
+  handleSortAlpha: propTypes.func
+
+}

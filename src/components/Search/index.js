@@ -1,6 +1,6 @@
 import React from 'react';
 import './search.css';
-import {connect} from 'react-redux';
+import propTypes from 'prop-types';
 
 class Search extends React.Component {
   constructor(props){
@@ -10,44 +10,37 @@ class Search extends React.Component {
       name: ''
     }
   }
-  handleSubmit = (e)=>{
-    e.preventDefault();
-    const name = this.state.name;
-    const regex = /\w/;
-    const classes = Object.values(this.props.classes);
-    const filterClasses = classes.filter(singleClass =>{
-      return singleClass.name.toLowerCase().includes(name.toLowerCase());
-    });
-    console.log(filterClasses);
+  handleChange = (e)=>{  
+    const name = e.target.value;
+    this.setState({
+      name 
+    })
+    const filterdList = this.props.classes.filter(singleClass =>{
+      return singleClass.name.toLowerCase().includes(name.toLowerCase())
+    })
+    this.props.onChange(filterdList)
   }
-  render() {
-   
+  render() {     
     return (
       <section className="container">
         <h2>Teacher Dashboard</h2>
-        <h4>Classes</h4>
-        <form onSubmit={(e)=>{this.handleSubmit(e)}}>
+        <label htmlFor="classes" className="label-classes">Classes</label><br/>
           <i className="fa fa-search"></i>
           <input
              type="text"
+             id="classes"
              className="search-input"
-             placeholder="search"
+             placeholder="search by name"
              value={this.state.name}
-             onChange={e=>this.setState({
-               name: e.target.value
-             })}
+             onChange={e=>this.handleChange(e)}
            />
-        </form>
       </section>
     );
   }
 }
 
-const mapStateToProps = (state)=>{
-    return {
-        classes: state.userClass
-    }
+export default Search;
+
+Search.propTypes = {
+  classes: propTypes.array
 }
-
-
-export default connect(mapStateToProps)(Search);

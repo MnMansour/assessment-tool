@@ -5,7 +5,9 @@ import { showClasses } from "../../redux/actions";
 import { handleDate, handleNumber, handleAlpha } from "../../utilities/sort";
 import { fetchClassess } from "../../API";
 import { classSelector } from "../../redux/selector";
-import SortableTable from "../SortableTable";
+import propTypes from 'prop-types';
+import SortableTable from '../SortableTable';
+import Search from '../Search';
 
 class SortableTableContainer extends Component {
   constructor(props) {
@@ -38,14 +40,21 @@ class SortableTableContainer extends Component {
     this.setState({ classes: sorted });
   };
 
-  render(){    
+
+  render(){
     return (
-      <SortableTable
-        classes={this.state.classes}
-        handleSortDate={this.handleSortDate}
-        handleSortNum={this.handleSortNum}
-        handleSortAlpha={this.handleSortAlpha}
-      />
+      <section>
+        <Search
+          classes={this.props.classes}
+          onChange={(classes) => this.setState({classes})}
+         />
+        <SortableTable
+          classes={this.state.classes}
+          handleSortDate={this.handleSortDate}
+          handleSortNum={this.handleSortNum}
+          handleSortAlpha={this.handleSortAlpha}
+        />
+      </section>      
     );
   }
 }
@@ -59,6 +68,13 @@ const mapDispatchToProps = dispatch => {
     showClasses: classes => dispatch(showClasses(classes))
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(
   SortableTableContainer
 );
+
+
+SortableTableContainer.propTypes = {
+  showClasses: propTypes.func,
+  classes: propTypes.array 
+}
