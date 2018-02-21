@@ -1,10 +1,10 @@
 import React from "react";
 import StudentProfileContainer from "./StudentProfileContainer";
 
-const StudentProfile = () => {
+const StudentProfile = ({ match }) => {
     return (
         <div className="container">
-            <StudentProfileContainer />
+            <StudentProfileContainer match={match} />
         </div>
     );
 };
