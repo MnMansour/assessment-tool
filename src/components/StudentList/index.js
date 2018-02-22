@@ -13,6 +13,8 @@ class StudentList extends Component {
 			<div className="list-container">
 				{this.state.display === "showing" ? (
 					<div className="container-red ">
+						<div />
+						<div></div>
 						<div className="student-list">
 							<div className="student-row">
 								{this.props.students.map((student, i) => {
@@ -54,7 +56,7 @@ class StudentList extends Component {
 	}
 }
 
-StudentList.propTypes= {
+StudentList.propTypes = {
 	students: propTypes.array
 };
 export default StudentList;
