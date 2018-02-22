@@ -23,6 +23,7 @@
     cursor: pointer;
     -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
+    outline: none;
 }
 .primary-button:hover{
     background-color: #BDC3C7;
@@ -64,6 +65,7 @@
     cursor: pointer;
     -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
+    outline: none;
 }
 .secondary-button:hover{
     background-color: #BDC3C7;
@@ -106,6 +108,7 @@
     cursor: pointer;
     -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
+    outline: none;
 }
 .tertiary-button:hover{
     background-color: #BDC3C7;
