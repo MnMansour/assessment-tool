@@ -1,7 +1,7 @@
 import React from "react";
+import propTypes from "prop-types";
 
 function StudentPage(props) {
-	console.log(props.students[0]);
 	return (
 		<div className="student-page">
 			<p className="gradu">Graduation Date:</p>
@@ -36,5 +36,7 @@ function StudentPage(props) {
 		</div>
 	);
 }
-
+StudentPage.propTypes = {
+	student: propTypes.array
+};
 export default StudentPage;

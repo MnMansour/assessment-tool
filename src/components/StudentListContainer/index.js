@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
 import StudentList from "../StudentList";
 import StudentPage from "../StudentPage";
 import "./StudentList.css";
@@ -44,7 +45,10 @@ const mapDispatchToProps = dispatch => {
 		showStudents: students => dispatch(showStudents(students))
 	};
 };
-
+StudentListContainer.propTypes={
+	showStudents:propTypes.func,
+	students:propTypes.array,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(
 	StudentListContainer
 );

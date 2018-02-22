@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
 
 class StudentList extends Component {
 	constructor(props) {
@@ -9,7 +10,7 @@ class StudentList extends Component {
 	}
 	render() {
 		return (
-			<div>
+			<div className="list-container">
 				{this.state.display === "showing" ? (
 					<div className="container-red ">
 						<div className="student-list">
@@ -53,4 +54,7 @@ class StudentList extends Component {
 	}
 }
 
+StudentList.propTypes= {
+	students: propTypes.array
+};
 export default StudentList;

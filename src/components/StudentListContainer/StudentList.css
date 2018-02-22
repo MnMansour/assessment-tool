@@ -12,6 +12,7 @@
     width:100%;
     display: flex;
 }
+
 .student-name{
     margin:  0;
     padding: 10px;
@@ -24,7 +25,7 @@
     
 }
 .student-page{
-    width: 75%;
+    width: 70%;
     padding: 0 20px;
 }
 .gradu{
@@ -60,9 +61,6 @@
     display: flex;
 }
 .container-red{
-    -webkit-transition: 0.6s;
-    -moz-transition: 0.6s;
-    -o-transition: 0.6s;
     transition:  0.6s;
     border: 3px solid red;
     width: 100%;
@@ -70,6 +68,7 @@
     margin: 0;
     padding: 10px 40px 10px 0;
     display: flex;
+    
 }
 .arrow-left {
     margin-left: 6px;
@@ -79,14 +78,12 @@
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent; 
     border-right:20px solid white; 
+    transition:0.5s;
   }
   .display{
       display: none;
   }
 .container-red-collapse{
-    -webkit-transition: 0.6s;
-    -moz-transition: 0.6s;
-    -o-transition: 0.6s;
     transition: 0.6s;
     height: 100%;
     border: 2px solid white;
@@ -103,4 +100,5 @@
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent; 
     border-left:20px solid white; 
+    transition:0.5s
 }
