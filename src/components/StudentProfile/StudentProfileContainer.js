@@ -26,29 +26,33 @@ class StudentProfileContainer extends Component {
         fetchUsers();
     }
 
-    render() {
+    render() {     
+         
+        const matchedUser = Object.values(this.props.classes).filter(
+            element =>
+                element.user_ids.includes(this.props.match.params.id)
+        );
+
+        const graduationDate = matchedUser.map(id => id.graduationDate);         
+
         const userAccount = this.props.user[this.props.match.params.id]
             ? this.props.user[this.props.match.params.id].account
-            : "";
-        console.log("userAccount: ", userAccount);
+            : "";        
 
         const user = this.props.user[this.props.match.params.id]
             ? this.props.user[this.props.match.params.id]
-            : "";
-        console.log("user: ", user);
+            : "";        
 
         const account = this.props.accounts[userAccount]
             ? this.props.accounts[userAccount]
-            : "";
-        console.log("account: ", account);
+            : "";       
 
         const peerUserId = account.peer_user_id;
-        const peerUser = this.props.user[peerUserId] ? this.props.user[peerUserId] : "";
-        console.log("peerUser: ", peerUser);
+        const peerUser = this.props.user[peerUserId] ? this.props.user[peerUserId] : "";        
         
         return (
             <div className="container">
-                <StudentProfile account={account} user={user} peerUser={peerUser} />
+                <StudentProfile account={account} user={user} peerUser={peerUser} graduationDate={graduationDate} />
             </div>);
     }
 }
