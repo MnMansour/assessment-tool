@@ -8,7 +8,8 @@
         "headTeacher": "T001",
         "graduationDate": "2018-04-01",
         "plannedSprints": "20",
-        "location": "Helsinki"
+        "location": "Helsinki",
+        "user_ids": ["001", "002"]
       },
       {
         "id": "002",
@@ -18,7 +19,8 @@
         "headTeacher": "T002",
         "graduationDate": "2018-06-01",
         "plannedSprints": "20",
-        "location": "Espoo"
+        "location": "Espoo",
+        "user_ids": ["003", "004"]
       }
     ],
     "accounts": [
@@ -45,8 +47,21 @@
         "coursesCompleted": "Codeacademy - Javascript Basics",
         "education": "Bachelor of Science, University of City",
         "teacherReview": "Hard working student, complete assignments on time with quality.",
-        "peerReview": "Good team player, supportive and proactive.",
-        "graduationDate": "04.12.2018"
+        "peer_user_id": "004",
+        "peerReview": "Good team player, supportive and proactive."        
+      },
+      { 
+        "id": "004", 
+        "type": "student", 
+        "email": "jhony@example.com", 
+        "githubAuth": true, 
+        "githubAccount": "https://github.com", 
+        "linkedinAccount": "http://linkedin.com", 
+        "twitterAccount": "http://twitter.com", 
+        "coursesCompleted": "Codeacademy - Javascript Basics", 
+        "education": "Bachelor of Science, University of City", 
+        "teacherReview": "Hard working student, complete assignments on time with quality.", "peer_user_id": "003", 
+        "peerReview": "Good team player, supportive and proactive." 
       }
     ],
     "users": [
@@ -57,7 +72,7 @@
         "lastName": "Doe",
         "phoneNumber": "+358458904323",
         "birthDate":"March 26, 1980",
-        "avatar": "https://upload.wikimedia.org/wikipedia/en/5/50/Agentdalecooper.jpg"
+        "avatar": "http://66.media.tumblr.com/5ea59634756e3d7c162da2ef80655a39/tumblr_nvasf1WvQ61ufbniio1_400.jpg"
       },
       {
         "id": "002",
@@ -76,6 +91,14 @@
         "phoneNumber": "+358446544323",
         "birthDate": "February 06, 1989",
         "avatar": "http://vignette4.wikia.nocookie.net/deadliestfiction/images/d/de/Spike_Spiegel_by_aleztron.jpg/revision/latest?cb=20130920231337"
+      },
+      { "id": "004", 
+        "account": "004", 
+        "firstName": "Johny", 
+        "lastName": "Soe", 
+        "phoneNumber": "+358458904323", 
+        "birthDate": "March 26, 1980", 
+        "avatar": "https://upload.wikimedia.org/wikipedia/en/5/50/Agentdalecooper.jpg" 
       }
     ]
   }

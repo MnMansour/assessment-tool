@@ -11,5 +11,10 @@ export const ACCOUNT_STORE = "ACCOUNT_STORE";
 export const accountStore = accounts => ({ type: ACCOUNT_STORE, payload: accounts });
 //end accounts section
 
+//classes section
+export const CLASS_STORE = "CLASS_STORE";
+export const classStore = classes => ({ type: CLASS_STORE, payload: classes });
+//end classes section
+
 export const logIn = user => ({ type: LOG_IN, payload: user });
 export const logOut = user => ({ type: LOG_OUT });

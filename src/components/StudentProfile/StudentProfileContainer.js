@@ -13,8 +13,12 @@ class StudentProfileContainer extends Component {
                 const accountsRes = await axios.get(
                     "http://localhost:8888/accounts"
                 );
+                const classesRes = await axios.get(
+                    "http://localhost:8888/classes"
+                );
                 this.props.getUsers(userRes.data);
                 this.props.getAccounts(accountsRes.data);
+                this.props.getClasses(classesRes.data);
             } catch (err) {
                 console.error("OUR ERROR", err);
             }
@@ -37,28 +41,30 @@ class StudentProfileContainer extends Component {
             ? this.props.accounts[userAccount]
             : "";
         console.log("account: ", account);
+
+        const peerUserId = account.peer_user_id;
+        const peerUser = this.props.user[peerUserId] ? this.props.user[peerUserId] : "";
+        console.log("peerUser: ", peerUser);
+        
         return (
             <div className="container">
-                <StudentProfile account={account} user={user} />
-            </div>
-        );
+                <StudentProfile account={account} user={user} peerUser={peerUser} />
+            </div>);
     }
 }
 
 StudentProfileContainer.propTypes = {
     user: PropTypes.object,
-    accounts: PropTypes.object
+    accounts: PropTypes.object,
+    classes: PropTypes.object
 };
 
 const mapStateToProps = state => {
-    return { user: state.user, accounts: state.accounts };
+    return { user: state.user, accounts: state.accounts, classes: state.classes };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        getAccounts: accounts => dispatch(actionsType.accountStore(accounts)),
-        getUsers: users => dispatch(actionsType.userStore(users))
-    };
+    return { getAccounts: accounts => dispatch(actionsType.accountStore(accounts)), getUsers: users => dispatch(actionsType.userStore(users)), getClasses: classes => dispatch(actionsType.classStore(classes)) };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
