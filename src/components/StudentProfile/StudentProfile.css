@@ -1,168 +1,173 @@
 .container {
-  margin-right: 20px;
-  margin-left: 20px;
-  font-family: sans-serif;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-family: sans-serif;
 }
 
-.avatar{
-  display: flex;
-  flex-flow: row wrap;
+.avatar {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .avatar-image {
-  width:30%;
-  height:30%;
-  flex:1,1,30%;
+    width: 30%;
+    height: 30%;
+    flex: 1, 1, 30%;
 }
 
-.avatar-data{
-  margin-left: 20px;
-  min-width: 60%;
-  flex:1,1,60%;
+.avatar-data {
+    margin-left: 20px;
+    min-width: 60%;
+    flex: 1, 1, 60%;
 }
 
 .st-name {
-  width:60%;
-  font-size: 40px;
-  font-weight: bold;
-  margin-left: 25px;
+    width: 60%;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 25px;
 }
 
 .field {
-  width: 60%;
-  margin: 25px;
+    width: 60%;
+    margin: 25px;
 }
 
 label {
-  width: 40%;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: bold;
+    width: 40%;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .field-entry {
-  width: 54%;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: bold;
+    width: 54%;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .peer-detail {
-  display: flex;
-  flex-flow: row wrap;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .peer-image {
-  width:70px;
-  height: 70px;
+    width: 70px;
+    height: 70px;
 }
 
 .peer-data {
-  margin-top: 20px;
-  margin-left: 30px;
-  width: 80%;
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 80%;
 }
 
 img {
-  max-width: 100%;
-  vertical-align: middle;
+    max-width: 100%;
+    vertical-align: middle;
 }
 
 a {
-  color: #0060B6;
-  text-decoration: none;
-  transition: 0.1s ease-out;
+    color: #0060b6;
+    text-decoration: none;
+    transition: 0.1s ease-out;
 }
 
 a:hover {
-  color:#00A0C6;
-  text-decoration:none;
-  cursor:pointer;
+    color: #00a0c6;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-@media only screen and (max-width: 450px) {
-  .st-name {
-    margin-left: 0;
-  }
+a + a {
+    padding-left: 0.5em;
+}
 
-  .field {
-    margin: 0;
-  }
-
-  .avatar-data {
-    margin-left: 0;
-    margin: 2em 0;
-  }
-
-  .avatar-image {
-    width: 70%;
-    margin: 0 auto;
-  }
-
-  img {
-    border-radius: 5px;
-  }
-
-  .container>:first-child {
-    text-align: center;
-  }
-
-  .st-name {
-    font-size: 1.5em;
-    padding: 1em 0;
-  }
-
-  .field-entry {
-    font-weight: normal;
-  }
-
-  .avatar-data> :last-child {
-    margin-top: 1em;
-  }
-
-  .courses>:first-child,
-  .education>:first-child,
-  .teacher-review>:first-child,
-  .peer-review>:first-child {
-    font-size: 1.8em;
-  }
-
-  .courses h2, .education h2, .teacher-review h2 {
-    font-size: 1.2em;
-  }
-
-    .courses , .education , .teacher-review, .peer-review {
-      margin: 1.5em 0;
+@media only screen and (max-width: 600px) {
+    .st-name {
+        margin-left: 0;
     }
 
-  a+a {
-    padding-left: 0.5em;
-  }
+    .container > h1:first-child {
+        text-align: center;
+    }
 
-  .peer-detail {
-    flex-flow: row nowrap;
-  }
+    .field {
+        margin: 0;
+    }
 
-  .peer-image {
-    width: 25%;
-    height: auto;
-  }
+    .avatar-data {
+        margin-left: 0;
+        margin: 2em 0;
+    }
 
-  .peer-data {
-    margin-top: 0;
-    margin-left: 1em;
-  }
+    .avatar-image {
+        width: 70%;
+        margin: 0 auto;
+    }
 
-  label {
-    width: 36%;
-  }
+    img {
+        border-radius: 5px;
+    }
 
-  .field-entry {
-    width: 68%;
-    margin-bottom: 0.5em;
-  }
+    .st-name {
+        font-size: 1.5em;
+        padding: 1em 0;
+    }
 
-  .field {
-    width: auto;
-  }
+    .field-entry {
+        font-weight: normal;
+    }
+
+    .avatar-data > :last-child {
+        margin-top: 1em;
+    }
+
+    .courses > :first-child,
+    .education > :first-child,
+    .teacher-review > :first-child,
+    .peer-review > :first-child {
+        font-size: 1.8em;
+    }
+
+    .courses h2,
+    .education h2,
+    .teacher-review h2 {
+        font-size: 1.2em;
+    }
+
+    .courses,
+    .education,
+    .teacher-review,
+    .peer-review {
+        margin: 1.5em 0;
+    }
+
+    .peer-detail {
+        flex-flow: row nowrap;
+    }
+
+    .peer-image {
+        width: 25%;
+        height: auto;
+    }
+
+    .peer-data {
+        margin-top: 0;
+        margin-left: 1em;
+    }
+
+    label {
+        width: 36%;
+    }
+
+    .field-entry {
+        width: 68%;
+        margin-bottom: 0.5em;
+    }
+
+    .field {
+        width: auto;
+    }
 }

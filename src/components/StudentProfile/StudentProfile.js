@@ -1,37 +1,53 @@
 import React from "react";
 import "./StudentProfile.css";
+import picture from "./Layout/images/Avatar2.png";
 
-function StudentProfile(props) {
-    const account = props.Account; 
+const StudentProfile = ({ account, user }) => {
     return (
         <div className="container">
             <h1>Graduation Date: {account.graduationDate}</h1>
             <div className="avatar">
                 <div className="avatar-image">
-                    <img src="images/Avatar1.png" alt="Avatar1" />
+                    <img src={user.avatar} alt="Avatar1" />
                 </div>
                 <div className="avatar-data">
-                    <div className="st-name">Byron Amorim</div>
+                    <div className="st-name">{`${user.firstName} ${
+                        user.lastName
+                    }`}</div>
                     <div className="field">
                         <label>Email:</label>
                         <div className="field-entry">{account.email}</div>
                     </div>
                     <div className="field">
                         <label>Phone:</label>
-                        <div className="field-entry">24124</div>
+                        <div className="field-entry">{user.phoneNumber}</div>
                     </div>
                     <div className="field">
                         <label>Birth date:</label>
-                        <div className="field-entry">March 26, 1980</div>
+                        <div className="field-entry">{user.birthDate}</div>
                     </div>
                     <div className="field">
-                        <a href="http://github.com/" className="github">
+                        <a
+                            href={account.githubAccount || "https://github.com"}
+                            className="github"
+                        >
                             <i className="fab fa-github-square fa-2x" />
                         </a>
-                        <a href="http://linkedin.com/" className="linkedin">
+                        <a
+                            href={
+                                account.linkedinAccount ||
+                                "https://www.linkedin.com"
+                            }
+                            className="linkedin"
+                        >
                             <i className="fab fa-linkedin fa-2x" />
                         </a>
-                        <a href="http://twitter.com/" className="twitter">
+                        <a
+                            href={
+                                account.twitterAccount || "http://twitter.com/"
+                            }
+                            className="twitter"
+                        >
                             <i className="fab fa-twitter-square fa-2x" />
                         </a>
                     </div>
@@ -53,13 +69,13 @@ function StudentProfile(props) {
                 <h1>Peer reviews</h1>
                 <div className="peer-detail">
                     <div className="peer-image">
-                        <img src="images/Avatar2.png" alt="Avatar2" />
+                        <img src={picture} alt="Avatar2" />
                     </div>
                     <div className="peer-data">{account.peerReview}</div>
                 </div>
             </div>
         </div>
     );
-}  
+};
 
 export default StudentProfile;
