@@ -1,7 +1,7 @@
 .container {
     margin-right: 20px;
     margin-left: 20px;
-    font-family: sans-serif;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 
 .avatar {
@@ -10,9 +10,10 @@
 }
 
 .avatar-image {
-    width: 30%;
-    height: 30%;
-    flex: 1, 1, 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
 }
 
 .avatar-data {
@@ -83,7 +84,38 @@ a:hover {
 a + a {
     padding-left: 0.5em;
 }
+.courses,
+.education,
+.teacher-review,
+.peer-review {
+    margin: 2.5em 0;
+}
 
+.st-name {
+    font-size: 1.5em;
+    padding: 1em 0;
+}
+
+.field-entry {
+    font-weight: normal;
+}
+
+.avatar-data > :last-child {
+    margin-top: 1em;
+}
+
+.courses > :first-child,
+.education > :first-child,
+.teacher-review > :first-child,
+.peer-review > :first-child {
+    font-size: 1.7em;
+}
+
+.courses h2,
+.education h2,
+.teacher-review h2 {
+    font-size: 1.2em;
+}
 @media only screen and (max-width: 600px) {
     .st-name {
         margin-left: 0;
@@ -109,39 +141,6 @@ a + a {
 
     img {
         border-radius: 5px;
-    }
-
-    .st-name {
-        font-size: 1.5em;
-        padding: 1em 0;
-    }
-
-    .field-entry {
-        font-weight: normal;
-    }
-
-    .avatar-data > :last-child {
-        margin-top: 1em;
-    }
-
-    .courses > :first-child,
-    .education > :first-child,
-    .teacher-review > :first-child,
-    .peer-review > :first-child {
-        font-size: 1.8em;
-    }
-
-    .courses h2,
-    .education h2,
-    .teacher-review h2 {
-        font-size: 1.2em;
-    }
-
-    .courses,
-    .education,
-    .teacher-review,
-    .peer-review {
-        margin: 1.5em 0;
     }
 
     .peer-detail {
