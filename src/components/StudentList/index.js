@@ -14,7 +14,6 @@ class StudentList extends Component {
 				{this.state.display === "showing" ? (
 					<div className="container-red ">
 						<div />
-						<div></div>
 						<div className="student-list">
 							<div className="student-row">
 								{this.props.students.map((student, i) => {
