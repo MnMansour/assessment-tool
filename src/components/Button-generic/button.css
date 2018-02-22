@@ -41,6 +41,9 @@
     margin-inline-start: 15px;
     margin-inline-end: 15px;
 }
+.no-icon{
+   display: none;
+}
 .secondary{
     width: 650px;
     height: 100px;
