@@ -1,5 +1,7 @@
 import React from "react";
 import "./StudentProfile.css";
+import ScrollButton from "./ScrollTopButton/ScrollTopButton";
+import "./ScrollTopButton/buttonAnimation";
 
 const StudentProfile = ({ account, user, peerUser, graduationDate }) => {
     return (
@@ -10,7 +12,9 @@ const StudentProfile = ({ account, user, peerUser, graduationDate }) => {
                     <img src={user.avatar} alt="Avatar" />
                 </div>
                 <div className="avatar-data">
-                    <div className="st-name">{`${user.firstName} ${user.lastName}`}</div>
+                    <div className="st-name">{`${user.firstName} ${
+                        user.lastName
+                    }`}</div>
                     <div className="field">
                         <label>Email:</label>
                         <div className="field-entry">{account.email}</div>
@@ -31,13 +35,18 @@ const StudentProfile = ({ account, user, peerUser, graduationDate }) => {
                             <i className="fab fa-github-square fa-2x" />
                         </a>
                         <a
-                            href={account.linkedinAccount || "https://www.linkedin.com"}
+                            href={
+                                account.linkedinAccount ||
+                                "https://www.linkedin.com"
+                            }
                             className="linkedin"
                         >
                             <i className="fab fa-linkedin fa-2x" />
                         </a>
                         <a
-                            href={account.twitterAccount || "http://twitter.com/"}
+                            href={
+                                account.twitterAccount || "http://twitter.com/"
+                            }
                             className="twitter"
                         >
                             <i className="fab fa-twitter-square fa-2x" />
@@ -66,6 +75,7 @@ const StudentProfile = ({ account, user, peerUser, graduationDate }) => {
                     <div className="peer-data">{account.peerReview}</div>
                 </div>
             </div>
+            <ScrollButton/>
         </div>
     );
 };
