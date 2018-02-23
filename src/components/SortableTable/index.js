@@ -1,145 +1,68 @@
 import React from "react";
 import propTypes from "prop-types";
-
-function SortableTable(props) {
-  const classes = props.classes;
-  return (
-    <section>
-      <div className="classes">
-        <div className="head">
-          <div className="title">
-            <span className="head__span">Id</span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortNum("id", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortNum("id", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Graduation Date </span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortDate("graduationDate", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortDate("graduationDate", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Name</span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortAlpha("name", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortAlpha("name", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Location</span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortAlpha("name", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortAlpha("name", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Participants</span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortNum("participantCount", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortNum("participantCount", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Current Sprint</span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortNum("currentSprint", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortNum("currentSprint", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Head Teacher</span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortAlpha("headTeacher", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortAlpha("headTeacher", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Planned Sprints</span>
-            <span className="head__span">
-              <div
-                onClick={() => props.handleSortNum("plannedSprints", true)}
-                className="arrow-up"
-              />
-              <div
-                onClick={() => props.handleSortNum("plannedSprints", false)}
-                className="arrow-down"
-              />
-            </span>
-          </div>
-          <div className="title">
-            <span className="head__span">Manage</span>
-          </div>
-        </div>
-        {classes.map((item, i) => {
-          return (
-            <div key={i} className="body">
-              <div className="info">{item.id}</div>
-              <div className="info">{item.graduationDate}</div>
-              <div className="info">{item.name}</div>
-              <div className="info">{item.location}</div>
-              <div className="info">{item.participantCount}</div>
-              <div className="info">{item.currentSprint}</div>
-              <div className="info">{item.headTeacher}</div>
-              <div className="info">{item.plannedSprints}</div>
-              <div className="info" />
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
+import { handleDate, handleNumber, handleAlpha } from "../../utilities/sort";
+import SortableTableHead from "../SortableTableHead";
+import SortableTableRow from "../SortableTableRow";
+function SortableTable({ handleSortData, classes }) {
+	return (
+		<section className="classes">
+			<div className="head">
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"id"}
+					handleDataKind={handleNumber}
+					title={"Id"}
+				/>
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"graduationDate"}
+					handleDataKind={handleDate}
+					title={"Graduation Date"}
+				/>
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"name"}
+					handleDataKind={handleAlpha}
+					title={"Name"}
+				/>
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"location"}
+					handleDataKind={handleAlpha}
+					title={"Location"}
+				/>
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"participantCount"}
+					handleDataKind={handleNumber}
+					title={"Participants"}
+				/>
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"currentSprint"}
+					handleDataKind={handleNumber}
+					title={"Current Sprint"}
+				/>
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"headTeacher"}
+					handleDataKind={handleAlpha}
+					title={"Head Teacher"}
+				/>
+				<SortableTableHead
+					handleSortData={handleSortData}
+					sortBy={"plannedSprints"}
+					handleDataKind={handleNumber}
+					title={"Planned Sprints"}
+				/>
+				<SortableTableHead title={"Manage"} />
+			</div>
+			<SortableTableRow classes={classes} />
+		</section>
+	);
 }
 SortableTable.propTypes = {
-  classes: propTypes.array.required,
-  handleSortNum: propTypes.func.required,
-  handleSortDate: propTypes.func.required,
-  handleSortAlpha: propTypes.func.required
+	classes: propTypes.array,
+	handleSortData: propTypes.func
 };
 export default SortableTable;
-
-
