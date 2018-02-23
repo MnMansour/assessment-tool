@@ -37,7 +37,7 @@ class SortableTableContainer extends Component {
 			<section>
 				<Breadcrumb />
 				<Search
-					class = 'Classes'
+					classesTable = 'Classes'
 					searchKey='location'
 					classes={this.props.classes}
 					onChange={classes => this.setState({ showingClasses: classes })}

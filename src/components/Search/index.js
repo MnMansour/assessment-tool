@@ -26,7 +26,7 @@ render() {
 	return (
 		<section className="container">
 			<h2>Teacher Dashboard</h2>
-			<label htmlFor="classes" className="label-classes">{this.props.class}</label><br/>
+			<label htmlFor="classes" className="label-classes">{this.props.classesTable}</label><br/>
 			<i className="fa fa-search"></i>
 			<input
 				type="text"
