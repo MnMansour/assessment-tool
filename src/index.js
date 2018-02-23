@@ -8,14 +8,14 @@ import rootReducer from "./redux/reducers.js";
 import "./index.css";
 
 const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	rootReducer,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Root />
-  </Provider>,
-  document.getElementById("root")
+	<Provider store={store}>
+		<Root />
+	</Provider>,
+	document.getElementById("root")
 );
 registerServiceWorker();
