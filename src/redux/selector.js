@@ -1,1 +1,1 @@
-export const classSelector = (state)=> state.userClass
+export const classSelector = (state)=> state.userClass;
