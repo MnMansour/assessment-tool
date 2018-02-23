@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import "./sortableTable.css";
 import { connect } from "react-redux";
+import propTypes from 'prop-types';
 import { showClasses } from "../../redux/actions";
+import { classSelector } from "../../redux/selector";
 import { handleDate, handleNumber, handleAlpha } from "../../utilities/sort";
 import { fetchClassess } from "../../API";
-import { classSelector } from "../../redux/selector";
-import propTypes from 'prop-types';
 import SortableTable from '../SortableTable';
 import Search from '../Search';
+import "./sortableTable.css";
 
 class SortableTableContainer extends Component {
   constructor(props) {
@@ -69,12 +69,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+SortableTableContainer.propTypes = {
+  showClasses: propTypes.func.required,
+  classes: propTypes.array.required 
+}
 export default connect(mapStateToProps, mapDispatchToProps)(
   SortableTableContainer
 );
 
 
-SortableTableContainer.propTypes = {
-  showClasses: propTypes.func,
-  classes: propTypes.array 
-}
+
