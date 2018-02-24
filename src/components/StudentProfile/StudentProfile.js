@@ -1,7 +1,7 @@
 import React from "react";
 import "./StudentProfile.css";
 import ScrollButton from "./ScrollTopButton/ScrollTopButton";
-import "./ScrollTopButton/buttonAnimation";
+
 
 const StudentProfile = ({ account, user, peerUser, graduationDate }) => {
     return (
@@ -75,7 +75,7 @@ const StudentProfile = ({ account, user, peerUser, graduationDate }) => {
                     <div className="peer-data">{account.peerReview}</div>
                 </div>
             </div>
-            <ScrollButton/>
+            <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
         </div>
     );
 };

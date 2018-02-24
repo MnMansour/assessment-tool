@@ -1,4 +1,6 @@
 import React from "react";
+import "./buttonAnimation";
+import "node-waves/dist/waves.min.css";
 
 class ScrollButton extends React.Component {
     constructor() {
