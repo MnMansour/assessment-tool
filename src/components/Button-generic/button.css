@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&subset=hebrew,latin-ext,vietnamese');
+.primary{
+    width: 650px;
+    height: 100px;
+    background-color:transparent;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.primary-button{
+    width: 600px;
+    line-height: 60px;
+    background-color: #013243;
+    align-self: center;
+    font-size: 1.8rem;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family:varela round;
+    color: white;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    outline: none;
+}
+.primary-button:hover{
+    background-color: #BDC3C7;
+    color: #013243;
+}
+.primary-button:disabled{
+    background-color: #BDC3C7;
+    color: #013243;
+    cursor: not-allowed;
+}
+.primary-button-img{
+    width: 60px;
+    line-height: 55px;
+    max-height: 60px;
+    margin-inline-start: 15px;
+    margin-inline-end: 15px;
+}
+.no-icon{
+   display: none;
+}
+.secondary{
+    width: 650px;
+    height: 100px;
+    background-color:transparent;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.secondary-button{
+    width: 400px;
+    line-height: 50px;
+    background-color: #22313F;
+    align-self: center;
+    font-size: 1.6rem;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: Varela Round;
+    color: white;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    outline: none;
+}
+.secondary-button:hover{
+    background-color: #BDC3C7;
+    color: #013243;
+}
+.secondary-button:disabled{
+    background-color: #BDC3C7;
+    color: #013243;
+    cursor: not-allowed;
+}
+.secondary-button-img{
+    width: 50px;
+    line-height: 45px;
+    max-height: 50px;
+    margin-inline-start: 15px;
+    margin-inline-end: 15px;
+}
+
+.tertiary{
+    width: 650px;
+    height: 100px;
+    background-color:transparent;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.tertiary-button{
+    width: 200px;
+    line-height: 40px;
+    background-color: #6C7A89;
+    align-self: center;
+    font-size: 0.8rem;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: Varela Round;
+    color: white;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    outline: none;
+}
+.tertiary-button:hover{
+    background-color: #BDC3C7;
+    color: #013243;
+}
+.tertiary-button:disabled{
+    background-color: #BDC3C7;
+    color: #013243;
+    cursor: not-allowed;
+}
+.tertiary-button-img{
+    width: 40px;
+    line-height: 25px;
+    max-height: 40px;
+    margin-inline-start: 5px;
+    margin-inline-end: 5px;
+}
