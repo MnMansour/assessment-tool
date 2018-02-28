@@ -100,7 +100,7 @@
     line-height: 40px;
     background-color: #6C7A89;
     align-self: center;
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     border: 1px solid transparent;
     border-radius: 5px;
     font-weight: 500;
@@ -123,6 +123,49 @@
     cursor: not-allowed;
 }
 .tertiary-button-img{
+    width: 40px;
+    line-height: 25px;
+    max-height: 40px;
+    margin-inline-start: 5px;
+    margin-inline-end: 5px;
+}
+
+.danger{
+    width: 650px;
+    height: 100px;
+    background-color:transparent;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.danger-button{
+    width: 200px;
+    line-height: 40px;
+    background-color: #96281B;
+    align-self: center;
+    font-size: 1.3rem;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: Varela Round;
+    color: white;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    outline: none;
+}
+.danger-button:hover{
+    background-color: #C0392B;
+    color: white;
+}
+.danger-button:disabled{
+    background-color: #BDC3C7;
+    color: #013243;
+    cursor: not-allowed;
+}
+.danger-button-img{
     width: 40px;
     line-height: 25px;
     max-height: 40px;
