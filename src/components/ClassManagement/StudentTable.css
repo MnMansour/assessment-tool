@@ -20,11 +20,7 @@
 .col-4 {width: 30%;}
 
 
-html {
-    font-family: "Lucida Sans", sans-serif;
-}
-
- ul {
+.stu-table ul {
     list-style-type: none;
     margin: 0;
     padding: 0;

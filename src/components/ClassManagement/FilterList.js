@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./StudentTable.css";
-import Item from "./Item";
-import { filterList } from "../../util/util.js";
 import PropTypes from "prop-types";
+import { filterList } from "../../util/util.js";
+import StudentName from "./StudentName";
+import "./StudentTable.css";
 
 class FilterList extends Component {
     constructor(props) {
@@ -31,7 +31,7 @@ class FilterList extends Component {
                 </div>
                 <ul className="list-table">
                     {result.map((item, i) => (
-                        <Item key={i} id={i} fullName={item} />
+                        <StudentName key={i} id={i} fullName={item} />
                     ))}
                 </ul>
             </div>

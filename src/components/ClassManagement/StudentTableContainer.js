@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./StudentTable.css";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import axios from "axios";
 import * as actionsType from "../../redux/actions";
 import FilterList from "./FilterList";
+import "./StudentTable.css";
 
 class StudentTableContainer extends Component {
     componentWillMount() {

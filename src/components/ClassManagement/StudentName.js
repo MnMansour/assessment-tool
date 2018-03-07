@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Item = props => {
+const StudentName = props => {
     return (
         <li key={props.id}>
             <i
@@ -14,9 +14,9 @@ const Item = props => {
     );
 };
 
-Item.propTypes = {
+StudentName.propTypes = {
     id: PropTypes.number,
     fullName: PropTypes.string
 };
 
-export default Item;
+export default StudentName;
