@@ -1,7 +1,8 @@
 import React from "react";
-import "./index.css";
 import {Button} from "../Button-generic/Buttons";
-import loader from "../../assets/loading.svg";
+import github from "../../assets/github.png";
+import GenerIcon from "./GenericIcon";
+
 
 const handleClick = ()=>{
 	console.log("Hello world from clicking button component");
@@ -10,7 +11,12 @@ const handleClick = ()=>{
 const ButtonDisplay = () => {
 	return (
 		<div>
-			<Button icon={loader} type="primary-button" label="Login with Integrify" onclick={handleClick} />
+			<Button class="primaryButton" onclick={handleClick}>
+				<GenerIcon icon={github}/>
+				Login with Twitter
+			</Button>
+			
+
 		</div>
 	);
 	

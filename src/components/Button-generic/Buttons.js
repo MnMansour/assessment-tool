@@ -1,17 +1,22 @@
 import React, {Component} from "react";
 import "./button.css";
 import PropTypes from "prop-types";
-//import icon from "../../assets/loading.svg";
+
 
 export class Button extends Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			buttonstate: this.props.disable==="disabled"? true : false
+		};
+	}
 	render(){
 		return(
-			<div className="primary">
-				<button className={this.props.type || "primary-button"} 
-					onClick={this.props.onclick}  disabled>
-					{this.props.icon && <img src={this.props.icon} alt="icon" 
-						className={`${this.props.type}-img` }/>}
-					{this.props.label || "Generic -Button"}</button>
+			<div className="buttonDiv">
+				<button className={this.props.class ||"primaryButton"} 
+					onClick={this.props.onclick} disabled={this.state.buttonstate}>
+					{this.props.children}
+				</button>
 			</div>
 		);
 	}
@@ -19,8 +24,8 @@ export class Button extends Component{
 
 
 Button.propTypes={
-	icon:PropTypes.node,
-	label:PropTypes.string,
+	children: PropTypes.node,
 	class:PropTypes.string,
-	onclick:PropTypes.func.isRequired
+	onclick:PropTypes.func.isRequired,
+	disable:PropTypes.string
 };

@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, { Fragment } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import Header from '../Header';
-import Login from '../Login/index';
-import LoginAdmin from '../LoginAdmin/index';
-import User from '../Login/User';
-import Footer from '../Footer';
-import LandingPage from '../ButtonBig/index';
-import Button from '../Button-generic/index'
+import Header from "../Header";
+import Login from "../Login/index";
+import LoginAdmin from "../LoginAdmin/index";
+import User from "../Login/User";
+import Footer from "../Footer";
+import LandingPage from "../Home/index";
+import Button from "../Button-generic/index";
 
 const MainLayout = ({ match }) => {
 	
