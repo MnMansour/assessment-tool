@@ -13,7 +13,7 @@ const MainLayout = ({ match }) => {
 			<Switch>
 				<Route path={`${match.url}/home`} render={() => <h1>home</h1>} />
 				<Route path={`${match.url}/login-admin`} component={LoginAdmin} />
-				<Route path={`${match.url}ogin`} component={Login} />
+				<Route path={`${match.url}login`} component={Login} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
 			<SortableTableContainer />

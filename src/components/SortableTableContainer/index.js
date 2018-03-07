@@ -7,7 +7,7 @@ import { fetchClassess } from "../../API";
 import SortableTable from "../SortableTable";
 import Search from "../Search";
 import Breadcrumb from "../Breadcrumb";
-import "./sortableTable.css";
+import "./sortableTable.scss";
 
 class SortableTableContainer extends Component {
 	constructor(props) {
