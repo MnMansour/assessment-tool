@@ -21,8 +21,6 @@ function SortableTableHead({handleSortData,title}) {
 
 SortableTableHead.propTypes={
 	handleSortData:propTypes.func,
-	sortBy:propTypes.string,
-	handleDataKind:propTypes.func,
 	title:propTypes.string,
 };
 
