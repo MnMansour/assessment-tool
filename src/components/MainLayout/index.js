@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Header from "../Header";
-import Login from "../Login";
-import LoginAdmin from "../LoginAdmin";
-import Footer from "../Footer";
-import SortableTableContainer from "../SortableTableContainer";
+import React, { Fragment } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Header from '../Header';
+import Login from '../Login';
+import LoginAdmin from '../LoginAdmin';
+import Footer from '../Footer';
+import SortableTableContainer from '../SortableTableContainer';
 
 const MainLayout = ({ match }) => {
 	return (

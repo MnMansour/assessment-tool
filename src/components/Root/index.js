@@ -1,9 +1,9 @@
-import React from "react";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
+import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-import reducers from "../../redux/reducers";
-import App from "../App";
+import reducers from '../../redux/reducers';
+import App from '../App';
 
 const store = createStore(
 	reducers,

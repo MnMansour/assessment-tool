@@ -25,7 +25,7 @@ class SortableTableContainer extends Component {
 				this.props.getClasses(res.data);
 				this.setState({ showingClasses: this.props.classes });
 			})
-			.catch(err => console.log(err));
+			.catch(err => console.error(err));
 	};
 	handleSortData = (sortBy, isReversed, handleSortedData) => {
 		const sorted = handleSortedData(this.props.classes, sortBy, isReversed);
@@ -63,6 +63,7 @@ const mapDispatchToProps = dispatch => {
 
 SortableTableContainer.propTypes = {
 	showClasses: propTypes.func,
+	getClasses:propTypes.func,
 	classes: propTypes.array
 };
 export default connect(mapStateToProps, mapDispatchToProps)(

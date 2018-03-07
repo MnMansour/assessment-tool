@@ -1,5 +1,5 @@
-import React from "react";
-import "./breadcrumb.scss";
+import React from 'react';
+import './breadcrumb.scss';
 
 class Breadcrumb extends React.Component {
 	render() {

@@ -56,7 +56,6 @@
   },
   "devDependencies": {
     "eslint": "^4.18.1",
-<<<<<<< HEAD
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
@@ -66,9 +65,7 @@
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
+  
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
@@ -107,8 +104,5 @@
     "presets": [
       "react-app"
     ]
-=======
-    "eslint-plugin-react": "^7.7.0"
->>>>>>> 4cacf20289c4bea479da74f9904d37f330f4a548
   }
 }
