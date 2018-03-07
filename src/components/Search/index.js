@@ -43,7 +43,8 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-	classes: propTypes.array
+	classes: propTypes.array,
+	onChange: propTypes.func
 };
 
 export default Search;
