@@ -1,13 +1,13 @@
-import React from "react";
-import "./search.scss";
-import propTypes from "prop-types";
+import React from 'react';
+import './search.scss';
+import propTypes from 'prop-types';
 
 class Search extends React.Component {
 	constructor(props){
 		super(props);
 
 		this.state = {
-			name: ""
+			name: ''
 		};
 	}
   handleChange = (e)=>{  
@@ -39,8 +39,9 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
-
 Search.propTypes = {
 	classes: propTypes.array
 };
+
+export default Search;
+

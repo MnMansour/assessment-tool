@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import propTypes from "prop-types";
-import { getClasses } from "../../redux/actions";
-import { classSelector } from "../../redux/selector";
-import { fetchClassess } from "../../API";
-import SortableTable from "../SortableTable";
-import Search from "../Search";
-import Breadcrumb from "../Breadcrumb";
-import "./sortableTable.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import { getClasses } from '../../redux/actions';
+import { classSelector } from '../../redux/selector';
+import { fetchClassess } from '../../API';
+import SortableTable from '../SortableTable';
+import Search from '../Search';
+import Breadcrumb from '../Breadcrumb';
+import './sortableTable.scss';
 
 class SortableTableContainer extends Component {
 	constructor(props) {
@@ -37,8 +37,10 @@ class SortableTableContainer extends Component {
 			<section>
 				<Breadcrumb />
 				<Search
+					classesTable = 'Classes'
+					searchKey='location'
 					classes={this.props.classes}
-					onChange={classes => this.setState({ classes })}
+					onChange={classes => this.setState({ showingClasses: classes })}
 				/>
 				<SortableTable
 					classes={this.state.showingClasses}
