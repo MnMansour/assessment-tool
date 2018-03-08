@@ -3,15 +3,17 @@
   background-color: black;
   justify-content: space-between;
   align-items: center;
+  height: 70px;
 }
-.header img{
+.header img {
   height: 65px;
   padding-left: 24px;
 }
-.header img:hover {
+.header img.integrify:hover {
   cursor: pointer;
   height: 70px;
 }
+
 .log {
   color: white;
   margin-right: 12px;
@@ -19,7 +21,21 @@
   text-transform: capitalize;
   padding-right: 24px;
 }
+
+.headerLog {
+  color: white;
+  margin-right: 12px;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  padding-right: 24px;
+}
+
 .log:hover {
+  color: #fdb515;
+  cursor: pointer;
+}
+
+.headerLog:hover {
   color: #fdb515;
   cursor: pointer;
 }
@@ -33,9 +49,7 @@
   position: relative;
 }
 
-
-
-.hamburger ul{
+.hamburger ul {
   color: white;
   list-style: none;
   position: absolute;
@@ -51,11 +65,11 @@ ul:hover {
   color: #fdb515;
 }
 
-.hamburger li  {
+.hamburger li {
   padding: 12px 0;
 }
 
-.show{
+.show {
   display: block;
 }
 
@@ -64,14 +78,21 @@ ul:hover {
 }
 
 @media (max-width: 500px) {
-  .header img{ height: 50px;}
-  .log {display: none;}
-  .hamburger{
+  .header img {
+    height: 50px;
+  }
+
+  .hamburger {
     display: block;
   }
   ul {
     top: 40px;
   }
-  .hamburger img {height: 36px;}
+  .hamburger img {
+    height: 36px;
+  }
 
+  .headerLog {
+    display: none;
+  }
 }
