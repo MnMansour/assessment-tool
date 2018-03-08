@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import "./login-admin.css";
 import { withRouter } from "react-router-dom";
 import tick from "../../assets/tick.png";
-import loading from "../../assets/loading.svg";
 import isAlphanumeric from "validator/lib/isAlphanumeric";
 import {connect} from "react-redux";
 import {logIn, userState, resetState} from "../../redux/actions";
-import {userSelector} from "../../redux/selectors";
 import {fetchUsers} from "../../util/api";
+import {userSelector} from "../../redux/selectors";
 import PropTypes from "prop-types";
 
 
@@ -29,21 +28,20 @@ class LoginForm extends Component {
 		};
 	}
 
-activateLoader = ()=>{
-	this.setState({loader: !this.state.loader});
-}
-
-deactivateLoader = ()=>{
-	this.setState({loader: false});
-}
-
 resetProps = ()=>{
+	let message= "Wrong Username or Password, Please try again!";
 	this.props.reset();
 	this.props.history.push("/app/home");
+	alert(message);
 }
 
 navigate =(nextProps)=>{
-	nextProps.user.id !== "failed" && nextProps.user.id !== undefined ? this.props.history.push(`/app/user/${nextProps.user[0].id}`): this.resetProps();
+	console.log("NextProps", nextProps);
+	if(nextProps.user[0].id==="failed" ){
+		this.resetProps();
+	}else{
+		this.props.history.push(`/app/user/${this.props.user.id}`);
+	}		
 }
 
 handleLogin = (e)=>{
@@ -51,20 +49,20 @@ handleLogin = (e)=>{
 	if(this.state.apiusers.status===200){
 		let users = Object.values(this.state.apiusers.data);
 		let user ={id: this.state.username,
-			accoount: this.state.password};
-		let check = users.filter((item)=>item.id===user.id && item.accoount===user.account);
+			account: this.state.password};
+		let check = users.filter((item)=>item.id===user.id && item.account===user.account);
 		let checked ={...check};
 		if(check.length===1){
 			this.props.login(checked);
 			console.log("Success!",checked );
 		}else{
-			let failobject = {
+			let failobject = [{
 				"id": "failed",
 				"account": null,
 				"firstName": null,
 				"lastName": null,
 				"phoneNumber": null
-			};
+			}];
 			this.props.login(failobject);
 			console.log("Failed",failobject);
 		}
@@ -74,31 +72,19 @@ handleLogin = (e)=>{
 		console.log("error-section-two!", this.state.apiusers.status);
 	}
 }
-  
+
 componentWillMount(){
 	fetchUsers((data) => this.setState({apiusers:data}));
 }
 
 componentWillReceiveProps(nextProps){
-	if (this.props !== nextProps){
-		console.log(nextProps);
-		this.activateLoader();
-		setInterval(()=>this.deactivateLoader(), 10000);
-		setInterval(()=>this.navigate(nextProps), 10000);
-    
-	}else{
-		console.log("componentWillReceiveProps-error");
-	}
+	this.navigate(nextProps);
 }
-  
+
 render() {
-	//this.getUsers()
 	const errors = validate(this.state);
 	return (
 		<div className="login">
-			<div className={this.state.loader?"show-loader":"loading"}>
-				<img src={loading} alt="loading" className="loading-image"/>
-			</div>
 			<p className='title'>Admin Sign-In</p>
 			<form onSubmit={(e)=>{this.handleLogin(e);}}>
 				<input type="text" 

@@ -8,6 +8,7 @@ import User from "../Login/User";
 import Footer from "../Footer";
 import LandingPage from "../Home/index";
 import Button from "../Button-generic/index";
+import Loader from "../Loader/Loader";
 
 const MainLayout = ({ match }) => {
 	
@@ -20,6 +21,7 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/user/:id`} component={User} />
 				<Route path={`${match.url}/login`} component={Login} />
 				<Route path={`${match.url}/button`} component={Button} />
+				<Route path={`${match.url}/loader`} component={Loader} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
 			<Footer />

@@ -1,5 +1,6 @@
 import React from "react";
 import "./genericIcon.css";
+import PropTypes from "prop-types";
 //import loader from "../../assets/loading.svg";
 
 
@@ -13,3 +14,7 @@ const GenerIcon = (props)=>{
 };
 
 export default GenerIcon;
+
+GenerIcon.propTypes={
+	icon: PropTypes.node,
+};

@@ -11,7 +11,8 @@ const user = (state ={} , { type, payload}) => {
 		return state;
 	case RESET_STATE:
 		state = null;
-		return payload;
+		state={};
+		return state;
 	default:
 		return state;
 	}

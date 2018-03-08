@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./login.css";
 import { withRouter } from "react-router-dom";
 import tick from "../../assets/tick.png";
-import loading from "../../assets/loading.svg";
 import isAlphanumeric from "validator/lib/isAlphanumeric";
 import {connect} from "react-redux";
 import {logIn, userState, resetState} from "../../redux/actions";
@@ -29,22 +28,20 @@ class LoginForm extends Component {
 		};
 	}
 
-activateLoader = ()=>{
-	this.setState({loader: !this.state.loader});
-}
-
-deactivateLoader = ()=>{
-	this.setState({loader: false});
-}
-
 resetProps = ()=>{
+	let message= "Wrong Username or Password, Please try again!";
 	this.props.reset();
 	this.props.history.push("/app/home");
+	alert(message);
 }
 
 navigate =(nextProps)=>{
-	nextProps.user.id !== "failed" || nextProps.user.id !== undefined  ? 
-		this.props.history.push(`/app/user/${nextProps.user[0].id}`): this.resetProps();
+	console.log("NextProps", nextProps);
+	if(nextProps.user[0].id==="failed" ){
+		this.resetProps();
+	}else{
+		this.props.history.push(`/app/user/${this.props.user.id}`);
+	}		
 }
 
 handleLogin = (e)=>{
@@ -59,13 +56,13 @@ handleLogin = (e)=>{
 			this.props.login(checked);
 			console.log("Success!",checked );
 		}else{
-			let failobject = {
+			let failobject = [{
 				"id": "failed",
 				"account": null,
 				"firstName": null,
 				"lastName": null,
 				"phoneNumber": null
-			};
+			}];
 			this.props.login(failobject);
 			console.log("Failed",failobject);
 		}
@@ -81,32 +78,13 @@ componentWillMount(){
 }
 
 componentWillReceiveProps(nextProps){
-	if (this.props !== nextProps){
-		console.log(nextProps);
-		this.activateLoader();
-		setInterval(()=>this.deactivateLoader(), 10000);
-		setInterval((nextProps)=>this.navigate(nextProps), 10000);
-    
-	}else{
-		console.log("componentWillReceiveProps-error");
-	}
-}
-
-loaderSpin = ()=>{
-	return(
-		<div className="loaderContainer">
-			<img src={loading} alt="loader" className="loaderImage"/>
-		</div>
-	);
+	this.navigate(nextProps);
 }
 
 render() {
 	const errors = validate(this.state);
 	return (
 		<div className="login">
-			<div className={this.state.loader?"show-loader":"loading"}>
-				<img src={loading} alt="loading" className="loading-image"/>
-			</div>
 			<p className='title'>Sign-In</p>
 			<form onSubmit={(e)=>{this.handleLogin(e);}}>
 				<input type="text" 
