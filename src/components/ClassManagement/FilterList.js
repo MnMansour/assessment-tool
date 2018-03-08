@@ -15,7 +15,7 @@ class FilterList extends Component {
     render() {
         const result = filterList(this.props.ListItems, this.state.searchKey);
         return (
-            <div className="stu-table">
+            <div className="stu-table container">
                 <h3 className="title">Students</h3>
                 <div className="group">
                     <input

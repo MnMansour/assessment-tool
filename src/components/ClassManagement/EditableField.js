@@ -42,7 +42,7 @@ function EditableField(labelEdit) {
     CustomsField.propTypes = {
         fieldEdit: PropTypes.func,
         isEdit: PropTypes.bool,
-        i: PropTypes.number,
+        i: PropTypes.string,
         name: PropTypes.string
     };
 
