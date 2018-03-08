@@ -5,8 +5,8 @@ import {
 	Switch,
 	Redirect
 } from "react-router-dom";
-
 import MainLayout from "../MainLayout";
+import NotFound from "../NotFound";
 
 class App extends Component {
 	render() {
@@ -15,7 +15,7 @@ class App extends Component {
 				<Switch>
 					<Route path="/app" component={MainLayout} />
 					<Redirect from="/" to="/app" exact />
-					<Route render={() => <h1>404</h1>} />
+					<Route render={NotFound} />
 				</Switch>
 			</Router>
 		);

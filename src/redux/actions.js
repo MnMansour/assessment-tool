@@ -12,3 +12,6 @@ export const logIn = user => ({ type: LOG_IN, payload: user});
 export const logOut = () => ({ type: LOG_OUT });
 export const userState = (users) => ({ type: USER_IN, payload:users});
 export const resetState = () => ({ type: RESET_STATE, payload:[{flag: "error"}]});
+export const GET_CLASSES = "GET_CLASSES";
+export const getClasses = payload => ({ type: GET_CLASSES, payload });
+

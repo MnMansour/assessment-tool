@@ -9,6 +9,7 @@ import Footer from "../Footer";
 import LandingPage from "../Home/index";
 import Button from "../Button-generic/index";
 import Loader from "../Loader/Loader";
+import SortableTableContainer from "../SortableTableContainer";
 
 const MainLayout = ({ match }) => {
 	
@@ -24,6 +25,7 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/loader`} component={Loader} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
+			<SortableTableContainer />
 			<Footer />
 		</Fragment>
 	);

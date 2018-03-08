@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import { LOG_IN, LOG_OUT, USER_IN, RESET_STATE} from "./actions";
+import { LOG_IN, LOG_OUT, USER_IN, RESET_STATE,GET_CLASSES} from "./actions";
+
 
 const user = (state ={} , { type, payload}) => {
 	switch (type) {
@@ -27,4 +28,14 @@ const usersfromapi = (state ={} , { type, payload}) => {
 	}
 };
 
-export default combineReducers({ authuser: user , users: usersfromapi});
+
+const userClass = (state = [], { type, payload }) => {
+	switch (type) {
+	case GET_CLASSES:
+		return payload;
+	default:
+		return state;
+	}
+};
+
+export default combineReducers({ authuser: user , users: usersfromapi, userClass});
