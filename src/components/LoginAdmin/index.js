@@ -1,8 +1,8 @@
-import React from 'react'
-import LoginAdminForm from '../LoginAdmin/Login-admin'
+import React from "react";
+import LoginAdminForm from "../LoginAdmin/Login-admin";
 
 const LoginAdmin = () => {
-  return <LoginAdminForm/>
-}
+	return <LoginAdminForm/>;
+};
 
 export default LoginAdmin;

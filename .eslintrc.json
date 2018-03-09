@@ -17,19 +17,17 @@
     ],
     "rules": {
         "indent": [
-            "error",
+            "warn",
             "tab"
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "no-console": 0,
+        "linebreak-style": 0,
         "quotes": [
-            "error",
+            "warn",
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "always"
         ]
     }

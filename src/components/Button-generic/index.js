@@ -1,17 +1,25 @@
 import React from "react";
-import "./index.css";
-import {PrimaryButton, SecondaryButton, TertiaryButton} from "../Button-generic/Buttons";
-//import loader from '../../assets/loading.svg'
+import {Button} from "../Button-generic/Buttons";
+import github from "../../assets/github.png";
+import GenerIcon from "./GenericIcon";
 
-const Button = () => {
+
+const handleClick = ()=>{
+	console.log("Hello world from clicking button component");
+};
+
+const ButtonDisplay = () => {
 	return (
 		<div>
-			<PrimaryButton />
-			<SecondaryButton />
-			<TertiaryButton />
+			<Button class="primaryButton" onclick={handleClick}>
+				<GenerIcon icon={github}/>
+				Login with Twitter
+			</Button>
+			
+
 		</div>
 	);
 	
 };
 
-export default Button;
+export default ButtonDisplay;

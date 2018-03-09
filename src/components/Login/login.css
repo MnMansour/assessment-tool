@@ -98,6 +98,15 @@ input[type="submit"] {
   animation: image-spin infinite 10s linear;
   fill-opacity: 0.5;
 }
+.valid{
+    visibility: initial;
+}
+.title{
+    color: #fdb515;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
 
 /*Responsive design starts here with 2 breakpoints*/
 @media screen and (max-width: 1250px) {
