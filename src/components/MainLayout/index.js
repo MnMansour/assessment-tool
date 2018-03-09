@@ -23,9 +23,9 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/login`} component={Login} />
 				<Route path={`${match.url}/button`} component={Button} />
 				<Route path={`${match.url}/loader`} component={Loader} />
+				<Route path={`${match.url}/dashboard`} component={SortableTableContainer} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
-			<SortableTableContainer />
 			<Footer />
 		</Fragment>
 	);

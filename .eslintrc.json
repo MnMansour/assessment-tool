@@ -19,9 +19,10 @@
             "warn",
             "tab"
         ],
+        "no-console": 0,
         "linebreak-style": 0,
         "quotes": [
-            "error",
+            "warn",
             "double"
         ],
         "semi": [
