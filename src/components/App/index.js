@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom';
 
 import MainLayout from '../MainLayout';
-import GenericIcons from '../GenericIcons';
+import Icon from '../GenericIcons/Icon';
+import umbrella from '../GenericIcons';
 
 class App extends Component {
 	render() {
@@ -16,6 +17,7 @@ class App extends Component {
 				<Switch>
 					<Route path="/app" component={MainLayout} />
 					<Redirect from="/" to="/app" exact />
+					{/* <Route path="/genericicons" render={()=><Icon mysvg={umbrella} />}  /> */}
 				</Switch>
 			</Router>
 		);
