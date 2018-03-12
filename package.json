@@ -55,9 +55,6 @@
     "server:dev": "json-server --watch db.json --port 8888"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "prop-types": "^15.6.0"
-=======
     "eslint": "^4.18.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
@@ -107,6 +104,5 @@
     "presets": [
       "react-app"
     ]
->>>>>>> 712312606140c83f8d87a0f95a4ef3bbd76ca25c
   }
 }
