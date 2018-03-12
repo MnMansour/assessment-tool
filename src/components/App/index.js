@@ -16,8 +16,6 @@ class App extends Component {
 				<Switch>
 					<Route path="/app" component={MainLayout} />
 					<Redirect from="/" to="/app" exact />
-					{/*<Route render={() => <h1>404</h1>} />*/}
-					{/*<Route path="/genericicons" component={GenericIcons} size="20" />*/}
 				</Switch>
 			</Router>
 		);
