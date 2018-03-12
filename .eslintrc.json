@@ -3,7 +3,11 @@
         "browser": true,
         "es6": true
     },
+<<<<<<< HEAD
     "extends": "eslint:recommended",
+=======
+    "extends": ["eslint:recommended", "react-app"],
+>>>>>>> 712312606140c83f8d87a0f95a4ef3bbd76ca25c
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -19,6 +23,7 @@
             "error",
             "tab"
         ],
+<<<<<<< HEAD
         "linebreak-style": [
             "error",
             "unix"
@@ -26,10 +31,22 @@
         "quotes": [
             "error",
             "double"
+=======
+        "linebreak-style": 0,
+        "quotes": [
+            "error",
+            "single"
+>>>>>>> 712312606140c83f8d87a0f95a4ef3bbd76ca25c
         ],
         "semi": [
             "error",
             "always"
+<<<<<<< HEAD
+=======
+        ],
+        "no-console": [
+            "warn"
+>>>>>>> 712312606140c83f8d87a0f95a4ef3bbd76ca25c
         ]
     }
 }

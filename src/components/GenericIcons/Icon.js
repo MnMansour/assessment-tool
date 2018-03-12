@@ -10,7 +10,6 @@ function Icon (props){
     const mysvg = props.mysvg;
     console.log('src', src)
     return (
-        
         <div dangerouslySetInnerHTML={{__html: src}} />
     )
 }
