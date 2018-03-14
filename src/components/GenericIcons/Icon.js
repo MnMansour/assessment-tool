@@ -1,23 +1,23 @@
-
 import React from 'react';
-import PropTypes from 'prop-types'; 
-import src from './umbrella.svg'
+import PropTypes from 'prop-types';
+import './icon.css';
 
-function Icon (props){
-    const sizeMap = { x1: 20, x2: 40, x3: 60, };
-    const iconSize = sizeMap[props.size];
-    const svgpath = props.svgpath;
-    const mysvg = props.mysvg;
-    console.log('src', src)
-    return (
-        <div dangerouslySetInnerHTML={{__html: src}} />
-    )
+function Icon(props) {
+	const sizeMap = { x1: 20, x2: 40, x3: 60 };
+	const iconSize = sizeMap[props.size];
+	// console.log(props);
+	return (
+		<span className={`icon ${props.iconColor}`} style={{width: iconSize}}
+			dangerouslySetInnerHTML={{ __html: props.src }}
+		/>
+	);
 }
-
-
 
 export default Icon;
 
 Icon.propTypes = {
-    size: PropTypes.string
-}
+	size: PropTypes.string,
+	iconColor: PropTypes.string,
+	src: PropTypes.string.isRequired
+
+};

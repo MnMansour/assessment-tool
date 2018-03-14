@@ -151,8 +151,10 @@ module.exports = {
 							cacheDirectory: true,
 						},
 					},
-          
-
+					{
+						test: /\.svg$/,
+						loader: "svg-inline-loader"
+					},
 					{
 						test: /\.scss$/,
 						use: [

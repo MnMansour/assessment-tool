@@ -63,9 +63,9 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "svg-inline-loader": "^0.8.0"
   },
-  
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"

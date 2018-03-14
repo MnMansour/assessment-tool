@@ -153,8 +153,10 @@ module.exports = {
 							compact: true,
 						},
 					},
-
-
+					{
+						test: /\.svg$/,
+						loader: "svg-inline-loader"
+					},
 					{
 						test: /\.scss$/,
 						use: [

@@ -1,0 +1,19 @@
+.icon{
+    display: inline-block;
+}
+
+.icon.danger svg {
+    fill: red;
+}
+
+.icon.warning svg {
+    fill: yellow;
+}
+
+.icon.success svg {
+    fill: green;
+}
+
+.icon.dark svg {
+    fill: black;
+}
