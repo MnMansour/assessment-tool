@@ -20,6 +20,7 @@
   font-size: 1.3rem;
   text-transform: capitalize;
   padding-right: 24px;
+  text-decoration: none;
 }
 
 .headerLog {
@@ -43,10 +44,13 @@
 .hamburger {
   color: #fdb515;
   cursor: pointer;
-  display: none;
   width: 120px;
   text-align: center;
   position: relative;
+}
+
+.hamburger img {
+  height: 50px;
 }
 
 .hamburger ul {
@@ -82,9 +86,6 @@ ul:hover {
     height: 50px;
   }
 
-  .hamburger {
-    display: block;
-  }
   ul {
     top: 40px;
   }

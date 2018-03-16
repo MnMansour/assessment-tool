@@ -1,7 +1,7 @@
 import React from "react";
 import "./footerStyle.css";
 
-import Insta from "./instagram.jpg";
+import Insta from "./instagram1.png";
 import Twitter from "./twitter.png";
 import YouTube from "./youtube.png";
 import Fb from "./facebook.png";
@@ -20,7 +20,7 @@ const Footer = () => {
 					<img src={Twitter} />
 				</a>
 				<a target="_blank" href="https://www.instagram.com/integrify.fi/">
-					<img src={Insta} id="insta" />
+					<img src={Insta} />
 				</a>
 				<a
 					target="_blank"

@@ -4,6 +4,7 @@ import github from "./github.png";
 import {Link} from "react-router-dom";
 
 class LandingPage extends Component {
+	
 	render() {
 		return (
 			<div className="login-container">

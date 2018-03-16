@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import Logout from "./Logout";
+import Log from "./Log-Container";
 
 import ham from "./hamburger.png";
-
 import "./Header.css";
 
 class Header extends Component {
-	state = {
-		show: false
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			show: false
+		};
+	}
+
 	render() {
 		return (
 			<div className="header">
@@ -19,17 +23,13 @@ class Header extends Component {
 						className="integrify"
 					/>
 				</a>
-				<Logout class="headerLog" />
+
 				<div
 					className="hamburger"
 					onClick={() => this.setState({ show: !this.state.show })}
 				>
 					<img src={ham} alt="" />
-					<ul className={this.state.show ? "show" : "hide"}>
-						<li>
-							<Logout class="log" />
-						</li>
-					</ul>
+					<Log class={this.state.show ? "show" : "hide"} />
 				</div>
 			</div>
 		);

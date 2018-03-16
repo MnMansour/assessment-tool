@@ -24,6 +24,8 @@ footer img:hover {
   height: 36px;
 }
 
-#insta {
-  height: 32px;
+@media (max-width: 500px) {
+  footer img {
+    margin: 10px;
+  }
 }

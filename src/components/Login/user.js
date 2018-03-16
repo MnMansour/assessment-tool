@@ -7,12 +7,6 @@ import { userSelector } from "../../redux/selectors";
 import PropTypes from "prop-types";
 
 class User extends Component {
-	handleLogout = e => {
-		e.preventDefault();
-		this.props.logout();
-		window.location.href = "/app/home";
-	};
-
 	handleLogout = () => {
 		this.props.logout();
 		this.props.history.push("/app/home");
