@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import LoginForm from "../Login/Login";
 
 const Login = () => {
-	return <div>login with Github</div>;
+	return <LoginForm/>;
 };
 
 export default Login;

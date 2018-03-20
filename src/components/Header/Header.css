@@ -1,0 +1,62 @@
+.header {
+  display: flex;
+  background-color: black;
+  justify-content: space-between;
+  align-items: center;
+}
+.header img{
+  height: 120px;
+}
+.log {
+  color: white;
+  margin-right: 12px;
+  font-size: 1.7rem;
+  text-transform: capitalize;
+}
+
+.hamburger {
+  color: white;
+  cursor: pointer;
+  display: none;
+  width: 120px;
+  text-align: center;
+  position: relative;
+}
+
+.hamburger img{
+}
+.hamburger ul{
+  color: white;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  background-color: black;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.hamburger li  {
+  padding: 12px 0;
+}
+
+.show{
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .header img{ height: 50px;}
+  .log {display: none;}
+  .hamburger{
+    display: block;
+  }
+  ul {
+    top: 50px;
+  }
+
+}
