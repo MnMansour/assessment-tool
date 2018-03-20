@@ -16,7 +16,7 @@ handleLogout=()=>{
 CorrectPassword=()=>{
 	return(
 		<div>
-			{`You are welcome ${this.props.user[0].firstName}...`}
+			{`You are welcome ${this.props.user.firstName}...`}
 			<form onSubmit={(e)=>{this.handleLogout(e);}}>
 				<input type="submit" value="Logout"/>
 			</form>
@@ -28,7 +28,7 @@ CorrectPassword=()=>{
 render() {
 	return (
 		<div>
-			{this.props.user[0].flag==="error"? this.handleLogout():this.CorrectPassword()}
+			{this.props.user.flag==="error"? this.handleLogout():this.CorrectPassword()}
 		</div>
 	);
 }

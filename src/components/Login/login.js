@@ -9,7 +9,6 @@ import {fetchUsers} from "../../util/api";
 import {userSelector} from "../../redux/selectors";
 import PropTypes from "prop-types";
 
-
 const validate = (obj)=>{
 	return {
 		username:isAlphanumeric(obj.username),
@@ -37,7 +36,7 @@ resetProps = ()=>{
 
 navigate =(nextProps)=>{
 	console.log("NextProps", nextProps);
-	if(nextProps.user[0].id==="failed" ){
+	if(nextProps.user.id==="failed" ){
 		this.resetProps();
 	}else{
 		this.props.history.push(`/app/user/${this.props.user.id}`);
@@ -47,14 +46,14 @@ navigate =(nextProps)=>{
 handleLogin = (e)=>{
 	e.preventDefault();
 	if(this.state.apiusers.status===200){
-		let users = Object.values(this.state.apiusers.data);
+		let users =Object.values(this.state.apiusers.data);
 		let user ={id: this.state.username,
 			account: this.state.password};
 		let check = users.filter((item)=>item.id===user.id && item.account===user.account);
 		let checked ={...check};
 		if(check.length===1){
-			this.props.login(checked);
-			console.log("Success!",checked );
+			this.props.login(checked[0]);
+			console.log("Success!", check[0]);
 		}else{
 			let failobject = [{
 				"id": "failed",
