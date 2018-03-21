@@ -9,7 +9,9 @@ import { fetchUsers } from "../../util/api";
 import { userSelector } from "../../redux/selectors";
 import PropTypes from "prop-types";
 
-const validate = obj => {
+
+const validate = (obj)=>{
+
 	return {
 		username: isAlphanumeric(obj.username),
 		password: isAlphanumeric(obj.password)
@@ -36,7 +38,7 @@ class LoginForm extends Component {
 
 	navigate = nextProps => {
 		console.log("NextProps", nextProps);
-		if (nextProps.user[0].id === "failed") {
+		if (nextProps.user.id === "failed") {
 			this.resetProps();
 		} else {
 			this.props.history.push(`/app/user/${this.props.user.id}`);
@@ -56,8 +58,8 @@ class LoginForm extends Component {
 			);
 			let checked = { ...check };
 			if (check.length === 1) {
-				this.props.login(checked);
-				console.log("Success!", checked);
+				this.props.login(checked[0]);
+				console.log("Success!", check[0]);
 			} else {
 				let failobject = [
 					{

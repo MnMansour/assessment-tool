@@ -5,7 +5,7 @@ import { LOG_IN, LOG_OUT, USER_IN, RESET_STATE,GET_CLASSES} from "./actions";
 const user = (state ={} , { type, payload}) => {
 	switch (type) {
 	case LOG_IN:
-		return payload;
+		return {...payload};
 	case LOG_OUT:
 		state = null;
 		state={};

@@ -12,10 +12,11 @@ class User extends Component {
 		this.props.history.push("/app/home");
 	};
 
+
 	CorrectPassword = () => {
 		return (
 			<div>
-				{`You are welcome ${this.props.user[0].firstName}...`}
+				{`You are welcome ${this.props.user.firstName}...`}
 				<form
 					onSubmit={e => {
 						this.handleLogout(e);
@@ -30,12 +31,16 @@ class User extends Component {
 	render() {
 		return (
 			<div>
-				{this.props.user[0].flag === "error"
+				{this.props.user.flag === "error"
 					? this.handleLogout()
 					: this.CorrectPassword()}
 			</div>
 		);
 	}
+
+
+			
+
 }
 const mapStateToProps = state => {
 	return {
