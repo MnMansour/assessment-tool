@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-
+import ClassManagementContainer from "../ClassManagement/index";
 import Header from "../Header";
 import Login from "../Login/index";
 import LoginAdmin from "../LoginAdmin/index";
@@ -19,8 +19,9 @@ const MainLayout = ({ match }) => {
 			<Switch>
 				<Route path={`${match.url}/home`} render={() => <LandingPage />}/>
 				<Route path={`${match.url}/login-admin`} component={LoginAdmin} />
+				<Route path={`${match.url}login`} component={Login} />
+				<Route path={`${match.url}/class-management/:id`} component={ClassManagementContainer} />
 				<Route path={`${match.url}/user/:id`} component={User} />
-				<Route path={`${match.url}/login`} component={Login} />
 				<Route path={`${match.url}/button`} component={Button} />
 				<Route path={`${match.url}/loader`} component={Loader} />
 				<Route path={`${match.url}/dashboard`} component={SortableTableContainer} />

@@ -8,7 +8,8 @@
         "headTeacher": "T001",
         "graduationDate": "2018-04-01",
         "plannedSprints": "20",
-        "location": "Helsinki"
+        "location": "Helsinki",
+        "user_ids": ["001", "002"]
       },
       {
         "id": "002",
@@ -18,7 +19,8 @@
         "headTeacher": "T002",
         "graduationDate": "2018-06-01",
         "plannedSprints": "20",
-        "location": "Espoo"
+        "location": "Espoo",
+        "user_ids": ["003"]
       }
     ],
     "accounts": [
