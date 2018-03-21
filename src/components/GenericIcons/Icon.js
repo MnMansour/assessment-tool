@@ -19,5 +19,4 @@ Icon.propTypes = {
 	size: PropTypes.string,
 	iconColor: PropTypes.string,
 	src: PropTypes.string.isRequired
-
 };
