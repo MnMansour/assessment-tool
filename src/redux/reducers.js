@@ -1,11 +1,12 @@
-import { combineReducers } from 'redux';
-import { LOG_IN, LOG_OUT, GET_CLASSES } from './actions';
-import * as actionsType from './actions';
+import { combineReducers } from "redux";
+import * as actionsType from "./actions";
+import { LOG_IN, LOG_OUT, USER_IN, RESET_STATE,GET_CLASSES} from "./actions";
 
-const user = (state = {}, { type, payload }) => {
+
+const user = (state ={} , { type, payload}) => {
 	switch (type) {
 	case LOG_IN:
-		return { ...payload };
+		return {...payload};
 	case LOG_OUT:
 		return {};
 	case actionsType.USER_STORE: {
@@ -14,6 +15,10 @@ const user = (state = {}, { type, payload }) => {
 			newState[user.id] = user;
 		});
 		return newState; }
+	case RESET_STATE:
+		state = null;
+		state={};
+		return state;
 	default:
 		return state;
 	}
@@ -37,14 +42,22 @@ const classes = (state = {}, action) => {
 		return newState; }
 	default:
 		return state;
+	
+	}
+	
+};
+
+
+const usersfromapi = (state ={} , { type, payload}) => {
+	switch (type) {
+	case USER_IN:
+		return payload;
+	default:
+		return state;
 	}
 };
 
 
-
-
-
-// TODO: Merge UserClass to classes
 const userClass = (state = [], { type, payload }) => {
 	switch (type) {
 	case GET_CLASSES:
@@ -54,4 +67,4 @@ const userClass = (state = [], { type, payload }) => {
 	}
 };
 
-export default combineReducers({ user,classes, userClass });
+export default combineReducers({ user,classes, authuser: user , users: usersfromapi, userClass});

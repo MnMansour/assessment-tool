@@ -1,56 +1,56 @@
-import React from 'react';
-import propTypes from 'prop-types';
-import { handleDate, handleNumber, handleAlpha } from '../../utilities/sort';
-import SortableTableHead from '../SortableTableHead';
-import SortableTableRow from '../SortableTableRow';
+import React from "react";
+import propTypes from "prop-types";
+import { handleDate, handleNumber, handleAlpha } from "../../utilities/sort";
+import SortableTableHead from "../SortableTableHead";
+import SortableTableRow from "../SortableTableRow";
 function SortableTable({ handleSortData, classes }) {
 	const data = [
 		{
-			sortBy: 'id',
+			sortBy: "id",
 			handleDataKind: handleNumber,
-			title: 'Id'
+			title: "Id"
 		},
 		{
-			sortBy: 'name',
+			sortBy: "name",
 			handleDataKind: handleAlpha,
-			title: 'Name'
+			title: "Name"
 		},
 		{
-			sortBy: 'participantCount',
+			sortBy: "participantCount",
 			handleDataKind: handleNumber,
-			title: 'Participants'
+			title: "Participants"
 		},
 		{
-			sortBy: 'currentSprint',
+			sortBy: "currentSprint",
 			handleDataKind: handleNumber,
-			title: 'Current Sprint'
+			title: "Current Sprint"
 		},
 		{
-			sortBy: 'headTeacher',
+			sortBy: "headTeacher",
 			handleDataKind: handleAlpha,
-			title: 'Head Teacher'
+			title: "Head Teacher"
 		},
 		{
-			sortBy: 'graduationDate',
+			sortBy: "graduationDate",
 			handleDataKind: handleDate,
-			title: 'Graduation Date'
+			title: "Graduation Date"
 		},
 		{
-			sortBy: 'plannedSprints',
+			sortBy: "plannedSprints",
 			handleDataKind: handleNumber,
-			title: 'Planned Sprints'
+			title: "Planned Sprints"
 		},
 
 		{
-			sortBy: 'location',
+			sortBy: "location",
 			handleDataKind: handleAlpha,
-			title: 'Location'
+			title: "Location"
 		},
 
 		{
-			sortBy: '',
-			handleDataKind: '',
-			title: 'Manage'
+			sortBy: "",
+			handleDataKind: "",
+			title: "Manage"
 		}
 	];
 	return (

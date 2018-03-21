@@ -47,7 +47,7 @@
 input:focus { outline:none; }
 
 /* LABEL ======================================= */
-label {
+.stu-table label {
   color:#999;
   font-size:18px;
   font-weight:normal;
