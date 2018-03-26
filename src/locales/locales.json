@@ -1,0 +1,22 @@
+{
+    "en": {
+        "translation": {
+            "Teacher-Dashboard":{
+                "title": "Teacher Dashboard",
+                "location": "Location",
+                "className": "Class Name",
+                "Total-number-of-participants": "Total number of participants"
+            }
+        }
+    },
+    "fi": {
+        "translation": {
+            "Teacher-Dashboard": {
+               "title": "Opettajan hallintapaneeli",
+                "location": "Paikka",
+                "className": "Luokan nimi"
+            } 
+            
+        }
+    }
+}
