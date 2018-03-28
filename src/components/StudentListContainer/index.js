@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
 import StudentList from "../StudentList";
-import StudentPage from "../StudentPage";
 import "./StudentList.css";
 import { studentSelector } from "../../redux/selector";
 import { connect } from "react-redux";
@@ -27,10 +26,7 @@ class StudentListContainer extends Component {
 	};
 	render() {
 		return (
-			<div className="student-container">
-				<StudentList students={this.state.students} />
-				<StudentPage students={this.state.students} />
-			</div>
+			<StudentList students={this.state.students} />
 		);
 	}
 }

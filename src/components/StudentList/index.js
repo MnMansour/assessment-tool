@@ -5,15 +5,14 @@ class StudentList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			display: "showing"
+			isDisplayed:true,
 		};
 	}
 	render() {
 		return (
-			<div className="list-container">
-				{this.state.display === "showing" ? (
+			<div className="student-container">
+				{this.state.isDisplayed === true? (
 					<div className="container-red ">
-						<div />
 						<div className="student-list">
 							<div className="student-row">
 								{this.props.students.map((student, i) => {
@@ -29,7 +28,7 @@ class StudentList extends Component {
 									<div
 										className="arrow-left"
 										onClick={() => {
-											this.setState({ display: "hidden" });
+											this.setState({ isDisplayed:false });
 										}}
 									/>
 								</div>
@@ -43,7 +42,7 @@ class StudentList extends Component {
 								<div
 									className="arrow-right"
 									onClick={() => {
-										this.setState({ display: "showing" });
+										this.setState({ isDisplayed:true });
 									}}
 								/>
 							</div>
