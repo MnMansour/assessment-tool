@@ -11,7 +11,7 @@ class StudentList extends Component {
 	render() {
 		return (
 			<div className="student-container">
-				{this.state.isDisplayed === true? (
+				{this.state.isDisplayed ? (
 					<div className="container-red ">
 						<div className="student-list">
 							<div className="student-row">

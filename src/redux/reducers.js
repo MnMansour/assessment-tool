@@ -1,10 +1,6 @@
 import { combineReducers } from "redux";
-<<<<<<< HEAD
-import { LOG_IN, LOG_OUT,SHOW_STUDENTS } from "./actions";
-=======
 import * as actionsType from "./actions";
-import { LOG_IN, LOG_OUT, USER_IN, RESET_STATE,GET_CLASSES} from "./actions";
->>>>>>> develop
+import { SHOW_STUDENTS ,LOG_IN, LOG_OUT, USER_IN, RESET_STATE,GET_CLASSES} from "./actions";
 
 
 const user = (state ={} , { type, payload}) => {
@@ -64,7 +60,6 @@ const usersfromapi = (state ={} , { type, payload}) => {
 
 const userClass = (state = [], { type, payload }) => {
 	switch (type) {
-<<<<<<< HEAD
 	case LOG_IN:
 		return { ...payload };
 	case LOG_OUT:
@@ -76,17 +71,12 @@ const userClass = (state = [], { type, payload }) => {
 const studentsList = (state = [], { type, payload }) => {
 	switch (type) {
 	case SHOW_STUDENTS:
-=======
 	case GET_CLASSES:
->>>>>>> develop
 		return payload;
 	default:
 		return state;
 	}
 };
 
-<<<<<<< HEAD
-export default combineReducers({ user,studentsList });
-=======
-export default combineReducers({ user,classes, authuser: user , users: usersfromapi, userClass});
->>>>>>> develop
+
+export default combineReducers({ studentsList,user,classes, authuser: user , users: usersfromapi, userClass});

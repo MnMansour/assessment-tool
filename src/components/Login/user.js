@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Login.css";
+import "./login.css";
 import { withRouter } from "react-router-dom";
 import {connect} from "react-redux";
 import {resetState} from "../../redux/actions";

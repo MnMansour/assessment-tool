@@ -4,14 +4,13 @@ import propTypes from "prop-types";
 import ClassManagementContainer from "../ClassManagement/index";
 import Header from "../Header";
 import Login from "../Login/index";
-import LoginAdmin from "../LoginAdmin/index";
-import User from "../Login/User";
+import LoginAdmin from "../LoginAdmin/login-admin";
+import User from "../Login/user";
 import Footer from "../Footer";
 import LandingPage from "../Home/index";
 import Button from "../Button-generic/index";
 import Loader from "../Loader/Loader";
 import SortableTableContainer from "../SortableTableContainer";
-import StudentListContainer from "../StudentListContainer";
 const MainLayout = ({ match }) => {
 	
 	return (
@@ -28,7 +27,6 @@ const MainLayout = ({ match }) => {
 				<Route path={`${match.url}/dashboard`} component={SortableTableContainer} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
 			</Switch>
-			<StudentListContainer />
 			<Footer />
 		</Fragment>
 	);
