@@ -51,7 +51,7 @@ class StudentProfileContainer extends Component {
         const peerUser = this.props.user[peerUserId] ? this.props.user[peerUserId] : "";        
         
         return (
-            <div className="container">
+            <div className="student-profile">
                 <StudentProfile account={account} user={user} peerUser={peerUser} graduationDate={graduationDate} />
             </div>);
     }
