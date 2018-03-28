@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./login.css";
+import "./Login.css";
 import { withRouter } from "react-router-dom";
 import tick from "../../assets/tick.png";
 import isAlphanumeric from "validator/lib/isAlphanumeric";
