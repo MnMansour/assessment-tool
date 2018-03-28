@@ -22,7 +22,7 @@ const ClassOverview = ({element, t}) => {
 						<p>{element.location}</p>
 					</div>
 					<div className="col-4">
-						<h3 className="title">{t("Teacher-Dashboard.className")}</h3>
+						<h3 className="title">{t("Teacher-Dashboard.class-name")}</h3>
 						<NameOfClass
 							isEdit={element.isEdit}
 							name={element.name}
@@ -34,7 +34,7 @@ const ClassOverview = ({element, t}) => {
 						<p>{element.participantCount}</p>
 					</div>
 					<div className="col-4">
-						<h3 className="title">Overall progress</h3>
+						<h3 className="title">{t("Teacher-Dashboard.Overall-progress")}</h3>
 						<p>
 							{`${percentage(
 								currentSprint,
@@ -54,10 +54,10 @@ const ClassOverview = ({element, t}) => {
 							</span>
 						</div>
 						<p>
-                                Every student completed {currentSprint}/{
+							{t("Teacher-Dashboard.completed-1")} {currentSprint}/{
 								plannedSprints
 							}{" "}
-                                sprints successfully.
+							{t("Teacher-Dashboard.completed-2")}
 						</p>
 					</div>
 				</div>

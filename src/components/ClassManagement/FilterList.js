@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { filterList } from '../../util/util.js';
-import StudentName from './StudentName';
-import './FilterList.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { filterList } from "../../util/util.js";
+import StudentName from "./StudentName";
+import "./FilterList.css";
+import { translate } from "react-i18next";
 
 class FilterList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			searchKey: ''
+			searchKey: ""
 		};
 	}
 
 	render() {
 		const result = filterList(this.props.ListItems, this.state.searchKey);
+		const { t } = this.props;
 		return (
 			<div className="stu-table container">
-				<h3 className="title">Students</h3>
+				<h3 className="title">{t("Teacher-Dashboard.Students")}</h3>
 				<div className="group">
 					<input
 						type="text"
@@ -43,4 +45,4 @@ FilterList.propTypes = {
 	ListItems: PropTypes.array
 };
 
-export default FilterList;
+export default translate()(FilterList);

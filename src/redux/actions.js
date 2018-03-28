@@ -1,14 +1,14 @@
 
 //classes section
-export const CLASS_EDIT = 'CLASS_EDIT';
-export const CLASS_STORE = 'CLASS_STORE';
+export const CLASS_EDIT = "CLASS_EDIT";
+export const CLASS_STORE = "CLASS_STORE";
 
 export const classStore = classes => ({ type: CLASS_STORE, payload: classes });
 export const classEdit = (indexToChange, name)=>({type: CLASS_EDIT, indexToChange, name });
 //end classes section
 
 //User section
-export const USER_STORE = 'USER_STORE';
+export const USER_STORE = "USER_STORE";
 export const userStore = classes => ({ type: USER_STORE, payload: classes });
 // end user section
 

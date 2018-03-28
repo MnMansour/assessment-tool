@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import * as actionsType from '../../redux/actions.js';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import * as actionsType from "../../redux/actions.js";
 
 function EditableField(labelEdit) {
 	class CustomsField extends React.Component {

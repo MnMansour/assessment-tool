@@ -4,17 +4,27 @@
             "Teacher-Dashboard":{
                 "title": "Teacher Dashboard",
                 "location": "Location",
-                "className": "Class Name",
-                "Total-number-of-participants": "Total number of participants"
+                "class-name": "Class Name",
+                "Total-number-of-participants": "Total number of participants",
+                "Overall-progress" : "Overall progress",
+                "completed-1": "Every student completed",
+                "completed-2": "sprints successfully",
+                "Students": "Students"
             }
         }
     },
     "fi": {
         "translation": {
             "Teacher-Dashboard": {
-               "title": "Opettajan hallintapaneeli",
+                "title": "Opettajan hallintapaneeli",
                 "location": "Paikka",
-                "className": "Luokan nimi"
+                "class-name": "Luokan nimi",
+                "Total-number-of-participants": "Osallistujien kokonaismäärä",
+                "Overall-progress": "Kokonaisedistyminen",
+                "completed-1": "Jokainen opiskelija valmisti ",
+                "completed-2": "sprintit onnistuneesti",
+                "Students": "Opiskelijat"
+
             } 
             
         }

@@ -1,6 +1,6 @@
-import React from 'react';
-import NotFoundImage from '../images/404.jpg';
-import './index.scss';
+import React from "react";
+import NotFoundImage from "../images/404.jpg";
+import "./index.scss";
 
 const NotFound = () => {
 	return (

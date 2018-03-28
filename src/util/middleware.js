@@ -1,4 +1,4 @@
 export const getUsers =(store)=>(next)=>(action)=>{
-    console.log("Hello")
-    eggs:  "Olujuwon"
-}
+	console.log("Hello");
+	"Olujuwon";
+};

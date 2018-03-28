@@ -1,11 +1,21 @@
 .header {
-  display: flex;
+  
   background-color: black;
+  
+}
+.header .logo img{
+  width: 100%;
+}
+
+.header .container {
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: .5em 0;
 }
-.header img{
-  height: 120px;
+
+.header .logo {
+  width: 150px;
 }
 .log {
   color: white;
@@ -14,6 +24,15 @@
   text-transform: capitalize;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+}
+.header select {
+  margin-right: 1em;
+  padding: 0.3em;
+  border-radius: 3px;
+}
 .hamburger {
   color: white;
   cursor: pointer;
