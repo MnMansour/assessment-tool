@@ -1,9 +1,33 @@
 {
-    "extends": "react-app",
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": ["eslint:recommended", "react-app"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
     "rules": {
-        "indent": ["error", 4],
-        "linebreak-style": ["error", "windows"],
-        "quotes": ["error", "double"],
-        "semi": ["error", "always"]
+        "indent": [
+            "warn",
+            "tab"
+        ],
+        "no-console": 0,
+        "linebreak-style": 0,
+        "quotes": [
+            "warn",
+            "double"
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ]
     }
 }
