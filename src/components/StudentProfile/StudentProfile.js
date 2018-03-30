@@ -3,7 +3,7 @@ import "./StudentProfile.css";
 import ScrollButton from "./ScrollTopButton/ScrollTopButton";
 
 
-const StudentProfile = ({ account, user, peerUser, graduationDate }) => {
+const StudentProfile = ({ account, user={}, peerUser={}, graduationDate }) => {
 	return (
 		<div className="container">
 			<h1>Graduation Date: {graduationDate}</h1>

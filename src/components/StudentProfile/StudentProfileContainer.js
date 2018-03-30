@@ -3,57 +3,49 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import * as actionsType from "../../redux/actions";
+import {
+	oneUserSelector,
+	accountsSelector,
+	classesSelector ,
+	matchedClassSelector   
+} from "../../redux/selectors";
 import StudentProfile from "./StudentProfile";
 
 class StudentProfileContainer extends Component {
-	componentWillMount() {
-		const fetchUsers = async () => {
-			try {
-				const userRes = await axios.get("http://localhost:8888/users");
-				const accountsRes = await axios.get(
-					"http://localhost:8888/accounts"
-				);
-				const classesRes = await axios.get(
-					"http://localhost:8888/classes"
-				);
-				this.props.getUsers(userRes.data);
-				this.props.getAccounts(accountsRes.data);
-				this.props.getClasses(classesRes.data);
-			} catch (err) {
-				console.error("OUR ERROR", err);
-			}
-		};
-		fetchUsers();
+
+	fetchUsers = async () => {
+		try {
+			const classesRes = await axios.get("http://localhost:8888/classes");
+			this.props.getClasses(classesRes.data);
+
+			const userRes = await axios.get(`http://localhost:8888/users/${this.props.match.params.id}`);
+			this.props.getUser(userRes.data);
+
+			const accountsRes = await axios.get(`http://localhost:8888/accounts/${userRes.data.account}`);
+			this.props.getAccounts(accountsRes.data);
+
+			const peerUserRes = await axios.get(`http://localhost:8888/users/${accountsRes.data.peer_user_id}`);
+			this.props.getUser(peerUserRes.data);
+		} catch (err) {
+			console.error("OUR ERROR", err);
+		}
 	}
 
-	render() {     
-         
-		const matchedUser = Object.values(this.props.classes).filter(
-			element =>
-				element.user_ids.includes(this.props.match.params.id)
-		);
+	componentWillMount() {
+		this.fetchUsers();
+	}  
 
-		const graduationDate = matchedUser.map(id => id.graduationDate);         
-
-		const userAccount = this.props.user[this.props.match.params.id]
-			? this.props.user[this.props.match.params.id].account
-			: "";        
-
-		const user = this.props.user[this.props.match.params.id]
-			? this.props.user[this.props.match.params.id]
-			: "";        
-
-		const account = this.props.accounts[userAccount]
-			? this.props.accounts[userAccount]
-			: "";       
-
-		const peerUserId = account.peer_user_id;
-		const peerUser = this.props.user[peerUserId] ? this.props.user[peerUserId] : "";        
-        
+	render() {
+		const matchedClass = this.props.selectClassByUserId(this.props.match.params.id); 
+		const graduationDate = matchedClass && matchedClass.graduationDate;
+		const account = this.props.accounts? this.props.accounts : "";
+		const matchedUser = Object.values(this.props.user).find(element => element.id === this.props.match.params.id);
+		const matchedPeerUser = Object.values(this.props.user).find(element => element.id === account.peer_user_id);
 		return (
-			<div className="student-profile">
-				<StudentProfile account={account} user={user} peerUser={peerUser} graduationDate={graduationDate} />
-			</div>);
+			<div className="container">
+				<StudentProfile account={account} user={matchedUser} peerUser={matchedPeerUser} graduationDate={graduationDate}/>
+			</div>
+		);
 	}
 }
 
@@ -63,12 +55,12 @@ StudentProfileContainer.propTypes = {
 	classes: PropTypes.object
 };
 
-const mapStateToProps = state => {
-	return { user: state.user, accounts: state.accounts, classes: state.classes };
+const mapStateToProps = (state) => {
+	return { user: oneUserSelector(state), accounts: accountsSelector(state), classes: classesSelector(state), selectClassByUserId: (id) => matchedClassSelector(state, id)};
 };
 
 const mapDispatchToProps = dispatch => {
-	return { getAccounts: accounts => dispatch(actionsType.accountStore(accounts)), getUsers: users => dispatch(actionsType.userStore(users)), getClasses: classes => dispatch(actionsType.classStore(classes)) };
+	return { getAccounts: accounts => dispatch(actionsType.accountStore(accounts)), getUser: user => dispatch(actionsType.oneUserStore(user)), getClasses: classes => dispatch(actionsType.classStore(classes)) };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(

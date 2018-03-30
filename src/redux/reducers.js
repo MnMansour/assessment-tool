@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import * as actionsType from "./actions";
 import { LOG_IN, LOG_OUT, USER_IN, RESET_STATE,GET_CLASSES, USER_STORE,
 	ACCOUNT_STORE,
-	CLASS_STORE } from "./actions";
+	CLASS_STORE, ONE_USER_STORE } from "./actions";
 
 
 const user = (state ={} , { type, payload}) => {
@@ -21,20 +21,17 @@ const user = (state ={} , { type, payload}) => {
 		state = null;
 		state={};
 		return state;
+	case ONE_USER_STORE:      
+		return {...state, [payload.id]:payload};
 	default:
 		return state;
 	}
 };
 
-
 const accounts = (state = {}, { type, payload }) => {
 	switch (type) {
-	case ACCOUNT_STORE:{
-		const newState = {};
-		payload.forEach(account => {
-			newState[account.id] = account;
-		});
-		return newState;}
+	case ACCOUNT_STORE:       
+		return { ...payload };
 	default:
 		return state;
 	}

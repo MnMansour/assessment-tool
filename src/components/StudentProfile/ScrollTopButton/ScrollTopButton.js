@@ -47,7 +47,7 @@ class ScrollButton extends React.Component {
 					this.scrollToTop();
 				}}
 			>
-				<i class="fas fa-angle-up" />
+				<i className="fas fa-angle-up" />
 			</button>
 		);
 	}

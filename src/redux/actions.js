@@ -17,6 +17,11 @@ export const USER_STORE = "USER_STORE";
 export const userStore = classes => ({ type: USER_STORE, payload: classes });
 // end user section
 
+//One User section
+export const ONE_USER_STORE = "ONE_USER_STORE";
+export const oneUserStore = user => ({ type: ONE_USER_STORE, payload: user });
+//End One user section
+
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
 export const RESET_STATE = "RESET_STATE";
