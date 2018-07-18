@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { LOG_IN, LOG_OUT } from './actions';
+import { reducer as formReducer } from 'redux-form'
 
 const user = (state = {}, { type, payload }) => {
 	switch (type) {
@@ -12,4 +13,7 @@ const user = (state = {}, { type, payload }) => {
 	}
 };
 
-export default combineReducers({ user });
+export default combineReducers({
+	 user,
+	 form: formReducer
+  });
