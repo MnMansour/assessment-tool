@@ -57,6 +57,7 @@ export const postData = (dataToPost, title) => {
     }
 };
 
+
 export const getData = async (title) => {
     const url = `https://assesment-tool.firebaseio.com/${title}.json`;
     //const myInit = { method: 'GET', type : 'application/json'};
@@ -67,4 +68,49 @@ export const getData = async (title) => {
         console.error(error);
         return error;
     }
+}
+
+export const loginWithGithub = async () => {
+    const provider = new firebase.auth.GithubAuthProvider();
+    const providerWithRepo = provider.addScope('repo');
+    const authDetails = await firebase.auth().signInWithPopup(providerWithRepo).then(function(result) {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const token = result.credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        const profile = result.additionalUserInfo.profile;
+        return {token: token, user: user, repo: profile};
+      }).catch(function(error) {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        const credential = error.credential;
+        return {errorCode, errorMessage, email, credential}
+      });
+    return authDetails;
+}
+
+
+export const signOut = async () => {
+    try{
+        const signOutData = await firebase.auth().signOut().then(function() {});
+        return signOutData;
+    }catch(error){
+        console.error(error);
+        return error;
+    }
+}
+
+export const sendPasswordResetEmail = (email) => {
+    const auth = firebase.auth();
+    const emailAddress = email;
+    auth.sendPasswordResetEmail(emailAddress).then(function(response) {
+        console.log(response);
+        return response;
+    }).catch(function(error) {
+        console.error(error);
+    });
 }
