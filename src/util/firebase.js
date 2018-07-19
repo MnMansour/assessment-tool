@@ -71,24 +71,46 @@ export const getData = async (title) => {
 }
 
 export const loginWithGithub = async () => {
-    let provider = new firebase.auth.GithubAuthProvider();
-    let providerWithRepo = provider.addScope('repo');
-    let authDetails = await firebase.auth().signInWithPopup(providerWithRepo).then(function(result) {
+    const provider = new firebase.auth.GithubAuthProvider();
+    const providerWithRepo = provider.addScope('repo');
+    const authDetails = await firebase.auth().signInWithPopup(providerWithRepo).then(function(result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-        let token = result.credential.accessToken;
+        const token = result.credential.accessToken;
         // The signed-in user info.
-        let user = result.user;
-        let profile = result.additionalUserInfo.profile;
+        const user = result.user;
+        const profile = result.additionalUserInfo.profile;
         return {token: token, user: user, repo: profile};
       }).catch(function(error) {
         // Handle Errors here.
-        let errorCode = error.code;
-        let errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
         // The email of the user's account used.
-        let email = error.email;
+        const email = error.email;
         // The firebase.auth.AuthCredential type that was used.
-        let credential = error.credential;
+        const credential = error.credential;
         return {errorCode, errorMessage, email, credential}
       });
     return authDetails;
+}
+
+
+export const signOut = async () => {
+    try{
+        const signOutData = await firebase.auth().signOut().then(function() {});
+        return signOutData;
+    }catch(error){
+        console.error(error);
+        return error;
+    }
+}
+
+export const sendPasswordResetEmail = (email) => {
+    const auth = firebase.auth();
+    const emailAddress = email;
+    auth.sendPasswordResetEmail(emailAddress).then(function(response) {
+        console.log(response);
+        return response;
+    }).catch(function(error) {
+        console.error(error);
+    });
 }
