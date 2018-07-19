@@ -57,6 +57,7 @@ export const postData = (dataToPost, title) => {
     }
 };
 
+
 export const getData = async (title) => {
     const url = `https://assesment-tool.firebaseio.com/${title}.json`;
     //const myInit = { method: 'GET', type : 'application/json'};
@@ -67,4 +68,27 @@ export const getData = async (title) => {
         console.error(error);
         return error;
     }
+}
+
+export const loginWithGithub = async () => {
+    let provider = new firebase.auth.GithubAuthProvider();
+    let providerWithRepo = provider.addScope('repo');
+    let authDetails = await firebase.auth().signInWithPopup(providerWithRepo).then(function(result) {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        let token = result.credential.accessToken;
+        // The signed-in user info.
+        let user = result.user;
+        let profile = result.additionalUserInfo.profile;
+        return {token: token, user: user, repo: profile};
+      }).catch(function(error) {
+        // Handle Errors here.
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        // The email of the user's account used.
+        let email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        let credential = error.credential;
+        return {errorCode, errorMessage, email, credential}
+      });
+    return authDetails;
 }
