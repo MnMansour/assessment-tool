@@ -11,7 +11,7 @@ const MainLayout = ({ match }) => {
 		<Fragment>
 			<Header />
 			<Switch>
-				<Route path={`${match.url}/home`} render={() => <h1>Integrify Assesment Tool</h1>} />
+				<Route path={`${match.url}/home`} component={Login} />
 				<Route path={`${match.url}/login-admin`} component={LoginAdmin} />
 				<Route path={`${match.url}/login`} component={Login} />
 				<Redirect from={match.url} to={`${match.url}/home`} />
