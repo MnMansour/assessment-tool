@@ -114,3 +114,17 @@ export const sendPasswordResetEmail = (email) => {
         console.error(error);
     });
 }
+
+export const linkloginAccounts = async (email, password) => {
+    try{
+        let credential = await firebase.auth.EmailAuthProvider.credential(email, password);
+        const user = await firebase.auth().currentUser.linkAndRetrieveDataWithCredential(credential).then((usercred)=> {
+                        let user = usercred.user;
+                        console.log("Account linking success", user);
+                    })
+        return user;
+    }catch(error){
+        console.error(error);
+        return error;
+    }
+}
