@@ -1,75 +1,52 @@
 import React, {Component} from 'react';
+import Section from './section'
 
 import userIcon from '../../assets/user.png';
 import emailIcon from '../../assets/email.png';
 import githubIcon from '../../assets/github.png';
 import phoneIcon from '../../assets/phone.png';
 import linkedinIcon from '../../assets/linkedin.png';
-import addButton from '../../assets/add-button.png';
-import arrowDown from '../../assets/arrow-down.png';
-import arrowUp from '../../assets/arrow-up.png';
 
+import * as constant from '../../util/constant'
 import './style.scss';
 
+const Data = {
+  id: 1,
+  role: 'student',
+  name : 'Mohammed Mansoor',
+  image: 'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg',
+  phone: '0466568898',
+  email: 'mohamednmansour.90@gmail.com',
+  github: 'https://github.com/MnMansour',
+  linkedin: 'https://www.linkedin.com/in/mnmansoor/',
+  education: [],
+  experience: [],
+  skills: [],
+  assignments: [],
+  projects: [],
+}
+
 class Profile extends Component {
+
   render(){
     return(
       <div className="profile">
         <div className="profile__header">
-          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="profile"/>
+          <img src={Data.image} alt="profile"/>
           <div className="details">
-            <div className="detail"><img src={userIcon} alt="userIcon"/><span>Integrify Student</span></div>
-            <div className="detail"><img src={phoneIcon} alt="phoneIcon"/><a href="tel:3177594940">317.759.4940</a></div>
-            <div className="detail"><img src={emailIcon} alt="emailIcon"/><a href="mailto:webmaster@example.com">Email</a></div>
-            <div className="detail"><img src={githubIcon} alt="githubIcon"/><a href="https://github.com/MnMansour">GitHub</a></div>
-            <div className="detail"><img src={linkedinIcon} alt="linkedinIcon"/><a href="https://www.linkedin.com/in/mnmansoor/">Linkdin</a></div>
+            <div className="detail"><img src={userIcon} alt="userIcon"/><span>{Data.name}</span></div>
+            <div className="detail"><img src={phoneIcon} alt="phoneIcon"/><a href={`tel:${Data.phone}`}>{Data.phone}</a></div>
+            <div className="detail"><img src={emailIcon} alt="emailIcon"/><a href={`mailto:${Data.email}`}>Email</a></div>
+            <div className="detail"><img src={githubIcon} alt="githubIcon"/><a href={Data.github}>GitHub</a></div>
+            <div className="detail"><img src={linkedinIcon} alt="linkedinIcon"/><a href={Data.linkedin}>Linkdin</a></div>
           </div>
         </div>
         <div className="profile__body">
-          <div className="section">
-            <div className="section__header">
-              <div className="sectionTitle">Education</div>
-              <div className="sectionButtons">
-                <img src={addButton} alt="addButton"/>
-                <img src={arrowUp} alt="arrow"/>
-              </div>
-            </div>
-            <div className="section__body">XXXXXXXXXX</div>
-          </div>
-
-          <div className="section">
-            <div className="section__header">
-              <div className="sectionTitle">Experience</div>
-              <div className="sectionButtons">
-                <img src={addButton} alt="addButton"/>
-                <img src={arrowUp} alt="arrow"/>
-              </div>
-            </div>
-            <div className="section__body">XXXXXXXXXX</div>
-          </div>
-
-          <div className="section">
-            <div className="section__header">
-              <div className="sectionTitle">Skills</div>
-              <div className="sectionButtons">
-                <img src={addButton} alt="addButton"/>
-                <img src={arrowUp} alt="arrow"/>
-              </div>
-            </div>
-            <div className="section__body">XXXXXXXXXX</div>
-          </div>
-
-          <div className="section">
-            <div className="section__header">
-              <div className="sectionTitle">Assignments</div>
-              <div className="sectionButtons">
-                <img src={addButton} alt="addButton"/>
-                <img src={arrowUp} alt="arrow"/>
-              </div>
-            </div>
-            <div className="section__body">XXXXXXXXXX</div>
-          </div>
-
+          <Section title={constant.EDUCATION} />
+          <Section title={constant.EXPERIENCE} />
+          <Section title={constant.SKILLS} />
+          <Section title={constant.ASSIGNMENTS} />
+          <Section title={constant.PROJECTS} />
         </div>
       </div>
     )
