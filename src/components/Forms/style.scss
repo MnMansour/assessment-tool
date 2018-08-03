@@ -1,0 +1,40 @@
+.groupFields{
+  display: flex;
+  justify-content: space-around;
+  @media (max-width: 600px){
+    flex-direction: column;
+  }
+}
+
+.form{
+  max-height: 80vh;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+label{
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-left: 4px;
+  color: #467e9d;
+}
+
+select {
+  width: 25%;
+  height: 24px;
+  padding: 2px;
+  font-size: 18px;
+  display: block;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #467e9d;
+  margin-left: 4px;
+  margin-bottom: 16px;
+  color: #283e4a;
+  @media (max-width: 600px){
+    width: 50%;
+  }
+}
