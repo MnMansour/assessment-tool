@@ -7,6 +7,9 @@ import githubIcon from '../../assets/github.png';
 import phoneIcon from '../../assets/phone.png';
 import linkedinIcon from '../../assets/linkedin.png';
 
+import CircularProgressbar from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 import * as constant from '../../util/constant'
 import './style.scss';
 
@@ -16,6 +19,7 @@ const Data = {
   name : 'Mohammed Mansoor',
   image: 'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg',
   phone: '0466568898',
+  percentage: 66,
   email: 'mohamednmansour.90@gmail.com',
   github: 'https://github.com/MnMansour',
   linkedin: 'https://www.linkedin.com/in/mnmansoor/',
@@ -39,6 +43,12 @@ class Profile extends Component {
             <div className="detail"><img src={emailIcon} alt="emailIcon"/><a href={`mailto:${Data.email}`}>Email</a></div>
             <div className="detail"><img src={githubIcon} alt="githubIcon"/><a href={Data.github}>GitHub</a></div>
             <div className="detail"><img src={linkedinIcon} alt="linkedinIcon"/><a href={Data.linkedin}>Linkdin</a></div>
+          </div>
+          <div className="progressbar">
+             <CircularProgressbar
+              percentage={Data.percentage}
+              text={`${Data.percentage}%`}
+            />
           </div>
         </div>
         <div className="profile__body">

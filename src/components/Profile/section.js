@@ -26,9 +26,12 @@ class Section extends Component {
     this.setState({modalIsOpen: false});
   }
 
-
+  modal = (title) => {
+    const {modalIsOpen} = this.state;
+    return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}/>
+  }
   render() {
-    const {toggle, modalIsOpen} = this.state;
+    const {toggle} = this.state;
     const {title} = this.props
     return(
       <div className="section">
@@ -39,7 +42,7 @@ class Section extends Component {
             <img onClick={this.toggleSection} src={toggle? arrowUp : arrowDown} alt="arrow"/>
           </div>
         </div>
-        <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}/>
+        {this.modal(title)}
         <div className={toggle? "section__body" : "section__hide"}>XXXXXXXXXX</div>
       </div>
     );
