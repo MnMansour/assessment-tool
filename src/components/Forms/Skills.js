@@ -45,5 +45,5 @@ class Skills extends Component {
 }
 
 export default reduxForm({
-  form: 'EAEForm',
+  form: 'SkillsForm',
 })(Skills)

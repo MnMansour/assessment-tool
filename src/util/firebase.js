@@ -19,7 +19,7 @@ const firebaseConfig = {
             alert('Password must be 8 or more characters')
             return;
         }else{
-            //check if email exists before passing to firebase, send the rest data to database 
+            //check if email exists before passing to firebase, send the rest data to database
             let userSign = await firebase.auth().createUserWithEmailAndPassword(email, password);
             return userSign;
         }
@@ -31,7 +31,7 @@ const firebaseConfig = {
 
   export const signIn = async (email, password) => {
       console.log(firebaseConfig);
-      
+
     try{
         let userDetails = await firebase.auth().signInWithEmailAndPassword(email.trim() , password)
         .then(user => user)
@@ -45,8 +45,8 @@ const firebaseConfig = {
 export const postData = (dataToPost, title) => {
     const url = `https://assesment-tool.firebaseio.com/${title}.json`;
     const data = {
-        method: 'POST', 
-        body: JSON.stringify(dataToPost), 
+        method: 'POST',
+        body: JSON.stringify(dataToPost),
         };
     try{
         axios.post(url , data)

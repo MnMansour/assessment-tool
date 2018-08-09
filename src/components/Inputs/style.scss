@@ -20,17 +20,9 @@
     color: #283e4a;
   }
 
-  textarea{
-    box-sizing: border-box;
-    width: 100%;
-    padding: 4px;
-    font-size: 18px;
-    display: block;
-    outline: none;
-    border: 1px solid #467e9d;
-    color: #283e4a;
+  .quill{
+    margin-top: 4px;
   }
-
   .error{
     font-size: 10px;
     font-weight: 700;

@@ -27,6 +27,7 @@ class EducationAndExperience extends Component {
 
           <Field label={Titles.title} name={Titles.title} component={Input} validate={required()} type="text" />
 
+          {isEducationForm && <Field label="dgree" name="dgree" component={Input} validate={required()} type="text" />}
           <Field label="Location" name="location" component={Input} validate={required()} type="text" />
 
           <div className="groupFields">
@@ -34,10 +35,10 @@ class EducationAndExperience extends Component {
             <Field label="To" name="to-date" type="month" component={Input} validate={[date({ format: 'yyyy-mm' })]}  />
           </div>
 
-          <Field label={Titles.description} name={Titles.description} component={isEducationForm ? Input : Textarea} validate={required()} />
+          <Field label="description" name="description" component={Textarea} validate={required()} />
           <div>
             <button type="submit" >ADD</button>
-          </div>'
+          </div>
         </div>
       </form>
     )
