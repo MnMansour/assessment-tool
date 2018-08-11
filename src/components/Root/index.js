@@ -1,11 +1,15 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { applyMiddleware ,createStore } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import reducers from '../../redux/reducers';
 import App from '../App';
 
-const store = createStore(
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+
+
+const store = createStoreWithMiddleware(
 	reducers,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

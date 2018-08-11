@@ -4,7 +4,7 @@ import SignIn from '../Forms/SignIn';
 import {auth} from 'firebase';
 import FormModal from '../Modal';
 
-import {SIGN_UP} from '../../util/constant'
+import {SIGN_UP} from '../../util/constants'
 import smallGithubIcon from '../../assets/github-small.png';
 import largeGithubIcon from '../../assets/github-large.png';
 import './style.scss';

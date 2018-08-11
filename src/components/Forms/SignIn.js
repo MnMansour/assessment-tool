@@ -5,7 +5,7 @@ import {doSignInWithEmailAndPassword} from '../../util/firebase';
 import {Input} from '../Inputs';
 import FormModal from '../Modal';
 
-import {RESET_PASSWORD} from '../../util/constant'
+import {RESET_PASSWORD} from '../../util/constants'
 
 
 

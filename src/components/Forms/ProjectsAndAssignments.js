@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { required, url} from 'redux-form-validators';
-import * as constant from '../../util/constant'
+import * as constants from '../../util/constants'
 import {Input, Textarea} from '../Inputs';
 
 import './style.scss';
@@ -18,7 +18,7 @@ class ProjectsAndAssignments extends Component {
   onSubmit = values => console.log(JSON.stringify(values))
 
   render(){
-    const isProjectForm = this.props.title === constant.PROJECTS;
+    const isProjectForm = this.props.title === constants.PROJECTS;
     const name = isProjectForm ? 'project' : 'assignment';
     return (
       <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>

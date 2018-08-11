@@ -1,4 +1,7 @@
-import * as firebase from 'firebase';
+import  firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/auth';
+
 import axios from 'axios';
 
 // Initialize Firebase
@@ -10,7 +13,10 @@ const firebaseConfig = {
 	storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
 	messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID
 };
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+export const database = firebase.database();
+export const auth = firebase.auth();
+
 
 
   export const signUp = async (email, password) => {

@@ -10,7 +10,7 @@ import linkedinIcon from '../../assets/linkedin.png';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-import * as constant from '../../util/constant'
+import * as constants from '../../util/constants'
 import './style.scss';
 
 const Data = {
@@ -52,11 +52,11 @@ class Profile extends Component {
           </div>
         </div>
         <div className="profile__body">
-          <Section title={constant.EDUCATION} />
-          <Section title={constant.EXPERIENCE} />
-          <Section title={constant.SKILLS} />
-          <Section title={constant.ASSIGNMENTS} />
-          <Section title={constant.PROJECTS} />
+          <Section title={constants.EDUCATION} />
+          <Section title={constants.EXPERIENCE} />
+          <Section title={constants.SKILLS} />
+          <Section title={constants.ASSIGNMENTS} />
+          <Section title={constants.PROJECTS} />
         </div>
       </div>
     )
