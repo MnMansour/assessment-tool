@@ -1,0 +1,35 @@
+
+.Modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  color: #283e4a;
+
+  @media (max-width: 600px){
+    width: 90%;
+  }
+
+  .close{
+    position: absolute;
+    top: 0px;
+    right: 0;
+    margin: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    img{
+      height: 15px;
+    }
+  }
+
+}

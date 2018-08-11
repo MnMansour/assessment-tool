@@ -2,16 +2,15 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import EducationAndExperience from '../Forms/EducationAndExperience';
 import ProjectsAndAssignments from '../Forms/ProjectsAndAssignments';
+import ResetPassword from '../Forms/ResetPassword';
+import SignUp from '../Forms/SignUp';
 import Skills from '../Forms/Skills';
 import * as constant from '../../util/constant'
 
 import closeIcon from '../../assets/close-icon.png';
+import './style.scss';
 
 
-const body = {
-  school: 'xxx',
-  field: 'xxx'
-}
 class FormModal extends Component {
 
   componentWillMount(){
@@ -22,12 +21,16 @@ class FormModal extends Component {
     switch (title) {
       case constant.EDUCATION:
       case constant.EXPERIENCE:
-        return <EducationAndExperience title={this.props.title} body={body}/>;
+        return <EducationAndExperience title={this.props.title} />;
       case constant.ASSIGNMENTS:
       case constant.PROJECTS:
-        return <ProjectsAndAssignments title={this.props.title} body={body}/>;
+        return <ProjectsAndAssignments title={this.props.title} />;
       case constant.SKILLS:
         return <Skills title={this.props.title}/>;
+      case constant.SIGN_UP:
+        return <SignUp title={this.props.title}/>;
+      case constant.RESET_PASSWORD:
+        return <ResetPassword title={this.props.title}/>;
       default:
         return null
     }
