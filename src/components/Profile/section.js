@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import addButton from '../../assets/add-button.png';
 import arrowDown from '../../assets/arrow-down.png';
 import arrowUp from '../../assets/arrow-up.png';
-import FormModal from './Modal'
+import FormModal from '../Modal'
 
 import './style.scss';
 

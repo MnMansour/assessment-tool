@@ -38,3 +38,40 @@ select {
     width: 50%;
   }
 }
+
+.login-button{
+  padding:6px 8px;
+  font-size: 12px;
+  font-weight: 900;
+  background: white;
+  border-radius: 6px;
+  color: #467e9d;
+  outline: none;
+  background-color: #f0f0f0;
+}
+
+.login-error{
+  margin: 0px 0 10px;
+  height: 20px;
+  background-color: #fedce0;
+  padding: 10px;
+  color: #8b3648;
+  border: 1px solid #8b3648;
+  border-radius: 14px;
+  span{
+    float: right;
+    cursor: pointer;
+  }
+}
+
+.forgot {
+  position: relative;
+  font-size: 10px;
+  margin-left: 4px;
+  color: #467e9d;
+  top: -16px;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+}
