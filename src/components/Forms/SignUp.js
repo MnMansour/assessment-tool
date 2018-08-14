@@ -58,9 +58,8 @@ class SignUp extends Component {
   displayName = (_displayName) =>{
     const {dbUsers} = this.props;
     if (dbUsers) {
-        const allNames = _.mapValues(dbUsers, (user)=> {
-        if(user.data) return user.data.displayName
-      });
+        const allNames = _.mapValues(dbUsers, (user)=> user.displayName);
+      console.log(allNames);
       const nameExisted = _.includes(allNames, _displayName)
       const displayName = _displayName.replace(/ /g,"-").toLowerCase()
       if (nameExisted) return displayName+2
