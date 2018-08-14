@@ -3,8 +3,6 @@ import 'firebase/database';
 import 'firebase/auth';
 import 'firebase/storage';
 
-import axios from 'axios';
-
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,

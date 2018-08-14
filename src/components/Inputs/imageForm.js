@@ -3,30 +3,39 @@ import React, { Component } from 'react';
 class InputField extends Component {
 
   state = {
-      pictureUrl: ''
+      pictureUrl: '',
+      errorMessage: '',
+      error: false
     }
 
   displayPicture = (event) => {
-    let reader = new FileReader();
-    let file = event.target.files[0];
-      if(file){
-      reader.onloadend = () => {
-        console.log(file);
-        this.setState({
-          picture: file,
-          pictureUrl: reader.result
-        });
-      };
-      reader.readAsDataURL(file);
+    const reader = new FileReader();
+    const file = event.target.files[0];
+    if(file){
+      const type = file.type;
+      const size = file.size;
+      if (type.includes('image')) {
+        if (size < 1000000) {
+          reader.onloadend = () => {
+            this.setState({
+              picture: file,
+              pictureUrl: reader.result
+            });
+          };
+          reader.readAsDataURL(file);
+        }else this.setState({errorMessage:"Maximum uploaad image size 2MB", error:true})
+      }else this.setState({errorMessage:"Pleace select only image file",  error:true})
     }
   }
 
   render() {
     const {input} = this.props,
-    {pictureUrl} = this.state;
+    {pictureUrl, error, errorMessage} = this.state;
     delete input.value;
     return (
       <div>
+        { error && <div className="login-error">{errorMessage}
+          <span onClick={()=>this.setState({error: false})}>x</span></div> }
         <div className={pictureUrl? "input-file" :"image-container"}>
           <label className="label-file" htmlFor={input.name}>
             uploud image
