@@ -7,13 +7,18 @@ body {
 }
 
 #root{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  .body{
-    flex: 1;
+  .Root{
     display: flex;
-    background-color: #fffeee
+    flex-direction: column;
+    min-height: 100vh;
+    .body{
+      flex: 1;
+      display: flex;
+      background-image: url('./assets/background.png');
+      >.children{
+        display: flex;
+        width: 100%;
+      }
+    }
   }
 }
