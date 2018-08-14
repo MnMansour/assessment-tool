@@ -68,6 +68,10 @@ class SignUp extends Component {
     }
   }
 
+  restetImage = () => {
+    this.props.resetSection('image')
+  }
+
 
   render() {
     const {loginError, error} = this.state;
@@ -77,7 +81,7 @@ class SignUp extends Component {
       <form className="signup-page" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
         { loginError && <div className="login-error">{error}
           <span onClick={()=>this.setState({loginError: false})}>x</span></div> }
-          <Field type="file" name="image" component={Image} />
+          <Field type="file" name="image" component={Image} resetImage={this.restetImage}/>
 
           <div className="signup-page__name-phone">
             <Field label="full Name" name="fullname" component={Input} validate={[required()]} type="text" />

@@ -73,4 +73,11 @@
     z-index: 2;
     position: relative;
   }
+  .remove-image{
+    position: absolute;
+    left: 136px;
+    z-index: 3;
+    background-color: #f5deb37a;
+    cursor: pointer;
+  }
 }

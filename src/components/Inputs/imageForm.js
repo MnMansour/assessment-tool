@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import removeIcon from '../../assets/remove-icon.svg'
 
 class InputField extends Component {
 
@@ -9,6 +10,7 @@ class InputField extends Component {
     }
 
   displayPicture = (event) => {
+    console.log(event);
     const reader = new FileReader();
     const file = event.target.files[0];
     if(file){
@@ -28,6 +30,12 @@ class InputField extends Component {
     }
   }
 
+  removeImage = () => {
+    this.setState({pictureUrl: ''});
+    this.props.resetImage();
+    console.log(this);
+  }
+
   render() {
     const {input} = this.props,
     {pictureUrl, error, errorMessage} = this.state;
@@ -42,15 +50,15 @@ class InputField extends Component {
           </label>
           <input type="file"
            {...input}
-           onChange={(...args) => {
-             input.onChange(...args)
-             this.displayPicture(...args)
+           onChange={(event) => {
+             input.onChange(event)
+             this.displayPicture(event)
            }}
            className="input-file"
            id={input.name}
           />
         </div>
-        {pictureUrl &&<PreviewPicture pictureUrl={pictureUrl}/>}
+        {pictureUrl &&<PreviewPicture remove={this.removeImage} pictureUrl={pictureUrl}/>}
       </div>
     );
   }
@@ -58,10 +66,11 @@ class InputField extends Component {
 
 export default InputField;
 
-const PreviewPicture = ({pictureUrl}) => {
+const PreviewPicture = ({pictureUrl, remove}) => {
     return (
       <div className="image">
         <img className="uploud-image" src={pictureUrl} alt="user"/>
+        <img className="remove-image" src={removeIcon} alt="remove" onClick={()=>remove()}/>
       </div>
     )
 };
