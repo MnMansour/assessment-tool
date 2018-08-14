@@ -1,83 +1,116 @@
 import React, { Component } from 'react';
-import {auth} from 'firebase';
+import {connect} from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
-import { required, email, numericality, length, confirmation, url} from 'redux-form-validators';
-import {linkloginAccounts, writeData} from '../../util/firebase'
+import { required, numericality, length, confirmation, url} from 'redux-form-validators';
+import _ from 'lodash'
+import {writeToDatabase} from '../../redux/actions/actions';
+import {linkloginAccounts, storage} from '../../util/firebase';
 import {Input} from '../Inputs';
+import Image from '../Inputs/imageForm'
+
+import './style.scss';
 
 class SignUp extends Component {
 
   state = {
     loginError: false,
-    body:this.props.body,
-    id: null,
-    github: null,
+    error: '',
   }
 
-  componentDidMount(){
-    auth().onAuthStateChanged(firebaseUser => {
-      if(firebaseUser){
-        console.log(firebaseUser);
-        this.setDefaultValues(firebaseUser);
-      }
-    })
+  onSubmit = (values) => {
+    const {fullname, password} = values,
+    {user} = this.props,
+    displayName = this.displayName(fullname),
+    data = { ...values, displayName, role: 'student', uid: user.uid},
+    email= user.email;
+    delete data.password;  delete data.repassword;
+
+    if(user.providerData.length === 1) {
+      linkloginAccounts(email, password).then( (user) =>{
+        if(user.message)  this.setState({loginError: true, error: user.message})
+        else {
+          this.uploadToDatabase( data)
+        }
+      })
+    } else {
+      this.uploadToDatabase(data)
+    }
   }
 
-  setDefaultValues = (Data) => {
-    this.setState({
-      id: Data.displayName,
-      github: Data,
-    });
+  uploadToDatabase =  (data) => {
+    const {writeToDatabase} = this.props;
+    if(data.image) {
+      const imageName = new Date().getTime();
+      storage.child(`profile/${imageName}`).put(data.image[0]).then((snapshot)=>{
+        if(snapshot.message)  this.setState({loginError: true, error: snapshot.message})
+         else {
+           storage.child(`profile/${imageName}`).getDownloadURL().then(function(url) {
+             const image = url;
+             writeToDatabase('users', {...data, image});
+           })
+        }
+      })
+    } else {
+      writeToDatabase('users', data);
+    }
   }
 
-  onSubmit = async values => {
-    const {fullname, phone, email, password, github, linkedin} = values,
-          {Id} = this.state,
-    userDate = {
-      fullname,
-      phone,
-      email,
-      github,
-      linkedin,
-      role: 'student',
-    },
-    userLink = `users/${Id}`;
-    console.log(userDate, userLink);
-    await linkloginAccounts(email, password);
-    await writeData(userLink, userDate)
+  displayName = (_displayName) =>{
+    const {dbUsers} = this.props;
+    if (dbUsers) {
+        const allNames = _.mapValues(dbUsers, (user)=> {
+        if(user.data) return user.data.displayName
+      });
+      const nameExisted = _.includes(allNames, _displayName)
+      const displayName = _displayName.replace(/ /g,"-").toLowerCase()
+      if (nameExisted) return displayName+2
+      else return displayName
+    }
   }
+
 
   render() {
-    const {loginError} = this.state
+    const {loginError, error} = this.state;
+    const {user:{providerData}} = this.props;
+    console.log(this.props);
     return (
-      <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
-        { loginError && <div className="login-error">That display name is already taken, try another one.
+      <form className="signup-page" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
+        { loginError && <div className="login-error">{error}
           <span onClick={()=>this.setState({loginError: false})}>x</span></div> }
-        <div>
-          <Field label="full Name" name="fullname" component={Input} validate={[required()]} type="text" />
+          <Field type="file" name="image" component={Image} />
 
-          <Field label="phone" name="phone" component={Input} validate={[required(), length({min:8}), numericality()]} type="text" />
+          <div className="signup-page__name-phone">
+            <Field label="full Name" name="fullname" component={Input} validate={[required()]} type="text" />
+            <Field label="phone" name="phone" component={Input} validate={[required(), length({min:8}), numericality()]} type="text" />
+          </div>
 
-          <Field label="email" name="email" component={Input} validate={[required(), email()]} type="text" />
-
-          <Field label="password" name="password" component={Input} validate={[required(), length({min:8})]} type="password" />
-
-          <Field label="re-password" name="repassword" component={Input} validate={[required(), confirmation({ field: 'password', fieldLabel: 'password' })]} type="password" />
+          {providerData.length === 1 && <div className="signup-page__passwords">
+            <Field label="password" name="password" component={Input} validate={[required(), length({min:8})]} type="password" />
+            <Field label="re-password" name="repassword" component={Input} validate={[required(), confirmation({ field: 'password', fieldLabel: 'password' })]} type="password" />
+          </div>}
 
           <Field label="github link" name="github" component={Input} validate={[url()]} type="text" />
-
           <Field label="linkedin link" name="linkedin" component={Input} validate={[url()]} type="text" />
-
           <div>
             <button className="signup-button" type="submit" >Sign Up</button>
           </div>
-        </div>
       </form>
     )
   }
 
 }
 
-export default reduxForm({
-  form: 'signup',
-})(SignUp)
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+    dbUsers: state.dbUsers
+  };
+}
+
+let form = reduxForm({
+  form: 'signup'
+})(SignUp);
+
+form = connect(mapStateToProps, {writeToDatabase})(form);
+
+export default form;

@@ -84,6 +84,10 @@ export function logout() {
   return dispatch => auth.signOut();
 }
 
+export function sendPasswordResetEmail(email) {
+  return dispatch =>  auth.sendPasswordResetEmail(email);
+}
+
 export function writeToDatabase(collection, data){
   return dispatch => database.ref(collection).child(data.uid).set({data})
 }

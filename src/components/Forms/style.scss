@@ -75,3 +75,68 @@ select {
     text-decoration: underline;
   }
 }
+
+.signup-page {
+  align-self: center;
+  margin: 0 auto;
+  padding: 16px;
+  width: 700px;
+  border-radius: 8px;
+  background: white;
+  -webkit-box-shadow: 6px 6px 5px 0px rgba(153,153,153,0.63);
+  -moz-box-shadow: 6px 6px 5px 0px rgba(153,153,153,0.63);
+  box-shadow: 6px 6px 5px 0px rgba(153,153,153,0.63);
+  box-sizing: border-box;
+  @media (max-width: 800px){
+    width: 95%;
+    -webkit-box-shadow: unset;
+    -moz-box-shadow: unset;
+    box-shadow: unset;
+  }
+
+  &__name-phone{
+    display: flex;
+    .inputField{
+      &:nth-child(1){
+        flex: 2;
+        margin-right: 8px;
+        @media (max-width: 800px){
+          margin-right: 4px ;
+        }
+      }
+      &:nth-child(2){
+        flex: 1;
+        padding-left: 8px;
+        @media (max-width: 800px){
+          padding-left: 4px ;
+        }
+      }
+    }
+    @media (max-width: 800px){
+      flex-direction: column;
+    }
+  }
+
+  &__passwords{
+    display: flex;
+    .inputField{
+      &:nth-child(1){
+        flex: 1;
+        margin-right: 8px;
+        @media (max-width: 800px){
+          margin-right: 4px ;
+        }
+      }
+      &:nth-child(2){
+        flex: 1;
+        padding-left: 8px;
+        @media (max-width: 800px){
+          padding-left: 4px ;
+        }
+      }
+    }
+    @media (max-width: 800px){
+      flex-direction: column;
+    }
+  }
+}

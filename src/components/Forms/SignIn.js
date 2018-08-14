@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
 import { required, email} from 'redux-form-validators';
-import {doSignInWithEmailAndPassword} from '../../util/firebase';
+import {login} from '../../redux/actions/actions';
 import {Input} from '../Inputs';
 import FormModal from '../Modal';
-
 import {RESET_PASSWORD} from '../../util/constants'
-
-
-
 
 import './style.scss';
 
@@ -20,15 +17,7 @@ class SignIn extends Component {
   }
 
   onSubmit = values => {
-    const {email, password} = values
-    doSignInWithEmailAndPassword(email, password).then((user) => {
-        console.log(user);
-      })
-      .catch(error => {
-        console.error(error);
-        this.setState({loginError: true})
-      }
-    );
+    this.props.login(values.email, values.password).catch(()=>this.setState({loginError:true}))
   }
 
   modal = (title) => {
@@ -65,6 +54,10 @@ class SignIn extends Component {
   }
 }
 
-export default reduxForm({
+let form = reduxForm({
   form: 'signin',
 })(SignIn)
+
+form = connect( '',{login})(form);
+
+export default form;

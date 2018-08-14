@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Section from './section'
+import {connect} from 'react-redux';
+import Section from './section';
 
 import userIcon from '../../assets/user.png';
 import emailIcon from '../../assets/email.png';
@@ -32,6 +33,10 @@ const Data = {
 
 class Profile extends Component {
 
+  componentDidUpdate(){
+    console.log(this.props);
+  }
+
   render(){
     return(
       <div className="profile">
@@ -63,4 +68,12 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+    usersData: state.dbUsers,
+    userLoading: state.loading.user,
+  };
+}
+
+export default connect(mapStateToProps,null)(Profile);

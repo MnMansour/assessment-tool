@@ -1,10 +1,9 @@
 import React from 'react'
-import {loginWithGithub, signOut} from '../../util/firebase';
+import { connect } from 'react-redux';
 import SignIn from '../Forms/SignIn';
-import {auth} from 'firebase';
-import FormModal from '../Modal';
+import {loginWithGithub} from '../../redux/actions/actions';
+import _ from 'lodash';
 
-import {SIGN_UP} from '../../util/constants'
 import smallGithubIcon from '../../assets/github-small.png';
 import largeGithubIcon from '../../assets/github-large.png';
 import './style.scss';
@@ -12,63 +11,25 @@ import './style.scss';
 
 class Login extends React.Component{
 
-  state = {
-    modalIsOpen: false,
-  }
-
-  componentWillMount(){
-    console.log('hi');
-  }
-
-  componentDidMount(){
-    auth().onAuthStateChanged(firebaseUser => {
-      if(firebaseUser){
-        const providerData = firebaseUser.providerData;
-        if (providerData.length > 1) {
-          const name = firebaseUser.displayName;
-          console.log(name);
-          //this.props.history.push(`profile/${name}`)
-        }else {
-          console.log('still need linking');
-        }
-      }else {
-        console.log('logout');
-      }
-    })
-  }
-
-  handleLoginWithGit = async() => {
-    let userdetails = await loginWithGithub();
-    if (!userdetails) {
-      console.log("not allowed user");
-      signOut();
-    }
-    else {
-      const providerData = userdetails.user.providerData;
-      if (providerData.length > 1) {
-        console.log('logged in');
-        console.log('You are logging in with Github', userdetails);
-      } else {
-        console.log('still need linking');
-        this.openModal();
-      }
+  componentWillMount() {
+    const {user} = this.props;
+    if (!_.isEmpty(user)) {
+      this.props.history.push('/');
     }
   }
 
-  modal = (title) => {
-    const {modalIsOpen} = this.state;
-    return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}/>
+  componentWillReceiveProps(nextProps) {
+    const {user} = nextProps;
+
+    if (!_.isEmpty(user)) {
+      nextProps.history.push('/');
+    }
   }
 
-  openModal = () => {
-    this.setState({modalIsOpen: true});
-  }
 
-  closeModal = () => {
-    this.setState({modalIsOpen: false});
-    signOut()
+  handleLoginWithGit = () => {
+     this.props.loginWithGithub();
   }
-
 
   render(){
     return(
@@ -86,10 +47,15 @@ class Login extends React.Component{
           <div className="github-button" onClick={this.handleLoginWithGit}><img src={smallGithubIcon} alt="github" /><span>Github</span></div>
         </div>
       </div>
-      {this.modal(SIGN_UP)}
     </div>
     );
   }
 }
 
-export default Login;
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+export default connect(mapStateToProps, {loginWithGithub})(Login);
