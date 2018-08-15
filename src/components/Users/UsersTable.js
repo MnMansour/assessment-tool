@@ -13,7 +13,7 @@ const UsersTable = ({users, showPrograss, showEdit}) => (
         accessor: user => <Link to={'/profile/'+user.displayName} className="image-cropper"><img src={user.image ? user.image : defaultImage} alt="user"/></Link>,
         width: 60
       },{
-        Header: " full name",
+        Header: " Full Name",
         id: 'full Name',
         accessor: user => <Link to={'/profile/'+user.displayName}>{user.fullname}</Link>,
         minWidth: 150
