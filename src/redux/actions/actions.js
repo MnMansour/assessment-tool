@@ -89,5 +89,5 @@ export function sendPasswordResetEmail(email) {
 }
 
 export function writeToDatabase(collection, data){
-  return dispatch => database.ref(collection).child(data.uid).update(data)
+  return dispatch => database.ref(collection+'/'+data.uid).update(data)
 }

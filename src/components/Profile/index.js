@@ -17,7 +17,7 @@ class Profile extends Component {
   }
 
   getData = () => {
-    const {user, usersData, match:{params}, history} =this.props;
+    const {user, usersData, match:{params}} =this.props;
     if(params.id){
        const key = _.findKey(usersData, {displayName: params.id})
        if(key) return usersData[key];
@@ -34,7 +34,6 @@ class Profile extends Component {
     const {user, match} = this.props
     const Data = this.getData();
     const myPage = Data ? Data.uid === user.uid : false;
-    console.log(myPage);
     if (!Data) {
       return <div className="profile-notfound">Person With Name {match.params.id} Not Found! </div>
     }
