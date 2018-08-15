@@ -25,7 +25,6 @@ class AuthenticatedComponent extends Component {
       } else {
         const providerData = user.providerData;
         if (providerData.length > 1) {
-          console.log('xxx');
           this.stop()
         } else {
           this.props.history.push('/settings');
@@ -49,7 +48,6 @@ class AuthenticatedComponent extends Component {
       } else {
         const providerData = user.providerData;
         if (providerData.length > 1) {
-          console.log('xxx');
           this.stop()
         } else {
           this.props.history.push('/settings');

@@ -1,8 +1,30 @@
 .users-page{
   width: 100%;
+  align-self: center;
   .hide-bottom{
     .pagination-bottom{
       display: none
+    }
+  }
+
+  .searh-bar{
+    width: 700px;
+    margin: 0 auto;
+    @media (max-width: 800px) {
+      width: 98%
+    }
+    input{
+      display: block;
+      height: 36px;
+      width: 250px;
+      box-sizing: border-box;
+      border-radius: 13px;
+      outline: none;
+      padding: 0 12px;
+      font-size: 20px;
+      color: #7a7262;
+      font-weight: 600;
+      border: 1px solid;
     }
   }
   .ReactTable{

@@ -10,7 +10,7 @@ const UsersTable = ({users, showPrograss, showEdit}) => (
     columns={[
       {
         id: 'image',
-        accessor: user => <div className="image-cropper "><img src={user.image ? user.image : defaultImage} alt="user"/></div>,
+        accessor: user => <Link to={'/profile/'+user.displayName} className="image-cropper"><img src={user.image ? user.image : defaultImage} alt="user"/></Link>,
         width: 60
       },{
         Header: " full name",
@@ -40,10 +40,12 @@ const UsersTable = ({users, showPrograss, showEdit}) => (
         accessor: user => <div >edit</div>,
         maxWidth: 50,
         show: showEdit ? showEdit: false,
-      }
+      },
     ]}
+
     defaultPageSize={users.length < 8 ? users.length : 8}
     className={users.length < 8 ? "-highlight hide-bottom" : "-highlight"}
+    noDataText="No users found!"
   />
 );
 
