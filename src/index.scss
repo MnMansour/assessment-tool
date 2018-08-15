@@ -19,6 +19,13 @@ body {
         display: flex;
         width: 100%;
       }
+      .loading{
+        fill: #f5deb3!important;
+        height: auto!important;
+        width: 50%!important;
+        align-self: center;
+        margin: 0 auto;
+      }
     }
   }
 }

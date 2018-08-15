@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import ReactLoading from "react-loading";
 import {getUser, getDbUsers, getDbAllowedUsers} from '../../redux/actions/actions';
 
 class LoadingComponent extends Component {
@@ -33,7 +34,7 @@ class LoadingComponent extends Component {
 
     else {
       return (
-        <div>loading...</div>
+        <ReactLoading className="loading" type="spinningBubbles" />
       );
     }
   }

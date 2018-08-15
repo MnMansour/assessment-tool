@@ -1,54 +1,62 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import ReactLoading from "react-loading";
+
 import _ from 'lodash';
 
 
 class AuthenticatedComponent extends Component {
 
-  state = { stop: false}
+  state = {stop: false}
 
 
   componentWillMount(){
-    const { user , allowedUsers} = this.props;
+    const { user , allowedUsers, userLoading} = this.props;
 
-      if (!_.isEmpty(allowedUsers) && !_.isEmpty(user)) {
-        const isUserAllowed = _.includes(allowedUsers, user.email);
-        if (!isUserAllowed){
-          this.props.history.push('/notallowed');
+    if (userLoading === false && _.isEmpty(user)) {
+      this.props.history.push('/login');
+    }
+
+    if (!_.isEmpty(allowedUsers) && !_.isEmpty(user)) {
+      const isUserAllowed = _.includes(allowedUsers, user.email);
+      if (!isUserAllowed){
+        this.props.history.push('/notallowed');
+      } else {
+        const providerData = user.providerData;
+        if (providerData.length > 1) {
+          console.log('xxx');
+          this.stop()
         } else {
-          const providerData = user.providerData;
-          if (providerData.length > 1) {
-            console.log('xxx');
-            this.stop()
-          } else {
-            this.props.history.push('/signup');
-            this.stop()
-          }
+          this.props.history.push('/settings');
+          this.stop()
         }
       }
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     const { user , allowedUsers} = nextProps;
-    const {stop} = this.state
-      if (!_.isEmpty(allowedUsers) && !_.isEmpty(user) && !stop ) {
-        const isUserAllowed = _.includes(allowedUsers, user.email);
-        if (!isUserAllowed){
-          console.log(user);
-          this.props.history.push(`/notallowed/${user.email}`);
+    const {stop} = this.state;
+
+    if (!_.isEmpty(allowedUsers) && !_.isEmpty(user) && !stop ) {
+      const isUserAllowed = _.includes(allowedUsers, user.email);
+
+      if (!isUserAllowed){
+        console.log(user);
+        this.props.history.push(`/notallowed/${user.email}`);
+        this.stop()
+      } else {
+        const providerData = user.providerData;
+        if (providerData.length > 1) {
+          console.log('xxx');
           this.stop()
         } else {
-          const providerData = user.providerData;
-          if (providerData.length > 1) {
-            console.log('xxx');
-            this.stop()
-          } else {
-            this.props.history.push('/signup');
-            this.stop()
-          }
+          this.props.history.push('/settings');
+          this.stop()
         }
       }
+    }
   }
 
   stop = () => {
@@ -61,7 +69,7 @@ class AuthenticatedComponent extends Component {
   componentDidUpdate() {
     const { userLoading, user } = this.props;
     if (userLoading === false && _.isEmpty(user)) {
-      this.props.history.push('/Login');
+      this.props.history.push('/login');
     }
   }
 
@@ -72,7 +80,7 @@ class AuthenticatedComponent extends Component {
     const { user, children, allowedUsers } = this.props;
     const {stop} = this.state
     const isReady = stop && !_.isEmpty(user) && !_.isEmpty(allowedUsers) ;
-    return (isReady) ? <div className="children">{children}</div> : null;
+    return (isReady) ? <div className="children">{children}</div> : <ReactLoading className="loading" type="spinningBubbles" />;
   }
 }
 

@@ -12,11 +12,11 @@ import './style.scss';
 class Login extends React.Component{
 
   componentWillMount() {
-    const {user} = this.props;
-    if (!_.isEmpty(user)) {
-      this.props.history.push('/');
-    }
+  const {user} = this.props;
+  if (!_.isEmpty(user)) {
+    this.props.history.push('/');
   }
+}
 
   componentWillReceiveProps(nextProps) {
     const {user} = nextProps;
