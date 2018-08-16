@@ -8,6 +8,7 @@ export const USER_DB_STATUS = 'USER_DB_STATUS';
 export const GET_DB_USERS = 'GET_DB_USERS'
 export const ALLOWED_STATUS = 'ALLOWED_STATUS'
 export const ALLOWED_USERS = 'ALLOWED_USERS'
+export const GET_LOCATION = 'GET_LOCATION'
 
 
 export const logIn = user => ({ type: LOG_IN, payload: user });
@@ -90,4 +91,13 @@ export function sendPasswordResetEmail(email) {
 
 export function writeToDatabase(collection, data){
   return dispatch => database.ref(collection+'/'+data.uid).update(data)
+}
+
+export function getLocation(location) {
+  return dispatch => {
+    dispatch({
+      type: GET_LOCATION,
+      payload: location
+    })
+  }
 }
