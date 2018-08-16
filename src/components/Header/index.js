@@ -22,6 +22,11 @@ class Header extends Component {
     this.setState({showMenu: false});
   }
 
+  checkPath = (e) => {
+    const {location:{pathname}} = this.props;
+    return pathname === e.url
+  }
+
   render() {
     const{showMenu} = this.state;
     const {user, logout} = this.props;
@@ -29,13 +34,13 @@ class Header extends Component {
       <header>
         <NavLink onClick={this.closeMenu} to="/"><img className="logo" src={logo} alt="integrify"/></NavLink>
         {!user&&<div onClick={this.closeMenu} className={showMenu ? 'nav' : 'nav hide' }>
-          <NavLink className="nav-item" activeClassName="active" to="/students" >Our Students</NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/aboutus" >About us</NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/login" >login</NavLink>
+          <NavLink className="nav-item" to="/students" >Our Students</NavLink>
+          <NavLink className="nav-item" to="/aboutus" >About us</NavLink>
+          <NavLink className="nav-item" to="/login" >login</NavLink>
         </div>}
         {user&&<div onClick={this.closeMenu} className={showMenu ? 'nav' : 'nav hide' }>
-          <NavLink className="nav-item" activeClassName="active" to="/" >Students</NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/profile" >Profile</NavLink>
+          <NavLink isActive={this.checkPath} className="nav-item" to="/" >Students</NavLink>
+          <NavLink className="nav-item" to="/profile" >Profile</NavLink>
           <a className="nav-item" onClick={()=>logout()}>logout</a>
         </div>}
         <img onClick={this.toggleMenu} className="menu" src={Menu} alt="menu" />
@@ -48,7 +53,8 @@ class Header extends Component {
 function mapStateToProps(state){
   return {
     dbUsers: state.dbUsers,
-    user: state.user
+    user: state.user,
+    location: state.location
   }
 }
 
