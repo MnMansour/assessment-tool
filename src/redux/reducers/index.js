@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import UserReducer from './UserReducer';
+import LocationReducer from './LocationReducer';
 import LoadingReducer from './LoadingReducer';
 import DbUserReducer from './DbUserReducer';
 import DbAllowedUsersReducer from './DbAllowedUsersReducer';
@@ -10,5 +11,6 @@ export default combineReducers({
 	 user: UserReducer,
 	 loading: LoadingReducer,
 	 dbUsers: DbUserReducer,
-	 dbAllowedUsers: DbAllowedUsersReducer
+	 dbAllowedUsers: DbAllowedUsersReducer,
+	 location: LocationReducer,
   });
