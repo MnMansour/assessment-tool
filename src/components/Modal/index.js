@@ -44,6 +44,7 @@ class FormModal extends Component {
         onAfterOpen={this.afterOpenModal}
         className="Modal"
         contentLabel="Modal"
+        overlayClassName="Modal-overlay"
       >
         <h2>{this.props.title}</h2>
         <a className="close" onClick={this.props.closeModal}><img src={closeIcon} alt="close" /></a>
