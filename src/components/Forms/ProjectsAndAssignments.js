@@ -52,5 +52,5 @@ class ProjectsAndAssignments extends Component {
 }
 
 export default reduxForm({
-  form: 'EAEForm',
+  form: 'PAAForm',
 })(ProjectsAndAssignments)
