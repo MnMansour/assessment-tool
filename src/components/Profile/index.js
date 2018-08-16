@@ -12,10 +12,6 @@ import './style.scss';
 
 class Profile extends Component {
 
-  componentWillMount() {
-    console.log('xxx',this.props);
-  }
-
   getData = () => {
     const {user, usersData, match:{params}} =this.props;
     if(params.id){

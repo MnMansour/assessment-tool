@@ -89,8 +89,8 @@ export function sendPasswordResetEmail(email) {
   return dispatch =>  auth.sendPasswordResetEmail(email);
 }
 
-export function writeToDatabase(collection, data){
-  return dispatch => database.ref(collection+'/'+data.uid).update(data)
+export function writeToDatabase(path, data){
+  return dispatch => database.ref(path).update(data)
 }
 
 export function getLocation(location) {

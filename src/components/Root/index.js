@@ -1,6 +1,5 @@
 import React from 'react';
-import {Switch, Route, Redirect} from 'react-router-dom';
-import {connect} from "react-redux";
+import {Switch, Route} from 'react-router-dom';
 import Header from '../Header';
 import Login from '../Login';
 import SignUp from '../Forms/SignUp';

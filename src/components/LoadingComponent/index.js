@@ -10,7 +10,6 @@ class LoadingComponent extends Component {
     const { userLoading, dbUserLoading, dbAllowedUsersLoading, location } = this.props;
     if (userLoading === undefined) {
       this.props.getUser();
-      console.log('mount');
     }
 
     if (dbUserLoading === undefined) {

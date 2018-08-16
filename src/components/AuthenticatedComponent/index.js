@@ -42,7 +42,6 @@ class AuthenticatedComponent extends Component {
       const isUserAllowed = _.includes(allowedUsers, user.email);
 
       if (!isUserAllowed){
-        console.log(user);
         this.props.history.push(`/notallowed/${user.email}`);
         this.stop()
       } else {

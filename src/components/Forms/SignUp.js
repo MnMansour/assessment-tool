@@ -17,6 +17,17 @@ class SignUp extends Component {
     error: '',
   }
 
+  componentWillMount() {
+    const {user, dbUsers, initialize} = this.props;
+    if (dbUsers) {
+      const initializeData = dbUsers[user.uid];
+      if(initializeData) {
+        this.setState({image: initializeData.image});
+        initialize(initializeData)
+      }
+    }
+  }
+
   onSubmit = (values) => {
     const {fullname, password} = values,
     {user} = this.props,
@@ -29,7 +40,7 @@ class SignUp extends Component {
       linkloginAccounts(email, password).then( (user) =>{
         if(user.message)  this.setState({loginError: true, error: user.message})
         else {
-          this.uploadToDatabase( data)
+          this.uploadToDatabase(data)
         }
       })
     } else {
@@ -38,20 +49,25 @@ class SignUp extends Component {
   }
 
   uploadToDatabase =  (data) => {
-    const {writeToDatabase} = this.props;
+    const {writeToDatabase, history} = this.props,
+          path = `users/${data.uid}`;
     if(data.image) {
-      const imageName = new Date().getTime();
-      storage.child(`profile/${imageName}`).put(data.image[0]).then((snapshot)=>{
+      storage.child(`profile/${data.uid}`).delete().catch((e)=>console.log(e))
+      storage.child(`profile/${data.uid}`).put(data.image[0]).then((snapshot)=>{
         if(snapshot.message)  this.setState({loginError: true, error: snapshot.message})
          else {
-           storage.child(`profile/${imageName}`).getDownloadURL().then(function(url) {
+           storage.child(`profile/${data.uid}`).getDownloadURL().then(function(url) {
              const image = url;
-             writeToDatabase('users', {...data, image});
+             writeToDatabase(path, {...data, image}).then((user)=>{
+               history.push('/profile')
+             });
            })
         }
       })
     } else {
-      writeToDatabase('users', data);
+      writeToDatabase(path, data).then((user)=>{
+        history.push('/profile')
+      });
     }
   }
 
@@ -73,14 +89,13 @@ class SignUp extends Component {
 
 
   render() {
-    const {loginError, error} = this.state;
+    const {loginError, error, image} = this.state;
     const {user:{providerData}} = this.props;
-    console.log(this.props);
     return (
       <form className="signup-page" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
         { loginError && <div className="login-error">{error}
           <span onClick={()=>this.setState({loginError: false})}>x</span></div> }
-          <Field type="file" name="image" component={Image} resetImage={this.restetImage}/>
+          <Field type="file" name="image" component={Image} resetImage={this.restetImage} Image={image}/>
 
           <div className="signup-page__name-phone">
             <Field label="full Name" name="fullname" component={Input} validate={[required()]} type="text" />

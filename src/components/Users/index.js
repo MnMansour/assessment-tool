@@ -40,7 +40,7 @@ class Users extends Component {
   render() {
     const {users, width} = this.state;
     const {usersData, user} = this.props;
-    const role = usersData[user.uid].role;
+    const role = usersData ? usersData[user.uid].role : '';
     return (
       <div className="users-page">
         <div className="searh-bar">

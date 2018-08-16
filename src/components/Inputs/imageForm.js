@@ -9,8 +9,12 @@ class InputField extends Component {
       error: false
     }
 
+  componentWillMount() {
+    const {Image} = this.props;
+    if(Image) this.setState({pictureUrl:Image});
+  }
+
   displayPicture = (event) => {
-    console.log(event);
     const reader = new FileReader();
     const file = event.target.files[0];
     if(file){
@@ -33,7 +37,6 @@ class InputField extends Component {
   removeImage = () => {
     this.setState({pictureUrl: ''});
     this.props.resetImage();
-    console.log(this);
   }
 
   render() {
