@@ -8,7 +8,7 @@ import 'react-quill/dist/quill.snow.css';
 export const Input = ({ input, label, type, meta: { touched, error }}) => (
   <div className="inputField">
     <label htmlFor={input.name}>{label}</label>
-    <input {...input}  type={type}/>
+    <input {...input}  type={type} id={input.name}/>
       {touched && error && <div className="error">{error}</div>}
   </div>
 );
@@ -17,6 +17,7 @@ export const Input = ({ input, label, type, meta: { touched, error }}) => (
 export const Textarea = ({ input, label, meta: { touched, error }}) => (
   <div className="inputField">
     <label htmlFor={input.name}>{label}</label>
+
       <ReactQuill
         {...input}
         theme='snow'

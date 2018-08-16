@@ -2,16 +2,15 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import EducationAndExperience from '../Forms/EducationAndExperience';
 import ProjectsAndAssignments from '../Forms/ProjectsAndAssignments';
+import ResetPassword from '../Forms/ResetPassword';
+import SignUp from '../Forms/SignUp';
 import Skills from '../Forms/Skills';
-import * as constant from '../../util/constant'
+import * as constants from '../../util/constants'
 
 import closeIcon from '../../assets/close-icon.png';
+import './style.scss';
 
 
-const body = {
-  school: 'xxx',
-  field: 'xxx'
-}
 class FormModal extends Component {
 
   componentWillMount(){
@@ -20,14 +19,18 @@ class FormModal extends Component {
 
   getForm = (title) => {
     switch (title) {
-      case constant.EDUCATION:
-      case constant.EXPERIENCE:
-        return <EducationAndExperience title={this.props.title} body={body}/>;
-      case constant.ASSIGNMENTS:
-      case constant.PROJECTS:
-        return <ProjectsAndAssignments title={this.props.title} body={body}/>;
-      case constant.SKILLS:
+      case constants.EDUCATION:
+      case constants.EXPERIENCE:
+        return <EducationAndExperience title={this.props.title} />;
+      case constants.ASSIGNMENTS:
+      case constants.PROJECTS:
+        return <ProjectsAndAssignments title={this.props.title} />;
+      case constants.SKILLS:
         return <Skills title={this.props.title}/>;
+      case constants.SIGN_UP:
+        return <SignUp title={this.props.title}/>;
+      case constants.RESET_PASSWORD:
+        return <ResetPassword title={this.props.title}/>;
       default:
         return null
     }
@@ -41,6 +44,7 @@ class FormModal extends Component {
         onAfterOpen={this.afterOpenModal}
         className="Modal"
         contentLabel="Modal"
+        overlayClassName="Modal-overlay"
       >
         <h2>{this.props.title}</h2>
         <a className="close" onClick={this.props.closeModal}><img src={closeIcon} alt="close" /></a>

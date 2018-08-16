@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { required, date } from 'redux-form-validators';
-import * as constant from '../../util/constant'
+import * as constants from '../../util/constants'
 import {Input, Textarea} from '../Inputs';
 
 import './style.scss'
@@ -18,8 +18,8 @@ class EducationAndExperience extends Component {
   onSubmit = values => console.log(JSON.stringify(values))
 
   render(){
-    const isEducationForm = this.props.title === constant.EDUCATION;
-    const Titles = isEducationForm ? constant.Forms.Education : constant.Forms.Experience;
+    const isEducationForm = this.props.title === constants.EDUCATION;
+    const Titles = isEducationForm ? constants.Forms.Education : constants.Forms.Experience;
     return (
       <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
         <div>

@@ -18,6 +18,8 @@
     border-bottom: 1px solid #467e9d;
     outline: none;
     color: #283e4a;
+    background-color: inherit;
+    box-sizing: border-box;
   }
 
   .quill{
@@ -28,5 +30,46 @@
     font-weight: 700;
     color: red;
     margin-top: 2px
+  }
+}
+
+.image-container {
+  height: 180px;
+  width: 160px;
+  background-color: lightgray;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-file {
+  visibility: hidden!important;
+  position: absolute;
+}
+
+.label-file {
+  font-size: 12px;
+  font-weight: 800;
+  color: #467e9d;
+  text-transform: uppercase;
+  max-width: 112px;
+  cursor: pointer;
+}
+
+.image{
+  position: relative;
+  .uploud-image {
+    width: 160px;
+    margin-bottom: 20px;
+    z-index: 2;
+    position: relative;
+  }
+  .remove-image{
+    position: absolute;
+    left: 136px;
+    z-index: 3;
+    background-color: #f5deb37a;
+    cursor: pointer;
   }
 }

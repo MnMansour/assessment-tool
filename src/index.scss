@@ -4,4 +4,29 @@ body {
   font-family: sans-serif;
   max-width: 1244px;
   margin: 0 auto;
+  font-family: 'Roboto' ,sans-serif;
+}
+
+#root{
+  .Root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    .body{
+      flex: 1;
+      display: flex;
+      background-image: url('./assets/background.png');
+      >.children{
+        display: flex;
+        width: 100%;
+      }
+      .loading{
+        fill: #f5deb3!important;
+        height: auto!important;
+        width: 50%!important;
+        align-self: center;
+        margin: 0 auto;
+      }
+    }
+  }
 }

@@ -3,6 +3,8 @@ export const EXPERIENCE = 'Experience';
 export const SKILLS = 'Skills';
 export const ASSIGNMENTS = 'Assignments';
 export const PROJECTS = 'Projects';
+export const RESET_PASSWORD = 'Reset Password';
+export const SIGN_UP = 'Sign up'
 
 export const Forms = {
   Education: {

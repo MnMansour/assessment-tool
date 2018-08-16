@@ -1,0 +1,75 @@
+.login-Page{
+  align-self: center;
+  display: flex;
+  margin: 0 auto;
+  min-width: 700px;
+  border-radius: 8px;
+  background: white;
+  -webkit-box-shadow: 6px 6px 5px 0px rgba(153,153,153,0.63);
+  -moz-box-shadow: 6px 6px 5px 0px rgba(153,153,153,0.63);
+  box-shadow: 6px 6px 5px 0px rgba(153,153,153,0.63);
+
+  @media (max-width: 800px){
+    flex-direction: column;
+    min-width: 95%;
+    -webkit-box-shadow: unset;
+    -moz-box-shadow: unset;
+    box-shadow: unset;
+    &__github{
+      order: -1;
+    }
+  }
+
+  &__github, &__email{
+    width: 50%;
+    @media (max-width: 800px){
+      width: 100%
+    }
+    .title{
+      font-size:14px;
+      font-weight: 700;
+      margin: 16px 0px 12px 8px;
+    }
+    .login-body{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      min-height: 270px;
+      .login-logo{
+        width: 200px;
+        height: auto;
+        margin: 0 auto;
+      }
+      .github-button {
+        width: 250px;
+        z-index: 1;
+        height: auto;
+        margin: 12px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: black;
+        z-index: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        -webkit-box-shadow: 3px 3px 2px 0px rgba(153,153,153,0.63);
+        -moz-box-shadow: 3px 3px 2px 0px rgba(153,153,153,0.63);
+        box-shadow: 3px 3px 2px 0px rgba(153,153,153,0.63);
+        img, span{
+          z-index: 1;
+          margin: 4px 2px;
+          color: white;
+          font-size: 12px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  &__email{
+    background-color: #f0f0f0;
+    .title{
+      color: #467e9d;
+    }
+  }
+}
