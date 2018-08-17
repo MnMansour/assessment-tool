@@ -10,24 +10,30 @@ import './style.scss'
 
 class EducationAndExperience extends Component {
 
-  // componentDidMount() {
-  //   const {body, initialize} = this.props
-  //     if(body){
-  //       initialize(body)
-  //     };
-  // }
+  componentDidMount() {
+    const {Data, initialize} = this.props
+      if(Data){
+        initialize(Data)
+      };
+  }
 
   componentWillMount() {
     console.log(this.props);
   }
 
   onSubmit = (values) => {
-    console.log(JSON.stringify(values));
-    const {user, title} = this.props,
-          id = new Date().getTime(),
-          path = `${title}/${user.uid}/${id}`;
-          console.log(path);
+    const {user, title, Data} = this.props;
+    if (Data) {
+      const id = Data.id
+      const path = `${title}/${user.uid}/${id}`;
+      this.props.writeToDatabase(path, {...values, id})
+    }
+    else {
+      const id = new Date().getTime(),
+        path = `${title}/${user.uid}/${id}`;
     this.props.writeToDatabase(path, {...values, id})
+    }
+
   }
 
   render(){

@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import FormModal from '../Modal';
 import editButton from '../../assets/edit-button.png';
+import EducationAndExperienceForm from '../Forms/EducationAndExperience';
+
 class EducationAndExperience extends Component {
+
+  componentWillMount(){
+    const {Data, initialize} = this.props
+    if (Data) {
+      console.log(Data);
+    }
+  }
 
   state = {
     modalIsOpen: false
@@ -18,7 +27,9 @@ class EducationAndExperience extends Component {
   modal = (title) => {
     const {modalIsOpen} = this.state,
           {Data} = this.props;
-    return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal} Data={Data}/>
+    return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
+              <EducationAndExperienceForm title={title} Data={Data}/>
+           </FormModal>
   }
 
   render() {

@@ -6,7 +6,6 @@ import SectionHeader from './SectionHeader'
 
 import EducationAndExperience from '../Forms/EducationAndExperience';
 import ProjectsAndAssignments from '../Forms/ProjectsAndAssignments';
-import ResetPassword from '../Forms/ResetPassword';
 import Skills from '../Forms/Skills';
 
 import EducationAndExperienceBody from './EducationAndExperience';
@@ -38,22 +37,7 @@ class Section extends Component {
     }
   }
 
-  // getForm = (title, Data) => {
-  //   switch (title) {
-  //     case constants.EDUCATION:
-  //     case constants.EXPERIENCE:
-  //       return <EducationAndExperience title={this.props.title} Data={Data}/>;
-  //     case constants.ASSIGNMENTS:
-  //     case constants.PROJECTS:
-  //       return <ProjectsAndAssignments title={this.props.title} />;
-  //     case constants.SKILLS:
-  //       return <Skills title={this.props.title}/>;
-  //     case constants.RESET_PASSWORD:
-  //       return <ResetPassword title={this.props.title}/>;
-  //     default:
-  //       return null
-  //   }
-  // }
+
 
   toggleSection = () => {
     this.setState({toggle: !this.state.toggle})
@@ -69,7 +53,6 @@ class Section extends Component {
 
   modal = (title) => {
     const {modalIsOpen} = this.state;
-    // return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>hi</FormModal>
 
     switch (title) {
         case constants.EDUCATION:
@@ -92,8 +75,6 @@ class Section extends Component {
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
                      <Skills title={this.props.title}/>
                   </FormModal>;
-        case constants.RESET_PASSWORD:
-          return <ResetPassword title={this.props.title}/>;
         default:
           return null
      }

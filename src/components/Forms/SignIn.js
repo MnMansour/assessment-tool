@@ -5,7 +5,8 @@ import { required, email} from 'redux-form-validators';
 import {login} from '../../redux/actions/actions';
 import {Input} from '../Inputs';
 import FormModal from '../Modal';
-import {RESET_PASSWORD} from '../../util/constants'
+import {RESET_PASSWORD} from '../../util/constants';
+import ResetPassword from './ResetPassword';
 
 import './style.scss';
 
@@ -22,7 +23,7 @@ class SignIn extends Component {
 
   modal = (title) => {
     const {modalIsOpen} = this.state;
-    return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}/>
+    return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}><ResetPassword title={title}/></FormModal>
   }
 
   openModal = () => {
