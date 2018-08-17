@@ -17,27 +17,25 @@ class FormModal extends Component {
     Modal.setAppElement(document.body);
   }
 
-  getForm = (title) => {
-    switch (title) {
-      case constants.EDUCATION:
-      case constants.EXPERIENCE:
-        return <EducationAndExperience title={this.props.title} />;
-      case constants.ASSIGNMENTS:
-      case constants.PROJECTS:
-        return <ProjectsAndAssignments title={this.props.title} />;
-      case constants.SKILLS:
-        return <Skills title={this.props.title}/>;
-      case constants.SIGN_UP:
-        return <SignUp title={this.props.title}/>;
-      case constants.RESET_PASSWORD:
-        return <ResetPassword title={this.props.title}/>;
-      default:
-        return null
-    }
-  }
+  // getForm = (title, Data) => {
+  //   switch (title) {
+  //     case constants.EDUCATION:
+  //     case constants.EXPERIENCE:
+  //       return <EducationAndExperience title={this.props.title} Data={Data}/>;
+  //     case constants.ASSIGNMENTS:
+  //     case constants.PROJECTS:
+  //       return <ProjectsAndAssignments title={this.props.title} />;
+  //     case constants.SKILLS:
+  //       return <Skills title={this.props.title}/>;
+  //     case constants.RESET_PASSWORD:
+  //       return <ResetPassword title={this.props.title}/>;
+  //     default:
+  //       return null
+  //   }
+  // }
   render() {
-    const {title} = this.props;
-    const child = this.getForm(title);
+    console.log(this.props.children);
+    const {title, Data, children} = this.props;
     return (
       <Modal
         isOpen={this.props.modalIsOpen}
@@ -48,7 +46,7 @@ class FormModal extends Component {
       >
         <h2>{this.props.title}</h2>
         <a className="close" onClick={this.props.closeModal}><img src={closeIcon} alt="close" /></a>
-        {child}
+        {children}
       </Modal>
     );
   }
