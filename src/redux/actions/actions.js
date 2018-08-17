@@ -5,10 +5,12 @@ export const LOG_OUT = 'LOG_OUT';
 export const USER_STATUS = 'USER_STATUS';
 export const GET_USER = 'GET_USER';
 export const USER_DB_STATUS = 'USER_DB_STATUS';
-export const GET_DB_USERS = 'GET_DB_USERS'
-export const ALLOWED_STATUS = 'ALLOWED_STATUS'
-export const ALLOWED_USERS = 'ALLOWED_USERS'
-export const GET_LOCATION = 'GET_LOCATION'
+export const GET_DB_USERS = 'GET_DB_USERS';
+export const ALLOWED_STATUS = 'ALLOWED_STATUS';
+export const ALLOWED_USERS = 'ALLOWED_USERS';
+export const GET_LOCATION = 'GET_LOCATION';
+export const EDUCATION_DB_STATUS = 'EDUCATION_DB_STATUS';
+export const GET_DB_EDUCATIONS = 'GET_DB_EDUCATIONS';
 
 
 export const logIn = user => ({ type: LOG_IN, payload: user });
@@ -52,6 +54,25 @@ export function getDbUsers() {
   };
 }
 
+export function getDbEducation() {
+  return dispatch => {
+    dispatch({
+      type: EDUCATION_DB_STATUS,
+      payload: true
+    });
+    database.ref('education').on('value', db => {
+      dispatch({
+        type: GET_DB_EDUCATIONS,
+        payload: db.val()
+      });
+      dispatch({
+        type: EDUCATION_DB_STATUS,
+        payload: false
+      });
+    });
+  };
+}
+
 export function getDbAllowedUsers() {
   return dispatch => {
     dispatch({
@@ -89,7 +110,7 @@ export function sendPasswordResetEmail(email) {
   return dispatch =>  auth.sendPasswordResetEmail(email);
 }
 
-export function writeToDatabase(path, data){
+export function writeToDatabase(path, data) {
   return dispatch => database.ref(path).update(data)
 }
 
