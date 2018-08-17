@@ -71,7 +71,7 @@
       background-color: white;
       &__header{
         height: 42px;
-        background-color: #283e4a;
+        background-color: #8d7e7e;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -98,6 +98,45 @@
         border-top: none;
         border-radius: 0 0 12px 12px;
         padding: 12px;
+
+        &__education-work{
+          font-family: "Segoe UI","Roboto", sans-serif;
+          padding: 6px;
+          margin-bottom: 3px;
+          background-color: #f5f3f1;
+          border-radius: 4px;
+          position: relative;
+          .edit{
+            height: 18px;
+            right: 0;
+            position: absolute;
+            padding: 12px;
+            cursor: pointer;
+          }
+          .place, .title {
+            line-height: 24px;
+            font-size: 16px;
+            font-weight: 600;
+          }
+          .title{font-weight: 400}
+          .date, .location{
+            line-height: 20px;
+            font-size: 14px;
+            font-weight:400;
+          }
+          .description{
+            padding: 8px 0;
+            p, blockquote, li{
+              margin: 0;
+              line-height: 20px;
+              font-size: 14px;
+              font-weight:400;
+            }
+            ol, ul{
+              margin: 2px
+            }
+          }
+        }
       }
 
       &__hide{

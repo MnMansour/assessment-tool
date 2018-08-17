@@ -13,7 +13,7 @@ import './style.scss';
 class Profile extends Component {
 
   getData = () => {
-    const {user, usersData, match:{params}} =this.props;
+    const {userUid, usersData, match:{params}} =this.props;
     if(params.id){
        const key = _.findKey(usersData, {displayName: params.id})
        if(key) return usersData[key];
@@ -21,15 +21,15 @@ class Profile extends Component {
     }
     else{
 
-      return usersData[user.uid]
+      return usersData[userUid]
     }
   }
 
 
   render(){
-    const {user, match} = this.props
+    const {userUid, dbEducation, match} = this.props
     const Data = this.getData();
-    const myPage = Data ? Data.uid === user.uid : false;
+    const enableEdit = Data ? Data.uid === userUid : false;
     if (!Data) {
       return <div className="profile-notfound">Person With Name {match.params.id} Not Found! </div>
     }
@@ -46,11 +46,11 @@ class Profile extends Component {
           </div>
         </div>
         <div className="profile__body">
-          <Section myPage={myPage} title={constants.EDUCATION} />
-          <Section myPage={myPage} title={constants.EXPERIENCE} />
-          <Section myPage={myPage} title={constants.SKILLS} />
-          <Section myPage={myPage} title={constants.ASSIGNMENTS} />
-          <Section myPage={myPage} title={constants.PROJECTS} />
+          <Section enableEdit={enableEdit} title={constants.EDUCATION} Data={dbEducation[Data.uid]}/>
+          <Section enableEdit={enableEdit} title={constants.EXPERIENCE} />
+          <Section enableEdit={enableEdit} title={constants.SKILLS} />
+          <Section enableEdit={enableEdit} title={constants.ASSIGNMENTS} />
+          <Section enableEdit={enableEdit} title={constants.PROJECTS} />
         </div>
       </div>
     )
@@ -59,9 +59,9 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
+    userUid: state.user.uid,
     usersData: state.dbUsers,
-    userLoading: state.loading.user,
+    dbEducation: state.dbEducation
   };
 }
 

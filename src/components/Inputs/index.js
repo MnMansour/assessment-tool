@@ -37,7 +37,6 @@ Textarea.modules = {
   toolbar: [
     ['bold', 'italic', 'underline', 'blockquote'],
     [{'list': 'ordered'}, {'list': 'bullet'}],
-    ['link', 'image', 'video'],
   ],
   clipboard: {
     // toggle to add extra line breaks when pasting HTML:
@@ -50,6 +49,5 @@ Textarea.modules = {
  */
 Textarea.formats = [
   'bold', 'italic', 'underline', 'blockquote',
-  'list', 'bullet',
-  'link', 'image', 'video'
+  'list', 'bullet'
 ]
