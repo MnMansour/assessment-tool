@@ -58,7 +58,7 @@ class EducationAndExperience extends Component {
 
           <Field label="description" name="description" component={Textarea} validate={required()} />
           <div>
-            <button type="submit" >ADD</button>
+            <button type="submit" >Save</button>
           </div>
         </div>
       </form>

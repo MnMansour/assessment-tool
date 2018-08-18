@@ -100,6 +100,10 @@
         border-radius: 0 0 12px 12px;
         padding: 12px;
 
+        .no-data{
+          text-align: center;
+        }
+
         &__education-work{
           font-family: "Segoe UI","Roboto", sans-serif;
           padding: 6px;

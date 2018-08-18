@@ -8,6 +8,8 @@ export default function (state = {}, action) {
       return { ...state, dbAllowedUsers: action.payload };
     case 'EDUCATION_DB_STATUS':
       return { ...state, dbEducation: action.payload };
+    case 'EXPERIENCE_DB_STATUS':
+      return { ...state, dbExperience: action.payload };
     default:
       return state;
   }

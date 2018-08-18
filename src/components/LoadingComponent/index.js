@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ReactLoading from "react-loading";
-import {getUser, getDbUsers, getDbAllowedUsers, getLocation, getDbEducation} from '../../redux/actions/actions';
+import {getUser, getDbUsers, getDbAllowedUsers, getLocation, getDbEducation, getDbExperience} from '../../redux/actions/actions';
 
 class LoadingComponent extends Component {
 
   componentWillMount() {
-    const { userLoading, dbUserLoading, dbAllowedUsersLoading, dbEducationLoading, location } = this.props;
+    const { userLoading, dbUserLoading, dbAllowedUsersLoading, dbEducationLoading, dbExperienceLoading, location } = this.props;
     if (userLoading === undefined) {
       this.props.getUser();
     }
@@ -22,6 +22,10 @@ class LoadingComponent extends Component {
 
     if (dbEducationLoading === undefined) {
       this.props.getDbEducation();
+    }
+
+    if (dbExperienceLoading === undefined) {
+      this.props.getDbExperience();
     }
 
     this.props.getLocation(location)
@@ -60,7 +64,8 @@ function mapStateToProps(state) {
     dbUserLoading: state.loading.dbUsers,
     dbAllowedUsersLoading: state.loading.dbAllowedUsers ,
     dbEducationLoading: state.loading.dbEducation,
+    dbExperienceLoading: state.loading.dbExperience,
   };
 }
 
-export default withRouter(connect(mapStateToProps, {getUser, getDbUsers,getDbAllowedUsers, getLocation, getDbEducation})(LoadingComponent));
+export default withRouter(connect(mapStateToProps, {getUser, getDbUsers,getDbAllowedUsers, getLocation, getDbEducation, getDbExperience})(LoadingComponent));

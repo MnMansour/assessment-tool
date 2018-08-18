@@ -11,6 +11,8 @@ export const ALLOWED_USERS = 'ALLOWED_USERS';
 export const GET_LOCATION = 'GET_LOCATION';
 export const EDUCATION_DB_STATUS = 'EDUCATION_DB_STATUS';
 export const GET_DB_EDUCATIONS = 'GET_DB_EDUCATIONS';
+export const EXPERIENCE_DB_STATUS = 'EXPERIENCE_DB_STATUS';
+export const GET_DB_EXPERIENCES = 'GET_DB_EXPERIENCES';
 
 
 export const logIn = user => ({ type: LOG_IN, payload: user });
@@ -67,6 +69,25 @@ export function getDbEducation() {
       });
       dispatch({
         type: EDUCATION_DB_STATUS,
+        payload: false
+      });
+    });
+  };
+}
+
+export function getDbExperience() {
+  return dispatch => {
+    dispatch({
+      type: EXPERIENCE_DB_STATUS,
+      payload: true
+    });
+    database.ref('experience').on('value', db => {
+      dispatch({
+        type: GET_DB_EXPERIENCES,
+        payload: db.val()
+      });
+      dispatch({
+        type: EXPERIENCE_DB_STATUS,
         payload: false
       });
     });

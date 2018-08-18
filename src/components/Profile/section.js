@@ -85,7 +85,7 @@ class Section extends Component {
       <div className="section">
         <SectionHeader title={title} enableEdit={enableEdit} toggle={toggle} toggleSection={this.toggleSection} openModal={this.openModal}/>
 
-        <div className={toggle? "section__body" : "section__hide"}>{sectionBody ? sectionBody : ''}</div>
+        <div className={toggle? "section__body" : "section__hide"}>{sectionBody ? sectionBody : <div className="no-data">No data to show</div>}</div>
         {this.modal(title)}
       </div>
     );
