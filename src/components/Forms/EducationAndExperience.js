@@ -53,7 +53,7 @@ class EducationAndExperience extends Component {
             <Field label="To" name="toDate" type="month" component={Input} validate={[date({ format: 'yyyy-mm' })]}  />
           </div>
 
-          <Field label="description" name="description" component={Textarea} validate={required()} />
+          <Field label="description" name="description" component={Textarea} />
           <div>
             <button type="submit" >Save</button>
           </div>

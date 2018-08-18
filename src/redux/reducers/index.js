@@ -7,6 +7,8 @@ import DbUserReducer from './DbUserReducer';
 import DbEducationReducer from './DbEducationReducer';
 import DbExperienceReducer from './DbExperienceReducer';
 import DbSkillsReducer from './DbSkillsReducer';
+import DbAssignmentsReducer from './DbAssignmentsReducer';
+import DbProjectsReducer from './DbProjectsReducer';
 import DbAllowedUsersReducer from './DbAllowedUsersReducer';
 
 export default combineReducers({
@@ -19,4 +21,6 @@ export default combineReducers({
 	 dbEducation: DbEducationReducer,
 	 dbExperience: DbExperienceReducer,
 	 dbSkills: DbSkillsReducer,
+	 dbProjects: DbProjectsReducer,
+	 dbAssignments: DbAssignmentsReducer,
   });

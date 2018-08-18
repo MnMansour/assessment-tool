@@ -42,7 +42,6 @@ class EducationAndExperience extends Component {
               const {Data:{id}, user, deleteFromDatabase, sectionTitle} = this.props;
               if(user) {
                 const path = `${sectionTitle}/${user.uid}`;
-                console.log(path);
                 deleteFromDatabase(path, id)
               }
             }

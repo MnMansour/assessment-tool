@@ -27,9 +27,12 @@ class Profile extends Component {
 
 
   render(){
-    const {user, dbEducation, dbExperience, dbSkills,match} = this.props
+    const {user, dbEducation, dbExperience, dbSkills, match} = this.props
     const Data = this.getData();
     const enableEdit = Data ? user ? Data.uid === user.uid : false : false;
+    const userDbEduction = dbEducation ? dbEducation[Data.uid] : false;
+    const userDbExperience = dbExperience ? dbExperience[Data.uid] : false;
+    const userDbSkills = dbSkills ? dbSkills[Data.uid] : false;
     if (!Data) {
       return <div className="profile-notfound">Person With Name {match.params.id} Not Found! </div>
     }
@@ -46,9 +49,9 @@ class Profile extends Component {
           </div>
         </div>
         <div className="profile__body">
-          <Section enableEdit={enableEdit} title={constants.EDUCATION} Data={dbEducation ? dbEducation[Data.uid] : false}/>
-          <Section enableEdit={enableEdit} title={constants.EXPERIENCE} Data={dbExperience ? dbExperience[Data.uid] : false} />
-          <Section enableEdit={enableEdit} title={constants.SKILLS} Data={dbSkills ? dbSkills[Data.uid] : false}/>
+          {(enableEdit || userDbEduction) && <Section enableEdit={enableEdit} title={constants.EDUCATION} Data={userDbEduction}/>}
+          {(enableEdit || userDbExperience) && <Section enableEdit={enableEdit} title={constants.EXPERIENCE} Data={userDbExperience} />}
+          {(enableEdit || userDbSkills) && <Section enableEdit={enableEdit} title={constants.SKILLS} Data={userDbSkills}/>}
           <Section enableEdit={enableEdit} title={constants.ASSIGNMENTS} />
           <Section enableEdit={enableEdit} title={constants.PROJECTS} />
         </div>
@@ -58,6 +61,7 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state', state);
   return {
     user: state.user,
     usersData: state.dbUsers,

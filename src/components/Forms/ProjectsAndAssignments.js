@@ -9,9 +9,9 @@ import './style.scss';
 class ProjectsAndAssignments extends Component {
 
   componentDidMount() {
-    const {body, initialize} = this.props
-      if(body){
-        initialize(body)
+    const {Data, initialize} = this.props;
+      if(Data){
+        initialize(Data)
       };
   }
 

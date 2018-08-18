@@ -4,12 +4,13 @@ import { withRouter } from 'react-router-dom';
 import ReactLoading from "react-loading";
 import {getUser, getDbUsers, getDbAllowedUsers,
         getLocation, getDbEducation, getDbExperience,
-        getDbSkills} from '../../redux/actions/actions';
+        getDbSkills, getDbAssignments, getDbProjects} from '../../redux/actions/actions';
 
 class LoadingComponent extends Component {
 
   componentWillMount() {
-    const { userLoading, dbUserLoading, dbAllowedUsersLoading, dbEducationLoading, dbExperienceLoading, dbSkillsLoading, location } = this.props;
+    const { userLoading, dbUserLoading, dbAllowedUsersLoading, dbEducationLoading,
+      dbExperienceLoading, dbSkillsLoading, dbProjectsLoading, dbAssignmentsLoading,location } = this.props;
     if (userLoading === undefined) {
       this.props.getUser();
     }
@@ -32,6 +33,14 @@ class LoadingComponent extends Component {
 
     if (dbSkillsLoading === undefined) {
       this.props.getDbSkills();
+    }
+
+    if (dbAssignmentsLoading === undefined) {
+      this.props.getDbAssignments();
+    }
+
+    if (dbProjectsLoading === undefined) {
+      this.props.getDbProjects();
     }
 
     this.props.getLocation(location)
@@ -71,9 +80,11 @@ function mapStateToProps(state) {
     dbAllowedUsersLoading: state.loading.dbAllowedUsers ,
     dbEducationLoading: state.loading.dbEducation,
     dbExperienceLoading: state.loading.dbExperience,
-    dbSkillsLoading: state.loading.dbSkills
+    dbSkillsLoading: state.loading.dbSkills,
+    dbAssignmentsLoading: state.loading.dbAssignments,
+    dbProjectsLoading: state.loading.dbProjects,
   };
 }
 
 export default withRouter(connect(mapStateToProps, {getUser, getDbUsers,getDbAllowedUsers,
-  getLocation, getDbEducation, getDbExperience, getDbSkills})(LoadingComponent));
+  getLocation, getDbEducation, getDbExperience, getDbSkills, getDbAssignments, getDbProjects})(LoadingComponent));

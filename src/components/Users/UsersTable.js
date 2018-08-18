@@ -37,7 +37,7 @@ const UsersTable = ({users, showPrograss, showEdit}) => (
         show: showPrograss ? showPrograss: false,
       },{
         id:"edit",
-        accessor: user => <div >edit</div>,
+        accessor: user => <div onClick={()=>console.log('edit', user.uid)}>edit</div>,
         maxWidth: 50,
         show: showEdit ? showEdit: false,
       },

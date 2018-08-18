@@ -62,9 +62,6 @@ class Section extends Component {
                     <EducationAndExperience title={title} closeModal={this.closeModal}/>
                  </FormModal>;
         case constants.ASSIGNMENTS:
-          return  <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                     <ProjectsAndAssignments title={title} closeModal={this.closeModal}/>
-                  </FormModal>
         case constants.PROJECTS:
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
                      <ProjectsAndAssignments title={title} closeModal={this.closeModal}/>

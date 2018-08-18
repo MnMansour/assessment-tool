@@ -15,11 +15,11 @@ export const EXPERIENCE_DB_STATUS = 'EXPERIENCE_DB_STATUS';
 export const GET_DB_EXPERIENCES = 'GET_DB_EXPERIENCES';
 export const SKILLS_DB_STATUS = 'SKILLS_DB_STATUS';
 export const GET_DB_SKILLS = 'GET_DB_SKILLS';
+export const ASSIGNMENTS_DB_STATUS = 'ASSIGNMENTS_DB_STATUS';
+export const GET_DB_ASSIGNMENTS = 'GET_DB_ASSIGNMENTS';
+export const PROJECTS_DB_STATUS = 'PROJECTS_DB_STATUS';
+export const GET_DB_PROJECTS = 'GET_DB_PROJECTS';
 
-
-
-export const logIn = user => ({ type: LOG_IN, payload: user });
-export const logOut = user => ({ type: LOG_OUT });
 
 export function getUser() {
   return dispatch => {
@@ -91,6 +91,44 @@ export function getDbExperience() {
       });
       dispatch({
         type: EXPERIENCE_DB_STATUS,
+        payload: false
+      });
+    });
+  };
+}
+
+export function getDbAssignments() {
+  return dispatch => {
+    dispatch({
+      type: ASSIGNMENTS_DB_STATUS,
+      payload: true
+    });
+    database.ref('assignments').on('value', db => {
+      dispatch({
+        type: GET_DB_ASSIGNMENTS,
+        payload: db.val()
+      });
+      dispatch({
+        type: ASSIGNMENTS_DB_STATUS,
+        payload: false
+      });
+    });
+  };
+}
+
+export function getDbProjects() {
+  return dispatch => {
+    dispatch({
+      type: PROJECTS_DB_STATUS,
+      payload: true
+    });
+    database.ref('experience').on('value', db => {
+      dispatch({
+        type: GET_DB_PROJECTS,
+        payload: db.val()
+      });
+      dispatch({
+        type: PROJECTS_DB_STATUS,
         payload: false
       });
     });
