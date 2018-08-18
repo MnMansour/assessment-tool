@@ -44,7 +44,7 @@ class ProjectsAndAssignments extends Component {
           <Field label="description" name="description" component={Textarea}  />
           <div>
             <button type="submit" >ADD</button>
-          </div>'
+          </div>
         </div>
       </form>
     )

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { confirmAlert } from 'react-confirm-alert';
 import {deleteFromDatabase} from '../../redux/actions/actions';
 import FormModal from '../Modal';
 import EducationAndExperienceForm from '../Forms/EducationAndExperience';
 import removeIcon from '../../assets/delete-icon.png';
 import editButton from '../../assets/edit-button.png';
+
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 
 class EducationAndExperience extends Component {
 
@@ -29,14 +33,25 @@ class EducationAndExperience extends Component {
   }
 
   removeBlock=()=>{
-    const {Data:{id}, user, deleteFromDatabase, sectionTitle} = this.props;
-    console.log(user);
-    if(user) {
-      const path = `${sectionTitle}/${user.uid}`;
-      console.log(path);
-      deleteFromDatabase(path, id)
-    }
+    confirmAlert({
+        title: 'Confirm to remove',
+        message: 'Are you sure to do this.',
+        buttons: [{
+            label: 'Yes',
+            onClick: () => {
+              const {Data:{id}, user, deleteFromDatabase, sectionTitle} = this.props;
+              if(user) {
+                const path = `${sectionTitle}/${user.uid}`;
+                console.log(path);
+                deleteFromDatabase(path, id)
+              }
+            }
+          },
+          { label: 'No'}
+        ]})
   }
+
+
 
   render() {
     const {Data: {place, title, dgree , location, toDate, fromDate, description}, enableEdit, sectionTitle} = this.props;

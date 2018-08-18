@@ -27,7 +27,6 @@ class Profile extends Component {
 
 
   render(){
-    console.log(this.props);
     const {user, dbEducation, dbExperience, dbSkills,match} = this.props
     const Data = this.getData();
     const enableEdit = Data ? user ? Data.uid === user.uid : false : false;

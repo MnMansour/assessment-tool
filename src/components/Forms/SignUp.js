@@ -71,13 +71,13 @@ class SignUp extends Component {
     }
   }
 
-  displayName = (_displayName) =>{
+  displayName = (fullname) =>{
     const {dbUsers} = this.props;
     if (dbUsers) {
-        const allNames = _.mapValues(dbUsers, (user)=> user.displayName);
+        const allNames = _.mapValues(dbUsers, (user)=> {if(user.fullname) return user.fullname.toLowerCase()});
       console.log(allNames);
-      const nameExisted = _.includes(allNames, _displayName)
-      const displayName = _displayName.replace(/ /g,"-").toLowerCase()
+      const nameExisted = _.includes(allNames, fullname.toLowerCase())
+      const displayName = fullname.toLowerCase().replace(/ /g,"-").toLowerCase()
       if (nameExisted) return displayName+2
       else return displayName
     }

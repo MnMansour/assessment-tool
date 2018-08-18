@@ -55,7 +55,7 @@ class Skills extends Component {
 
           <div>
             <button type="submit" >ADD</button>
-          </div>'
+          </div>
         </div>
       </form>
     )
