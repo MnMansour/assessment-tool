@@ -10,6 +10,8 @@ export default function (state = {}, action) {
       return { ...state, dbEducation: action.payload };
     case 'EXPERIENCE_DB_STATUS':
       return { ...state, dbExperience: action.payload };
+    case 'SKILLS_DB_STATUS':
+      return { ...state, dbSkills: action.payload };
     default:
       return state;
   }

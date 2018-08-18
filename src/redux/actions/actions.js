@@ -13,6 +13,9 @@ export const EDUCATION_DB_STATUS = 'EDUCATION_DB_STATUS';
 export const GET_DB_EDUCATIONS = 'GET_DB_EDUCATIONS';
 export const EXPERIENCE_DB_STATUS = 'EXPERIENCE_DB_STATUS';
 export const GET_DB_EXPERIENCES = 'GET_DB_EXPERIENCES';
+export const SKILLS_DB_STATUS = 'SKILLS_DB_STATUS';
+export const GET_DB_SKILLS = 'GET_DB_SKILLS';
+
 
 
 export const logIn = user => ({ type: LOG_IN, payload: user });
@@ -88,6 +91,25 @@ export function getDbExperience() {
       });
       dispatch({
         type: EXPERIENCE_DB_STATUS,
+        payload: false
+      });
+    });
+  };
+}
+
+export function getDbSkills() {
+  return dispatch => {
+    dispatch({
+      type: SKILLS_DB_STATUS,
+      payload: true
+    });
+    database.ref('skills').on('value', db => {
+      dispatch({
+        type: GET_DB_SKILLS,
+        payload: db.val()
+      });
+      dispatch({
+        type: SKILLS_DB_STATUS,
         payload: false
       });
     });

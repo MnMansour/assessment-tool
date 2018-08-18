@@ -27,7 +27,8 @@ class Profile extends Component {
 
 
   render(){
-    const {user, dbEducation, dbExperience, match} = this.props
+    console.log(this.props);
+    const {user, dbEducation, dbExperience, dbSkills,match} = this.props
     const Data = this.getData();
     const enableEdit = Data ? user ? Data.uid === user.uid : false : false;
     if (!Data) {
@@ -48,7 +49,7 @@ class Profile extends Component {
         <div className="profile__body">
           <Section enableEdit={enableEdit} title={constants.EDUCATION} Data={dbEducation ? dbEducation[Data.uid] : false}/>
           <Section enableEdit={enableEdit} title={constants.EXPERIENCE} Data={dbExperience ? dbExperience[Data.uid] : false} />
-          <Section enableEdit={enableEdit} title={constants.SKILLS} />
+          <Section enableEdit={enableEdit} title={constants.SKILLS} Data={dbSkills ? dbSkills[Data.uid] : false}/>
           <Section enableEdit={enableEdit} title={constants.ASSIGNMENTS} />
           <Section enableEdit={enableEdit} title={constants.PROJECTS} />
         </div>
@@ -63,6 +64,7 @@ function mapStateToProps(state) {
     usersData: state.dbUsers,
     dbEducation: state.dbEducation,
     dbExperience: state.dbExperience,
+    dbSkills: state.dbSkills
   };
 }
 

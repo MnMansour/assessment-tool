@@ -6,6 +6,7 @@ import LoadingReducer from './LoadingReducer';
 import DbUserReducer from './DbUserReducer';
 import DbEducationReducer from './DbEducationReducer';
 import DbExperienceReducer from './DbExperienceReducer';
+import DbSkillsReducer from './DbSkillsReducer';
 import DbAllowedUsersReducer from './DbAllowedUsersReducer';
 
 export default combineReducers({
@@ -17,4 +18,5 @@ export default combineReducers({
 	 location: LocationReducer,
 	 dbEducation: DbEducationReducer,
 	 dbExperience: DbExperienceReducer,
+	 dbSkills: DbSkillsReducer,
   });
