@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { required } from 'redux-form-validators';
+import {writeToDatabase} from '../../redux/actions/actions';
 import {Input} from '../Inputs';
 
 import './style.scss';
@@ -8,15 +10,31 @@ import './style.scss';
 class Skills extends Component {
 
   componentDidMount() {
-    const {body, initialize} = this.props
-      if(body){
-        initialize(body)
+    const {Data, initialize} = this.props
+      if(Data){
+        initialize(Data)
       };
+
+    }
+
+
+  onSubmit = (values) => {
+    const {user, title, Data ,closeModal} = this.props;
+    if (Data) {
+      const id = Data.id
+      const path = `${title}/${user.uid}/${id}`;
+      this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+    else {
+      const id = new Date().getTime(),
+        path = `${title}/${user.uid}/${id}`;
+    this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+
   }
 
-  onSubmit = values => console.log(JSON.stringify(values))
-
   render(){
+    console.log(this.props);
     return (
       <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
         <div>
@@ -44,6 +62,16 @@ class Skills extends Component {
   }
 }
 
-export default reduxForm({
-  form: 'SkillsForm',
-})(Skills)
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+let form = reduxForm({
+  form: 'SkillsForm'
+})(Skills);
+
+form = connect(mapStateToProps, {writeToDatabase})(form);
+
+export default form;
