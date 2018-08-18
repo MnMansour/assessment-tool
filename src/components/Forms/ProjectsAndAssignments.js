@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { required, url} from 'redux-form-validators';
+import {writeToDatabase} from '../../redux/actions/actions';
 import * as constants from '../../util/constants'
 import {Input, Textarea} from '../Inputs';
 
@@ -15,7 +17,20 @@ class ProjectsAndAssignments extends Component {
       };
   }
 
-  onSubmit = values => console.log(JSON.stringify(values))
+  onSubmit = (values) => {
+    const {user, title, Data ,closeModal} = this.props;
+    if (Data) {
+      const id = Data.id
+      const path = `${title}/${user.uid}/${id}`;
+      this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+    else {
+      const id = new Date().getTime(),
+        path = `${title}/${user.uid}/${id}`;
+    this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+
+  }
 
   render(){
     const isProjectForm = this.props.title === constants.PROJECTS;
@@ -51,6 +66,16 @@ class ProjectsAndAssignments extends Component {
   }
 }
 
-export default reduxForm({
-  form: 'PAAForm',
-})(ProjectsAndAssignments)
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+let form = reduxForm({
+  form: 'EAEForm'
+})(ProjectsAndAssignments);
+
+form = connect(mapStateToProps, {writeToDatabase})(form);
+
+export default form;
