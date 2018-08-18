@@ -38,7 +38,7 @@ class ProjectsAndAssignments extends Component {
     return (
       <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
         <div>
-          <Field label={`${name} name`} name={name} component={Input} validate={required()} type="text" />
+          <Field label={`${name} name`} name="name" component={Input} validate={required()} type="text" />
 
           {!isProjectForm &&
             <div>

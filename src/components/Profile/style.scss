@@ -105,7 +105,7 @@
           text-align: center;
         }
 
-        &__education-work{
+        &__education-work, &__projects-assignments{
           padding: 6px;
           margin-bottom: 3px;
           background-color: #f5f3f1;
@@ -125,6 +125,10 @@
             line-height: 24px;
             font-size: 16px;
             font-weight: 600;
+            a{
+              text-decoration: none;
+              color: #1002ff;
+            }
           }
           .title{font-weight: 400}
           .date, .location{

@@ -122,7 +122,7 @@ export function getDbProjects() {
       type: PROJECTS_DB_STATUS,
       payload: true
     });
-    database.ref('experience').on('value', db => {
+    database.ref('projects').on('value', db => {
       dispatch({
         type: GET_DB_PROJECTS,
         payload: db.val()

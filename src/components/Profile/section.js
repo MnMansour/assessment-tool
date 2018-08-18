@@ -9,6 +9,7 @@ import ProjectsAndAssignments from '../Forms/ProjectsAndAssignments';
 import Skills from '../Forms/Skills';
 
 import EducationAndExperienceBody from './EducationAndExperience';
+import ProjectsAndAssignmentsBody from './ProjectsAndAssignments';
 import SkillsBody from './Skills';
 
 import './style.scss';
@@ -29,7 +30,7 @@ class Section extends Component {
           return _.map(Data, ((index) => <EducationAndExperienceBody sectionTitle={title} enableEdit={enableEdit} Data={index} key={index.id}/>));
         case constants.ASSIGNMENTS:
         case constants.PROJECTS:
-          return null;
+          return _.map(Data, ((index) => <ProjectsAndAssignmentsBody sectionTitle={title} enableEdit={enableEdit} Data={index} key={index.id}/>));
         case constants.SKILLS:
           return _.map(Data, ((index) => <SkillsBody Data={index} key={index.id} enableEdit={enableEdit}/>));
         default:
