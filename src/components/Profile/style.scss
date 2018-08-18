@@ -99,13 +99,12 @@
         border-top: none;
         border-radius: 0 0 12px 12px;
         padding: 12px;
-
+        font-family: "Segoe UI","Roboto", sans-serif;
         .no-data{
           text-align: center;
         }
 
         &__education-work{
-          font-family: "Segoe UI","Roboto", sans-serif;
           padding: 6px;
           margin-bottom: 3px;
           background-color: #f5f3f1;
@@ -143,6 +142,25 @@
             ol, ul{
               margin: 2px
             }
+          }
+        }
+
+        &__skills{
+          display: inline-flex;
+          margin: 6px;
+          align-items: center;
+          background-color: #8d7e7e;
+          color: white;
+          border-radius: 4px;
+          div{
+            padding: 3px 6px;
+            font-size: 16px;
+            font-weight: 600;
+          }
+          img{
+            height: 12px;
+            padding:  0 5px;
+            cursor: pointer;
           }
         }
       }
