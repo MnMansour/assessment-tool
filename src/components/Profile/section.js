@@ -58,19 +58,19 @@ class Section extends Component {
         case constants.EDUCATION:
         case constants.EXPERIENCE:
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                    <EducationAndExperience title={title} />
+                    <EducationAndExperience title={title} closeModal={this.closeModal}/>
                  </FormModal>;
         case constants.ASSIGNMENTS:
           return  <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                     <ProjectsAndAssignments title={title} />
+                     <ProjectsAndAssignments title={title} closeModal={this.closeModal}/>
                   </FormModal>
         case constants.PROJECTS:
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                     <ProjectsAndAssignments title={title} />
+                     <ProjectsAndAssignments title={title} closeModal={this.closeModal}/>
                   </FormModal>;
         case constants.SKILLS:
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                     <Skills title={title}/>
+                     <Skills title={title} closeModal={this.closeModal}/>
                   </FormModal>;
         default:
           return null

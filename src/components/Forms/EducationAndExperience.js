@@ -17,21 +17,18 @@ class EducationAndExperience extends Component {
       };
   }
 
-  componentWillMount() {
-    console.log(this.props);
-  }
 
   onSubmit = (values) => {
-    const {user, title, Data} = this.props;
+    const {user, title, Data ,closeModal} = this.props;
     if (Data) {
       const id = Data.id
       const path = `${title}/${user.uid}/${id}`;
-      this.props.writeToDatabase(path, {...values, id})
+      this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
     }
     else {
       const id = new Date().getTime(),
         path = `${title}/${user.uid}/${id}`;
-    this.props.writeToDatabase(path, {...values, id})
+    this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
     }
 
   }
