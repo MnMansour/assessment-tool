@@ -25,7 +25,7 @@ class Section extends Component {
       switch (title) {
         case constants.EDUCATION:
         case constants.EXPERIENCE:
-          return _.map(Data, ((index) => <EducationAndExperienceBody enableEdit={enableEdit} Data={index} key={index.id}/>));
+          return _.map(Data, ((index) => <EducationAndExperienceBody sectionTitle={title} enableEdit={enableEdit} Data={index} key={index.id}/>));
         case constants.ASSIGNMENTS:
         case constants.PROJECTS:
           return null;
@@ -56,24 +56,21 @@ class Section extends Component {
 
     switch (title) {
         case constants.EDUCATION:
-          return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                    <EducationAndExperience title={this.props.title} />
-                 </FormModal>;
         case constants.EXPERIENCE:
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                    <EducationAndExperience title={this.props.title} />
+                    <EducationAndExperience title={title} />
                  </FormModal>;
         case constants.ASSIGNMENTS:
           return  <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                     <ProjectsAndAssignments title={this.props.title} />
+                     <ProjectsAndAssignments title={title} />
                   </FormModal>
         case constants.PROJECTS:
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                     <ProjectsAndAssignments title={this.props.title} />
+                     <ProjectsAndAssignments title={title} />
                   </FormModal>;
         case constants.SKILLS:
           return <FormModal title={title} modalIsOpen={modalIsOpen} closeModal={this.closeModal}>
-                     <Skills title={this.props.title}/>
+                     <Skills title={title}/>
                   </FormModal>;
         default:
           return null

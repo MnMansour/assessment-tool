@@ -114,6 +114,10 @@ export function writeToDatabase(path, data) {
   return dispatch => database.ref(path).update(data)
 }
 
+export function deleteFromDatabase(path, id) {
+  return dispatch => database.ref(path).child(id).remove()
+}
+
 export function getLocation(location) {
   return dispatch => {
     dispatch({

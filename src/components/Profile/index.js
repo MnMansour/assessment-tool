@@ -13,23 +13,23 @@ import './style.scss';
 class Profile extends Component {
 
   getData = () => {
-    const {userUid, usersData, match:{params}} =this.props;
+    const {user, usersData, match:{params}} =this.props;
     if(params.id){
        const key = _.findKey(usersData, {displayName: params.id})
        if(key) return usersData[key];
        else return false
     }
     else{
-
-      return usersData[userUid]
+      if (user) return usersData[user.uid]
+      else return false
     }
   }
 
 
   render(){
-    const {userUid, dbEducation, match} = this.props
+    const {user, dbEducation, match} = this.props
     const Data = this.getData();
-    const enableEdit = Data ? Data.uid === userUid : false;
+    const enableEdit = Data ? user ? Data.uid === user.uid : false : false;
     if (!Data) {
       return <div className="profile-notfound">Person With Name {match.params.id} Not Found! </div>
     }
@@ -59,7 +59,7 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    userUid: state.user.uid,
+    user: state.user,
     usersData: state.dbUsers,
     dbEducation: state.dbEducation
   };

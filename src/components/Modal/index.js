@@ -13,17 +13,16 @@ class FormModal extends Component {
 
 
   render() {
-    const {title, children} = this.props;
+    const {title, children, closeModal, modalIsOpen} = this.props;
     return (
       <Modal
-        isOpen={this.props.modalIsOpen}
-        onAfterOpen={this.afterOpenModal}
+        isOpen={modalIsOpen}
         className="Modal"
         contentLabel="Modal"
         overlayClassName="Modal-overlay"
       >
         <h2>{title}</h2>
-        <a className="close" onClick={this.props.closeModal}><img src={closeIcon} alt="close" /></a>
+        <a className="close" onClick={closeModal}><img src={closeIcon} alt="close" /></a>
         {children}
       </Modal>
     );

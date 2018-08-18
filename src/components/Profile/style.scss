@@ -2,6 +2,7 @@
   width: 100%;
   &__header{
     background-image: url('../../assets/profil-background.jpg');
+    background-size: cover;
     padding: 12px;
     display: flex;
     align-items:center;
@@ -106,12 +107,15 @@
           background-color: #f5f3f1;
           border-radius: 4px;
           position: relative;
-          .edit{
-            height: 18px;
-            right: 0;
+          .buttons{
             position: absolute;
-            padding: 12px;
-            cursor: pointer;
+            right: 0;
+            padding: 0 6px;
+            img{
+              height: 15px;
+              margin: 12px 6px;
+              cursor: pointer;
+            }
           }
           .place, .title {
             line-height: 24px;
