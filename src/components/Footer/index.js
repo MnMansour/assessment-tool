@@ -1,7 +1,11 @@
 import React from 'react'
+import './style.scss'
 
 const Footer = () => {
-  return <footer>footer</footer>
+  return (
+    <footer>
+      <div>Copyright © Integrify, All rights reserved.</div>
+    </footer>)
 }
 
 export default Footer;
