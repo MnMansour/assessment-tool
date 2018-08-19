@@ -16,25 +16,27 @@ class Admin extends Component {
 
   componentWillMount() {
     const {allowedEmails, dbUsers, user:{uid}, history} = this.props;
-    const role = dbUsers[uid].role
+    const role = dbUsers[uid].role;
     if (role === "student") {
       history.push('/')
     } else {
-      const Data = _.map(allowedEmails, (user)=> user)
+      console.log('allowedEmails', allowedEmails);
+      const Data = _.filter(allowedEmails, (user)=> user);
+      console.log('Data', Data);
       this.setState({Data});
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const {allowedEmails} = nextProps;
-    const Data = _.map(allowedEmails, (user)=> user)
+    const Data = _.filter(allowedEmails, (user)=> user);
     this.setState({Data});
   }
 
   emailSearch = (e) => {
     const {allowedEmails} = this.props;
-    const Data = _.map(allowedEmails, (user)=> user)
-    const filterEmails = _.filter(Data, (index) => _.includes(index.email, e.target.value))
+    const Data = _.filter(allowedEmails, (user)=> user);
+    const filterEmails = _.filter(Data, (index) => _.includes(index.email, e.target.value));
     this.setState({Data: filterEmails});
   }
 

@@ -19,7 +19,7 @@ class AuthenticatedComponent extends Component {
     }
 
     if (!_.isEmpty(allowedUsers) && !_.isEmpty(user)) {
-      const allowedEmails = _.map(allowedUsers, user=>user.email)
+      const allowedEmails = _.map(allowedUsers, user => {if(user) return user.email})
       const isUserAllowed = _.includes(allowedEmails, user.email);
       if (!isUserAllowed){
         this.props.history.push('/notallowed');
@@ -38,9 +38,9 @@ class AuthenticatedComponent extends Component {
   componentWillReceiveProps(nextProps) {
     const { user , allowedUsers} = nextProps;
     const {stop} = this.state;
-
+    
     if (!_.isEmpty(allowedUsers) && !_.isEmpty(user) && !stop ) {
-      const allowedEmails = _.map(allowedUsers, user=>user.email)
+      const allowedEmails = _.map(allowedUsers, user=>{if(user) return user.email})
       const isUserAllowed = _.includes(allowedEmails, user.email);
 
       if (!isUserAllowed){

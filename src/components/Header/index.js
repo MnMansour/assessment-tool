@@ -45,7 +45,8 @@ class Header extends Component {
   render() {
     const{showMenu} = this.state;
     const {user, dbUsers} = this.props;
-    const role = dbUsers ? dbUsers[user.uid] ? dbUsers[user.uid].role : '' : '';
+    const USER = dbUsers ? user ? dbUsers[user.uid] : '' : '';
+    const role = USER ? USER.role : '';
 
     return (
       <header>
