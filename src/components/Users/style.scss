@@ -49,15 +49,25 @@
           color: #6e6554;
           text-decoration: none;
         }
-        .prograss{
+        .edit{
+          cursor: pointer;
+        }
+        .progress{
           width: 100%;
           height: 20px;
           background-color: #dadada;
           border-radius: 20px;
+          position: relative;
           &__bar{
             height: 100%;
             border-radius: 20px;
             transition: all .2s ease-out
+          }
+          &__percent{
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
           }
         }
         .image-cropper {

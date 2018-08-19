@@ -32,8 +32,8 @@ class SignUp extends Component {
     const {fullname, password} = values,
     {user} = this.props,
     displayName = this.displayName(fullname),
-    data = { ...values, displayName, role: 'student', uid: user.uid},
-    email= user.email;
+    email= user.email,
+    data = { ...values, displayName, role: 'student', uid: user.uid, email};  
     delete data.password;  delete data.repassword;
 
     if(user.providerData.length === 1) {

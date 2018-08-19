@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
 import {logout} from '../../redux/actions/actions';
 
 import './style.scss'
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import logo from "../../assets/integrify-logo.svg"
 import Menu from "../../assets/menu.svg"
 
@@ -27,9 +29,22 @@ class Header extends Component {
     return pathname === e.url
   }
 
+  logOut = () => {
+    const {logout} = this.props;
+    confirmAlert({
+        title: 'Logout',
+        message: 'Are you sure you want logout?',
+        buttons: [{
+            label: 'logout',
+            onClick: () => logout()
+          },
+          { label: 'cancel'}
+        ]})
+  }
+
   render() {
     const{showMenu} = this.state;
-    const {user, logout} = this.props;
+    const {user} = this.props;
     return (
       <header>
         <NavLink onClick={this.closeMenu} to="/"><img className="logo" src={logo} alt="integrify"/></NavLink>
@@ -41,7 +56,7 @@ class Header extends Component {
         {user&&<div onClick={this.closeMenu} className={showMenu ? 'nav' : 'nav hide' }>
           <NavLink isActive={this.checkPath} className="nav-item" to="/" >Students</NavLink>
           <NavLink className="nav-item" to="/profile" >Profile</NavLink>
-          <a className="nav-item" onClick={()=>logout()}>logout</a>
+          <a className="nav-item" onClick={this.logOut}>logout</a>
         </div>}
         <img onClick={this.toggleMenu} className="menu" src={Menu} alt="menu" />
       </header>

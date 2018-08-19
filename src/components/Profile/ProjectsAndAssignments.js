@@ -10,7 +10,7 @@ import editButton from '../../assets/edit-button.png';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
-class EducationAndExperience extends Component {
+class ProjectsAndAssignments extends Component {
 
   state = {
     modalIsOpen: false
@@ -77,4 +77,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, {deleteFromDatabase})(EducationAndExperience);
+export default connect(mapStateToProps, {deleteFromDatabase})(ProjectsAndAssignments);

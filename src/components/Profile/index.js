@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash'
 import Section from './section';
 import ProfileHeader from './ProfileHeader'
-import CircularProgressbar from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+
 
 import * as constants from '../../util/constants'
 import './style.scss';
@@ -30,26 +29,17 @@ class Profile extends Component {
     const {user, dbEducation, dbExperience, dbSkills, dbProjects, dbAssignments, match} = this.props
     const Data = this.getData();
     const enableEdit = Data ? user ? Data.uid === user.uid : false : false;
-    const userDbEduction = dbEducation ? dbEducation[Data.uid] : false;
-    const userDbExperience = dbExperience ? dbExperience[Data.uid] : false;
-    const userDbProjects = dbProjects ? dbProjects[Data.uid] : false;
-    const userDbAssignments = dbAssignments ? dbAssignments[Data.uid] : false;
-    const userDbSkills = dbSkills ? dbSkills[Data.uid] : false;
+    const userDbEduction = dbEducation ? Data ? dbEducation[Data.uid] : false : false;
+    const userDbExperience = dbExperience ? Data ? dbExperience[Data.uid] : false : false;
+    const userDbProjects = dbProjects ? Data ? dbProjects[Data.uid] : false : false;
+    const userDbAssignments = dbAssignments ? Data ? dbAssignments[Data.uid] : false : false;
+    const userDbSkills = dbSkills ? Data ? dbSkills[Data.uid] : false : false;
     if (!Data) {
       return <div className="profile-notfound">Person With Name {match.params.id} Not Found! </div>
     }
     return(
       <div className="profile">
-        <div className="profile__header">
-          <div className="profile__header__image" style={Data.image?{backgroundImage:`url(${Data.image})`}:{}}></div>
-          <ProfileHeader Data={Data} />
-          <div className="progressbar">
-             <CircularProgressbar
-              percentage={Data.percentage ? Data.percentage : 0}
-              text={`${Data.percentage ? Data.percentage : 0}%`}
-            />
-          </div>
-        </div>
+        <ProfileHeader Data={Data} />
         <div className="profile__body">
           {(enableEdit || userDbEduction) && <Section enableEdit={enableEdit} title={constants.EDUCATION} Data={userDbEduction}/>}
           {(enableEdit || userDbExperience) && <Section enableEdit={enableEdit} title={constants.EXPERIENCE} Data={userDbExperience} />}

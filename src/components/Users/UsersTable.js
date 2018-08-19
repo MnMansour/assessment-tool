@@ -1,10 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import ReactTable from "react-table";
+import Edit from './Edit';
+import Progress from './Progress';
 import "react-table/react-table.css";
 import defaultImage from '../../assets/default-image.jpg';
 
-const UsersTable = ({users, showPrograss, showEdit}) => (
+const UsersTable = ({users, showProgress, showEdit}) => (
   <ReactTable
     data={users}
     columns={[
@@ -22,22 +24,13 @@ const UsersTable = ({users, showPrograss, showEdit}) => (
         id: "class",
         accessor: user => <div >{user.class ? user.class : "not set"}</div>,
       },{
-        Header: "Prograss",
-        accessor: "prograss",
-        Cell: row => (
-          <div className="prograss">
-            <div
-              className="prograss__bar"
-              style={{ width: `${row.value}%`,
-                backgroundColor: row.value > 66 ? '#85cc00'
-                  : row.value > 33 ? '#ffbf00' : '#ff2e00'}}
-            />
-          </div>
-        ),
-        show: showPrograss ? showPrograss: false,
+        Header: "Progress",
+        accessor: "progress",
+        Cell: row => <Progress value={row.value? row.value : 0} />,
+        show: showProgress ? showProgress: false,
       },{
         id:"edit",
-        accessor: user => <div onClick={()=>console.log('edit', user.uid)}>edit</div>,
+        accessor: user => <Edit Data={user} />,
         maxWidth: 50,
         show: showEdit ? showEdit: false,
       },

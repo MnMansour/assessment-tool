@@ -13,7 +13,13 @@ class Users extends Component {
 
   componentWillMount() {
     const {usersData} = this.props;
-    const users = _.map(usersData, ((user) => {if(user.role === "student") return user}));
+    const users = _.filter(usersData, ((user) => user.role === "student"));
+    this.setState({users});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {usersData} = nextProps;
+    const users = _.filter(usersData, ((user) => user.role === "student"));
     this.setState({users});
   }
 
@@ -32,7 +38,7 @@ class Users extends Component {
 
   userSearch = (e) => {
     const {usersData} = this.props;
-    const users = _.map(usersData, ((user) => {if(user.role === "student") return user}));
+    const users = _.filter(usersData, ((user) => user.role === "student"));
     const filterUsers = _.filter(users, (user) => _.includes(user.displayName, e.target.value))
     this.setState({users:filterUsers});
   }
@@ -46,7 +52,7 @@ class Users extends Component {
         <div className="searh-bar">
           <input placeholder="Searh here!" onChange={this.userSearch}/>
         </div>
-        <UsersTable users={users} showPrograss={width > 500} showEdit={true}/>
+        <UsersTable users={users} showProgress={width > 500} showEdit={true}/>
       </div>
     );
   }
