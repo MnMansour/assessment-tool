@@ -1,66 +1,67 @@
 import React, {Component} from 'react';
-import Section from './section'
+import {connect} from 'react-redux';
+import _ from 'lodash'
+import Section from './section';
+import ProfileHeader from './ProfileHeader'
 
-import userIcon from '../../assets/user.png';
-import emailIcon from '../../assets/email.png';
-import githubIcon from '../../assets/github.png';
-import phoneIcon from '../../assets/phone.png';
-import linkedinIcon from '../../assets/linkedin.png';
 
-import CircularProgressbar from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-
-import * as constant from '../../util/constant'
+import * as constants from '../../util/constants'
 import './style.scss';
 
-const Data = {
-  id: 1,
-  role: 'student',
-  name : 'Mohammed Mansoor',
-  image: 'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg',
-  phone: '0466568898',
-  percentage: 66,
-  email: 'mohamednmansour.90@gmail.com',
-  github: 'https://github.com/MnMansour',
-  linkedin: 'https://www.linkedin.com/in/mnmansoor/',
-  education: [],
-  experience: [],
-  skills: [],
-  assignments: [],
-  projects: [],
-}
 
 class Profile extends Component {
 
+  getData = () => {
+    const {user, usersData, match:{params}} =this.props;
+    if(params.id){
+       const key = _.findKey(usersData, {displayName: params.id})
+       if(key) return usersData[key];
+       else return false
+    }
+    else{
+      if (user) return usersData[user.uid]
+      else return false
+    }
+  }
+
+
   render(){
+    const {user, dbEducation, dbExperience, dbSkills, dbProjects, dbAssignments, match} = this.props
+    const Data = this.getData();
+    const enableEdit = Data ? user ? Data.uid === user.uid : false : false;
+    const userDbEduction = dbEducation ? Data ? dbEducation[Data.uid] : false : false;
+    const userDbExperience = dbExperience ? Data ? dbExperience[Data.uid] : false : false;
+    const userDbProjects = dbProjects ? Data ? dbProjects[Data.uid] : false : false;
+    const userDbAssignments = dbAssignments ? Data ? dbAssignments[Data.uid] : false : false;
+    const userDbSkills = dbSkills ? Data ? dbSkills[Data.uid] : false : false;
+    if (!Data) {
+      return <div className="profile-notfound">Person With Name {match.params.id} Not Found! </div>
+    }
     return(
       <div className="profile">
-        <div className="profile__header">
-          <img src={Data.image} alt="profile"/>
-          <div className="details">
-            <div className="detail"><img src={userIcon} alt="userIcon"/><span>{Data.name}</span></div>
-            <div className="detail"><img src={phoneIcon} alt="phoneIcon"/><a href={`tel:${Data.phone}`}>{Data.phone}</a></div>
-            <div className="detail"><img src={emailIcon} alt="emailIcon"/><a href={`mailto:${Data.email}`}>Email</a></div>
-            <div className="detail"><img src={githubIcon} alt="githubIcon"/><a href={Data.github}>GitHub</a></div>
-            <div className="detail"><img src={linkedinIcon} alt="linkedinIcon"/><a href={Data.linkedin}>Linkdin</a></div>
-          </div>
-          <div className="progressbar">
-             <CircularProgressbar
-              percentage={Data.percentage}
-              text={`${Data.percentage}%`}
-            />
-          </div>
-        </div>
+        <ProfileHeader Data={Data} />
         <div className="profile__body">
-          <Section title={constant.EDUCATION} />
-          <Section title={constant.EXPERIENCE} />
-          <Section title={constant.SKILLS} />
-          <Section title={constant.ASSIGNMENTS} />
-          <Section title={constant.PROJECTS} />
+          {(enableEdit || userDbEduction) && <Section enableEdit={enableEdit} title={constants.EDUCATION} Data={userDbEduction}/>}
+          {(enableEdit || userDbExperience) && <Section enableEdit={enableEdit} title={constants.EXPERIENCE} Data={userDbExperience} />}
+          {(enableEdit || userDbSkills) && <Section enableEdit={enableEdit} title={constants.SKILLS} Data={userDbSkills}/>}
+          {(enableEdit || userDbAssignments) && <Section enableEdit={enableEdit} title={constants.ASSIGNMENTS} Data={userDbAssignments}/>}
+          {(enableEdit || userDbProjects) && <Section enableEdit={enableEdit} title={constants.PROJECTS} Data={userDbProjects}/>}
         </div>
       </div>
     )
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+    usersData: state.dbUsers,
+    dbEducation: state.dbEducation,
+    dbExperience: state.dbExperience,
+    dbAssignments: state.dbAssignments,
+    dbProjects: state.dbProjects,
+    dbSkills: state.dbSkills
+  };
+}
+
+export default connect(mapStateToProps,null)(Profile);

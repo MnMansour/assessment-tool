@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {sendPasswordResetEmail} from '../../redux/actions/actions';
 import { Field, reduxForm } from 'redux-form';
 import { required, email} from 'redux-form-validators';
-import {doSendPasswordResetEmail} from '../../util/firebase';
 import {Input} from '../Inputs';
 
 import './style.scss';
@@ -14,21 +15,15 @@ class ResetPassword extends Component {
 
   onSubmit = values => {
     const {email} = values;
-    doSendPasswordResetEmail(email)
-    .then(function(response) {
-        console.log(response);
-        return response;
-    }).catch(error => {
-        console.error(error);
-        this.setState({loginError: true})
-    });
+    this.props.sendPasswordResetEmail(email).catch(()=>this.setState({loginError:true}))
+
   }
 
   render(){
     const {loginError} = this.state;
     return (
       <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
-        { loginError && <div className="login-error">No user record with this email
+        { loginError && <div className="login-error">No user exists with such email
           <span onClick={()=>this.setState({loginError: false})}>x</span></div> }
         <div>
           <Field label="email" name="email" component={Input} validate={[required(), email()]} type="text" />
@@ -42,6 +37,10 @@ class ResetPassword extends Component {
   }
 }
 
-export default reduxForm({
+let form = reduxForm({
   form: 'resetPassword',
 })(ResetPassword)
+
+form = connect( '',{sendPasswordResetEmail})(form);
+
+export default form;

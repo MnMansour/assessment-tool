@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { required, date } from 'redux-form-validators';
-import * as constant from '../../util/constant'
+import {writeToDatabase} from '../../redux/actions/actions';
+import * as constants from '../../util/constants'
 import {Input, Textarea} from '../Inputs';
 
 import './style.scss'
@@ -9,41 +11,68 @@ import './style.scss'
 class EducationAndExperience extends Component {
 
   componentDidMount() {
-    const {body, initialize} = this.props
-      if(body){
-        initialize(body)
+    const {Data, initialize} = this.props
+      if(Data){
+        initialize(Data)
       };
   }
 
-  onSubmit = values => console.log(JSON.stringify(values))
+
+  onSubmit = (values) => {
+    const {user, title, Data ,closeModal} = this.props;
+    if (Data) {
+      const id = Data.id
+      const path = `${title}/${user.uid}/${id}`;
+      this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+    else {
+      const id = new Date().getTime(),
+        path = `${title}/${user.uid}/${id}`;
+    this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+
+  }
 
   render(){
-    const isEducationForm = this.props.title === constant.EDUCATION;
-    const Titles = isEducationForm ? constant.Forms.Education : constant.Forms.Experience;
+    const isEducationForm = this.props.title === constants.EDUCATION;
+    const place = isEducationForm ? 'school' : 'company';
+    const title = isEducationForm ? 'field' : 'position';
+
     return (
       <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
         <div>
-          <Field label={Titles.place} name={Titles.place} component={Input} validate={required()} type="text" />
+          <Field label={place} name="place" component={Input} validate={required()} type="text" />
 
-          <Field label={Titles.title} name={Titles.title} component={Input} validate={required()} type="text" />
+          <Field label={title} name="title" component={Input} validate={required()} type="text" />
 
+          {isEducationForm && <Field label="dgree" name="dgree" component={Input} validate={required()} type="text" />}
           <Field label="Location" name="location" component={Input} validate={required()} type="text" />
 
           <div className="groupFields">
-            <Field label="From" name="from-date" type="month" component={Input} validate={[required(), date({ format: 'yyyy-mm' })]}  />
-            <Field label="To" name="to-date" type="month" component={Input} validate={[date({ format: 'yyyy-mm' })]}  />
+            <Field label="From" name="fromDate" type="month" component={Input} validate={[required(), date({ format: 'yyyy-mm' })]}  />
+            <Field label="To" name="toDate" type="month" component={Input} validate={[date({ format: 'yyyy-mm' })]}  />
           </div>
 
-          <Field label={Titles.description} name={Titles.description} component={isEducationForm ? Input : Textarea} validate={required()} />
+          <Field label="description" name="description" component={Textarea} />
           <div>
-            <button type="submit" >ADD</button>
-          </div>'
+            <button type="submit" >Save</button>
+          </div>
         </div>
       </form>
     )
   }
 }
 
-export default reduxForm({
-  form: 'EAEForm',
-})(EducationAndExperience)
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+let form = reduxForm({
+  form: 'EAEForm'
+})(EducationAndExperience);
+
+form = connect(mapStateToProps, {writeToDatabase})(form);
+
+export default form;

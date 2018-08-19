@@ -4,16 +4,34 @@ body {
   font-family: sans-serif;
   max-width: 1244px;
   margin: 0 auto;
+  font-family: 'Roboto' ,sans-serif;
+  .react-confirm-alert{
+    @media (max-width: 420px) {
+      width: 100%;
+    }
+  }
 }
 
 #root{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  .body{
-    flex: 1;
+  .Root{
     display: flex;
-    background-color: #fffeee
+    flex-direction: column;
+    min-height: 100vh;
+    .body{
+      flex: 1;
+      display: flex;
+      background-image: url('./assets/background.png');
+      >.children{
+        display: flex;
+        width: 100%;
+      }
+      .loading{
+        fill: #f5deb3!important;
+        height: auto!important;
+        width: 50%!important;
+        align-self: center;
+        margin: 0 auto;
+      }
+    }
   }
 }

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { required, url} from 'redux-form-validators';
-import * as constant from '../../util/constant'
+import {writeToDatabase} from '../../redux/actions/actions';
+import * as constants from '../../util/constants'
 import {Input, Textarea} from '../Inputs';
 
 import './style.scss';
@@ -9,21 +11,34 @@ import './style.scss';
 class ProjectsAndAssignments extends Component {
 
   componentDidMount() {
-    const {body, initialize} = this.props
-      if(body){
-        initialize(body)
+    const {Data, initialize} = this.props;
+      if(Data){
+        initialize(Data)
       };
   }
 
-  onSubmit = values => console.log(JSON.stringify(values))
+  onSubmit = (values) => {
+    const {user, title, Data ,closeModal} = this.props;
+    if (Data) {
+      const id = Data.id
+      const path = `${title}/${user.uid}/${id}`;
+      this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+    else {
+      const id = new Date().getTime(),
+        path = `${title}/${user.uid}/${id}`;
+    this.props.writeToDatabase(path, {...values, id}).then(()=> closeModal())
+    }
+
+  }
 
   render(){
-    const isProjectForm = this.props.title === constant.PROJECTS;
+    const isProjectForm = this.props.title === constants.PROJECTS;
     const name = isProjectForm ? 'project' : 'assignment';
     return (
       <form className="form" onSubmit={ this.props.handleSubmit(this.onSubmit) }>
         <div>
-          <Field label={`${name} name`} name={name} component={Input} validate={required()} type="text" />
+          <Field label={`${name} name`} name="name" component={Input} validate={required()} type="text" />
 
           {!isProjectForm &&
             <div>
@@ -44,13 +59,23 @@ class ProjectsAndAssignments extends Component {
           <Field label="description" name="description" component={Textarea}  />
           <div>
             <button type="submit" >ADD</button>
-          </div>'
+          </div>
         </div>
       </form>
     )
   }
 }
 
-export default reduxForm({
-  form: 'EAEForm',
-})(ProjectsAndAssignments)
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+let form = reduxForm({
+  form: 'EAEForm'
+})(ProjectsAndAssignments);
+
+form = connect(mapStateToProps, {writeToDatabase})(form);
+
+export default form;

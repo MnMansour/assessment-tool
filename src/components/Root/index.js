@@ -1,19 +1,39 @@
 import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import {Switch, Route} from 'react-router-dom';
+import Header from '../Header';
+import Login from '../Login';
+import SignUp from '../Forms/SignUp';
+import Footer from '../Footer';
+import Profile from '../Profile';
+import Users from '../Users';
+import Admin from '../Admin';
+import NotAllowedUsers from '../NotAllowedUsers';
+import AuthenticatedComponent from '../AuthenticatedComponent';
+import LoadingComponent from '../LoadingComponent';
 
-import reducers from '../../redux/reducers';
-import App from '../App';
 
-const store = createStore(
-	reducers,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-const Root = () => (
-	<Provider store={store}>
-		<App />
-	</Provider>
-);
+const Root = (props) => {
+	return (
+		<LoadingComponent>
+			<Header/>
+			<div className="body">
+				<Switch>
+					<Route exact path='/login' component={Login}/>
+					<Route exact path='/students' component={()=><div>students</div>}/>
+					<Route exact path='/aboutus' component={()=><div>About us</div>}/>
+					<Route exact path='/notallowed/:id' component={NotAllowedUsers} />
+					<AuthenticatedComponent>
+						<Route exact path='/settings' component={SignUp} />
+						<Route exact path='/' component={Users} />
+						<Route exact path='/profile' component={Profile} />
+						<Route exact path='/admin' component={Admin} />
+						<Route exact path='/profile/:id' component={Profile} />
+					</AuthenticatedComponent>
+	 			</Switch>
+			</div>
+			<Footer />
+		</LoadingComponent>
+	)
+};
 
 export default Root;
