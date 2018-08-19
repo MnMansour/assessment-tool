@@ -41,7 +41,7 @@ class SignIn extends Component {
         { loginError && <div className="login-error">incorrect email or password
           <span onClick={()=>this.setState({loginError: false})}>x</span></div> }
         <div>
-          <Field label="email" name="email" component={Input} validate={[required(), email()]} type="text" />
+          <Field label="email" name="email" component={Input} validate={[email()]} type="text" />
 
           <Field label="password" name="password" component={Input} validate={required()} type="password" />
           <span className="forgot" onClick={this.openModal} >Forgot your Password?</span>

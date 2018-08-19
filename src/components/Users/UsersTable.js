@@ -36,7 +36,7 @@ const UsersTable = ({users, showProgress, showEdit}) => (
       },
     ]}
 
-    defaultPageSize={users.length < 8 ? users.length : 8}
+    pageSize={users.length < 8 ? users.length : 8}
     className={users.length < 8 ? "-highlight hide-bottom" : "-highlight"}
     noDataText="No users found!"
   />

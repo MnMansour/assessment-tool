@@ -17,7 +17,6 @@ class Edit extends Component {
   }
 
   render() {
-    console.log('edit', this.props);
     const {modalIsOpen} = this.state;
     const {Data:{fullname, uid}} = this.props
     return (

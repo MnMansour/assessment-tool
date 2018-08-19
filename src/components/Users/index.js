@@ -52,7 +52,7 @@ class Users extends Component {
         <div className="searh-bar">
           <input placeholder="Searh here!" onChange={this.userSearch}/>
         </div>
-        <UsersTable users={users} showProgress={width > 500} showEdit={true}/>
+        <UsersTable users={users} showProgress={width > 500} showEdit={role !== 'student'}/>
       </div>
     );
   }

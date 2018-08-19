@@ -6,6 +6,7 @@ import SignUp from '../Forms/SignUp';
 import Footer from '../Footer';
 import Profile from '../Profile';
 import Users from '../Users';
+import Admin from '../Admin';
 import NotAllowedUsers from '../NotAllowedUsers';
 import AuthenticatedComponent from '../AuthenticatedComponent';
 import LoadingComponent from '../LoadingComponent';
@@ -25,6 +26,7 @@ const Root = (props) => {
 						<Route exact path='/settings' component={SignUp} />
 						<Route exact path='/' component={Users} />
 						<Route exact path='/profile' component={Profile} />
+						<Route exact path='/admin' component={Admin} />
 						<Route exact path='/profile/:id' component={Profile} />
 					</AuthenticatedComponent>
 	 			</Switch>

@@ -5,6 +5,11 @@ body {
   max-width: 1244px;
   margin: 0 auto;
   font-family: 'Roboto' ,sans-serif;
+  .react-confirm-alert{
+    @media (max-width: 420px) {
+      width: 100%;
+    }
+  }
 }
 
 #root{

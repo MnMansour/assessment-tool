@@ -1,0 +1,88 @@
+.admin-page{
+  width: 100%;
+  align-self: center;
+  .hide-bottom{
+    .pagination-bottom{
+      display: none
+    }
+  }
+
+  &__table{
+    width: 500px;
+    margin: 0 auto;
+    @media (max-width: 800px) {
+      width: 98%
+    }
+
+    .title{
+      font-size: 18px;
+      font-weight: 600;
+      color: #6e6554;
+      margin: 8px 0;
+    }
+
+    .input{
+      display: block;
+      height: 26px;
+      width: 250px;
+      box-sizing: border-box;
+      border-radius: 13px;
+      outline: none;
+      padding: 0 12px;
+      font-size: 16px;
+      color: #7a7262;
+      font-weight: 600;
+      border: 1px solid;
+      margin-bottom: 6px;
+    }
+    .ReactTable{
+      .rt-tbody{
+
+        .rt-td{
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-transform: lowercase;
+          font-size: 14px;
+          font-weight: 600;
+          color: #6e6554;
+          a{
+            color: #6e6554;
+            text-decoration: none;
+          }
+          .edit{
+            cursor: pointer;
+          }
+        }
+      }
+      .pagination-bottom{
+        .-pageSizeOptions{
+          display: none;
+        }
+      }
+    }
+
+    .form{
+      display: flex;
+      .inputField{
+        height: 46px;
+        margin-left: 0;
+        label{display: none;}
+        input{
+          background-color: white;
+          border: 1px solid #6e6554;
+          width: 300px;
+        }
+      }
+      .button{
+        height: 24px;
+        margin:4px 0px 0 8px;
+        background-color: #f3f3f3;
+        font-size: 16px;
+        font-weight: 600;
+        color: #7b7269;
+      }
+    }
+  }
+}

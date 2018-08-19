@@ -44,7 +44,9 @@ class Header extends Component {
 
   render() {
     const{showMenu} = this.state;
-    const {user} = this.props;
+    const {user, dbUsers} = this.props;
+    const role = dbUsers ? dbUsers[user.uid] ? dbUsers[user.uid].role : '' : '';
+
     return (
       <header>
         <NavLink onClick={this.closeMenu} to="/"><img className="logo" src={logo} alt="integrify"/></NavLink>
@@ -55,7 +57,8 @@ class Header extends Component {
         </div>}
         {user&&<div onClick={this.closeMenu} className={showMenu ? 'nav' : 'nav hide' }>
           <NavLink isActive={this.checkPath} className="nav-item" to="/" >Students</NavLink>
-          <NavLink className="nav-item" to="/profile" >Profile</NavLink>
+          {role !== 'student' &&<NavLink className="nav-item" to="/admin" >Admin</NavLink>}
+          {role === 'student' &&<NavLink className="nav-item" to="/profile" >Profile</NavLink>}
           <a className="nav-item" onClick={this.logOut}>logout</a>
         </div>}
         <img onClick={this.toggleMenu} className="menu" src={Menu} alt="menu" />
