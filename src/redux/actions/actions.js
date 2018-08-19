@@ -19,6 +19,8 @@ export const ASSIGNMENTS_DB_STATUS = 'ASSIGNMENTS_DB_STATUS';
 export const GET_DB_ASSIGNMENTS = 'GET_DB_ASSIGNMENTS';
 export const PROJECTS_DB_STATUS = 'PROJECTS_DB_STATUS';
 export const GET_DB_PROJECTS = 'GET_DB_PROJECTS';
+export const CLASSES_STATUS = 'CLASSES_STATUS';
+export const GET_DB_CLASSES = 'GET_DB_CLASSES';
 
 
 export function getUser() {
@@ -167,6 +169,25 @@ export function getDbAllowedUsers() {
       });
       dispatch({
         type: ALLOWED_STATUS,
+        payload: false
+      });
+    });
+  };
+}
+
+export function getDbClasses() {
+  return dispatch => {
+    dispatch({
+      type: CLASSES_STATUS,
+      payload: true
+    });
+    database.ref('classes').on('value', db => {
+      dispatch({
+        type: GET_DB_CLASSES,
+        payload: db.val()
+      });
+      dispatch({
+        type: CLASSES_STATUS,
         payload: false
       });
     });

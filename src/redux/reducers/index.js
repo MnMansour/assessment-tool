@@ -10,6 +10,7 @@ import DbSkillsReducer from './DbSkillsReducer';
 import DbAssignmentsReducer from './DbAssignmentsReducer';
 import DbProjectsReducer from './DbProjectsReducer';
 import DbAllowedUsersReducer from './DbAllowedUsersReducer';
+import DbClassesReducer from './DbClassesReducer';
 
 export default combineReducers({
 	 form: formReducer,
@@ -23,4 +24,5 @@ export default combineReducers({
 	 dbSkills: DbSkillsReducer,
 	 dbProjects: DbProjectsReducer,
 	 dbAssignments: DbAssignmentsReducer,
+	 dbClasses: DbClassesReducer,
   });

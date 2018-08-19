@@ -14,8 +14,10 @@ export default function (state = {}, action) {
       return { ...state, dbSkills: action.payload };
     case 'PROJECTS_DB_STATUS':
       return { ...state, dbProjects: action.payload };
-      case 'ASSIGNMENTS_DB_STATUS':
-        return { ...state, dbAssignments: action.payload };
+    case 'ASSIGNMENTS_DB_STATUS':
+      return { ...state, dbAssignments: action.payload };
+    case 'CLASSES_STATUS':
+      return { ...state, dbClasses: action.payload };
     default:
       return state;
   }

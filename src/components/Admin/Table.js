@@ -5,7 +5,7 @@ import { required, email} from 'redux-form-validators';
 import {Input} from '../Inputs';
 import "react-table/react-table.css";
 
-const Table = ({Data, title, length, onSearch, onDelete, handleSubmit, onSubmit, resetSection}) => {
+const Table = ({Data, title, length, onSearch, onDelete, handleSubmit, onSubmit, resetSection, classes}) => {
   const submit= (values) =>{
     onSubmit(values);
     resetSection('email');
@@ -17,8 +17,16 @@ const Table = ({Data, title, length, onSearch, onDelete, handleSubmit, onSubmit,
       <ReactTable
         data={Data}
         columns={[
-          {Header: 'Email',
-           accessor: 'email'},
+          {
+           Header: 'Email',
+           accessor: 'email',
+           show: !classes
+         },
+         {
+          Header: 'Class',
+          accessor: 'class',
+          show: classes
+          },
           {
            accessor: 'id',
            maxWidth: 70,
@@ -29,8 +37,13 @@ const Table = ({Data, title, length, onSearch, onDelete, handleSubmit, onSubmit,
         className={Data.length < 8 ? "-highlight hide-bottom" : "-highlight"}
         noDataText="No Data!"
       />
-    <form className="form" onSubmit={ handleSubmit(submit) }>
-        <Field label="email" name="email" component={Input} validate={[required(), email()]} type="text" />
+      <form className="form" onSubmit={ handleSubmit(submit) }>
+        <div className={classes? '' : 'hide'}>
+          <Field label="class" name="class" component={Input} validate={[required()]} type="text" />
+        </div>
+        <div className={classes? 'hide' : ''}>
+          <Field className={classes? 'hide' : ''} label="email" name="email" component={Input} validate={[required(), email()]} type="text" />
+        </div>
         <button className="button" type="submit">Add</button>
       </form>
     </div>
